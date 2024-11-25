@@ -46,6 +46,7 @@ gem "bootsnap", require: false
 
 gem "bootstrap", "~> 5.2"
 gem "devise"
+gem "cloudinary"
 gem "ostruct"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"

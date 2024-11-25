@@ -1,4 +1,6 @@
 class Podcast < ApplicationRecord
+  has_one_attached :audio
+
   belongs_to :user_language
   belongs_to :host
 
