@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   # get old style for settings
   get "users/settings", to: "pages#settings", as: :settings
+  patch "users/settings", to: "pages#update_settings"
 end
