@@ -13,19 +13,30 @@ user1 = User.new(email: "b.mikorski@gmail.com", first_name: "Bartek", last_name:
 user1.password = 'secret'
 user1.learning_style = 'casual'
 user1.interests = 'donuts, eating, traveling, world of warcraft, witcher (video game), elden ring, warhammer'
-user1.suggested_topics = ['Introduction with これ/それ/あれ” – Fun topic: favorite donuts',
- '“Basic は/が Particles” – Fun topic: favorite travel destinations',
-  '“Simple Verbs in Present Tense” – Fun topic: World of Warcraft gameplay',
-   '“Adjective Use (い/な)” – Fun topic: donuts vs. snacks']
+user1.suggested_topics = ['Introduction with これ/それ/あれ” - Fun topic: favorite donuts',
+ '“Basic は/が Particles” - Fun topic: favorite travel destinations',
+  '“Simple Verbs in Present Tense” - Fun topic: World of Warcraft gameplay',
+   '“Adjective Use (い/な)” - Fun topic: donuts vs. snacks']
 user1.save
 
 
-user2 = User.new(email: "jarodmiz2018@gmail.com", first_name: "Jarod", last_name: "Mizgalski", phone_number: "+48662402542")
+user2 = User.new(email: "jarodmiz2018@gmail.com", first_name: "Jarod", last_name: "Mizgalski", level: "A2", native_language: "English")
 user2.password = 'secret'
-user2.learning_style = 'balanced'
-user2.interests = 'donuts, eating, traveling, world of warcraft, witcher (video game), elden ring, warhammer'
-user2.suggested_topics = ['Introduction with これ/それ/あれ” – Fun topic: favorite donuts',
- '“Basic は/が Particles” – Fun topic: favorite travel destinations',
-  '“Simple Verbs in Present Tense” – Fun topic: World of Warcraft gameplay',
-   '“Adjective Use (い/な)” – Fun topic: donuts vs. snacks']
+user2.learning_style = 'serious'
+user2.interests = ['donuts', 'vintage japanese cars', 'working out', 'studying japanese', 'sushi']
+user2.suggested_topics = ['Introduction with これ/それ/あれ” - Fun topic: favorite donuts',
+ '“Basic は/が Particles” - Fun topic: favorite travel destinations',
+  '“Simple Verbs in Present Tense” - Fun topic: World of Warcraft gameplay',
+   '“Adjective Use (い/な)” - Fun topic: donuts vs. snacks']
 user2.save
+
+
+user3 = User.new(email: "tobypalethorpe@gmail.com", first_name: "Toby", last_name: "Palethorpe",  level: "B1", native_language: "English")
+user3.password = 'secret'
+user3.learning_style = 'balanced'
+user3.interests = ['photography', 'UK dance music', 'anthropology', 'history', 'science', 'technology', 'japanese culture', 'thailand']
+user3.suggested_topics = ['Introduction with これ/それ/あれ” - Fun topic: favorite donuts',
+ '“Basic は/が Particles” - Fun topic: favorite travel destinations',
+  '“Simple Verbs in Present Tense” - Fun topic: World of Warcraft gameplay',
+   '“Adjective Use (い/な)” - Fun topic: donuts vs. snacks']
+user3.save
