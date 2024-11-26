@@ -10,6 +10,5 @@ class Podcast < ApplicationRecord
   validates :native_language, presence: true
   validates :level, presence: true
   validates :learning_style, presence: true
-  validates :learning_style, presence: true
   validates :user_prompt, presence: true
 end
