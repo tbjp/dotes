@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_25_071520) do
     t.string "nationality"
     t.integer "age"
     t.string "location"
+    t.string "work"
     t.string "family"
     t.string "likes"
     t.string "dislikes"
