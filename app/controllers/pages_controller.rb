@@ -5,5 +5,10 @@ class PagesController < ApplicationController
   end
 
   def settings
+    # interests
+    # learning style
+    # native language
+    # suggested topic
+    # selected user language id
   end
 end
