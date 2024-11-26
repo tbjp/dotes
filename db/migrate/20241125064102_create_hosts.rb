@@ -7,6 +7,7 @@ class CreateHosts < ActiveRecord::Migration[7.1]
       t.string :nationality
       t.integer :age
       t.string :location
+      t.string :work
       t.string :family
       t.string :likes
       t.string :dislikes
