@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_25_071520) do
     t.bigint "user_id", null: false
     t.string "language"
     t.string "level"
+    t.string "suggested_topics", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_languages_on_user_id"
