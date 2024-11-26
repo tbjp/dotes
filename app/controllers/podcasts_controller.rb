@@ -23,7 +23,7 @@ class PodcastsController < ApplicationController
   def destroy
     @podcast = Podcast.find(params[:id])
     @podcast.delete
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this podcast?"}
+    # data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this podcast?"}
   end
 
   private
