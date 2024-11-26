@@ -1,0 +1,7 @@
+<%= @podcasts.each do |podcast| %>
+  <div><%= podcast.title %></div>
+  <div><%= podcast.summary %></div>
+  <div><%= podcast.native_language %></div>
+  <div><%= podcast.level %></div>
+  <div><%= podcast.host.first_name %></div>
+<% end %>
