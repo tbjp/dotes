@@ -2,4 +2,19 @@
   margin: 0 12px;
   flex-grow: 1;
   border-radius: 25px;
+  max-height: calc(100vh - 62px);
+  overflow-y: scroll;
+  position: relative;
 }
+
+.blur {
+  position: sticky;
+  bottom: 0;
+  height: 64px;
+  width: 100%;
+  border-radius: 0px 0px 25px 25px;
+  backdrop-filter: blur(2px);
+  -webkit-mask: linear-gradient(transparent, white 50%);
+}
+
+// hello
