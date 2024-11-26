@@ -16,15 +16,16 @@ Host.delete_all
 UserLanguage.delete_all
 User.delete_all
 
+suggested_topics = ['Introduction with これ/それ/あれ” - Fun topic: favorite donuts',
+'“Basic は/が Particles” - Fun topic: favorite travel destinations',
+ '“Simple Verbs in Present Tense” - Fun topic: World of Warcraft gameplay',
+  '“Adjective Use (い/な)” - Fun topic: donuts vs. snacks']
+
 # Create a user
 user1 = User.new(email: "b.mikorski@gmail.com", first_name: "Bartek", last_name: "Mikorski", native_language: "English")
 user1.password = 'secret'
 user1.learning_style = 'casual'
 user1.interests = 'donuts, eating, traveling, world of warcraft, witcher (video game), elden ring, warhammer'
-user1.suggested_topics = ['Introduction with これ/それ/あれ” - Fun topic: favorite donuts',
- '“Basic は/が Particles” - Fun topic: favorite travel destinations',
-  '“Simple Verbs in Present Tense” - Fun topic: World of Warcraft gameplay',
-   '“Adjective Use (い/な)” - Fun topic: donuts vs. snacks']
 user1.save
 
 
@@ -32,10 +33,6 @@ user2 = User.new(email: "jarodmiz2018@gmail.com", first_name: "Jarod", last_name
 user2.password = 'secret'
 user2.learning_style = 'serious'
 user2.interests = ['donuts', 'vintage japanese cars', 'working out', 'studying japanese', 'sushi']
-user2.suggested_topics = ['Introduction with これ/それ/あれ” - Fun topic: favorite donuts',
- '“Basic は/が Particles” - Fun topic: favorite travel destinations',
-  '“Simple Verbs in Present Tense” - Fun topic: World of Warcraft gameplay',
-   '“Adjective Use (い/な)” - Fun topic: donuts vs. snacks']
 user2.save
 
 
@@ -43,10 +40,6 @@ user3 = User.new(email: "tobypalethorpe@gmail.com", first_name: "Toby", last_nam
 user3.password = 'secret'
 user3.learning_style = 'balanced'
 user3.interests = ['photography', 'UK dance music', 'anthropology', 'history', 'science', 'technology', 'japanese culture', 'thailand']
-user3.suggested_topics = ['Introduction with これ/それ/あれ” - Fun topic: favorite donuts',
- '“Basic は/が Particles” - Fun topic: favorite travel destinations',
-  '“Simple Verbs in Present Tense” - Fun topic: World of Warcraft gameplay',
-   '“Adjective Use (い/な)” - Fun topic: donuts vs. snacks']
 user3.save
 
 puts 'Making hosts'
@@ -99,14 +92,14 @@ stories: ["a"]
 puts 'Making 3 users with 2 languages and 6 placeholder podcasts each for Japanese'
 
 [user1, user2, user3].each do |user|
-  user_language = UserLanguage.new(user: user, language: "Japanese", level: "Beginner")
+  user_language = UserLanguage.new(user: user, language: "Japanese", level: "Beginner", suggested_topics: suggested_topics)
   podcast = Podcast.new(title: "Introduction with これ/それ/あれ",
                              summary: "In this episode, we will learn how to use the basic Japanese pronouns これ/それ/あれ",
                              ai_summary: "This episode is an introduction to the basic Japanese pronouns これ/それ/あれ, you spoke about your favorite donuts",
                               native_language: "English",
                               level: user_language.level,
                               learning_style: user.learning_style,
-                              user_prompt: user.suggested_topics[0],
+                              user_prompt: user_language.suggested_topics[0],
                               transcript: lorum)
   podcast.user_language = user_language
   podcast.host = Host.first
@@ -117,7 +110,7 @@ puts 'Making 3 users with 2 languages and 6 placeholder podcasts each for Japane
                               native_language: "English",
                               level: user_language.level,
                               learning_style: user.learning_style,
-                              user_prompt: user.suggested_topics[0],
+                              user_prompt: user_language.suggested_topics[0],
                               transcript: lorum)
   podcast.user_language = user_language
   podcast.host = Host.first
@@ -128,7 +121,7 @@ puts 'Making 3 users with 2 languages and 6 placeholder podcasts each for Japane
                               native_language: "English",
                               level: user_language.level,
                               learning_style: user.learning_style,
-                              user_prompt: user.suggested_topics[0],
+                              user_prompt: user_language.suggested_topics[0],
                               transcript: lorum)
   podcast.user_language = user_language
   podcast.host = Host.first
@@ -139,7 +132,7 @@ puts 'Making 3 users with 2 languages and 6 placeholder podcasts each for Japane
                               native_language: "English",
                               level: user_language.level,
                               learning_style: user.learning_style,
-                              user_prompt: user.suggested_topics[0],
+                              user_prompt: user_language.suggested_topics[0],
                               transcript: lorum)
   podcast.user_language = user_language
   podcast.host = Host.first
@@ -150,7 +143,7 @@ puts 'Making 3 users with 2 languages and 6 placeholder podcasts each for Japane
                               native_language: "English",
                               level: user_language.level,
                               learning_style: user.learning_style,
-                              user_prompt: user.suggested_topics[0],
+                              user_prompt: user_language.suggested_topics[0],
                               transcript: lorum)
   podcast.user_language = user_language
   podcast.host = Host.first
@@ -161,7 +154,7 @@ puts 'Making 3 users with 2 languages and 6 placeholder podcasts each for Japane
                               native_language: "English",
                               level: user_language.level,
                               learning_style: user.learning_style,
-                              user_prompt: user.suggested_topics[0],
+                              user_prompt: user_language.suggested_topics[0],
                               transcript: lorum)
 
 
@@ -170,18 +163,18 @@ puts 'Making 3 users with 2 languages and 6 placeholder podcasts each for Japane
   podcast.save
   user_language.user = user
   user_language.save
-  user.selected_user_language = user_language
+  user_language = user_language
 end
 
 [user1, user2, user3].each do |user|
-  user_language = UserLanguage.new(user: user, language: "Polish", level: "Beginner")
+  user_language = UserLanguage.new(user: user, language: "Polish", level: "Beginner", suggested_topics: suggested_topics)
   podcast = Podcast.new(title: "Introduction with polish things",
                              summary: "In this episode, we will learn how to use the basic Japanese pronouns これ/それ/あれ",
                              ai_summary: "This episode is an introduction to the basic Japanese pronouns これ/それ/あれ, you spoke about your favorite donuts",
                               native_language: "English",
                               level: user_language.level,
                               learning_style: user.learning_style,
-                              user_prompt: user.suggested_topics[0],
+                              user_prompt: user_language.suggested_topics[0],
                               transcript: lorum)
 
   podcast.user_language = user_language
