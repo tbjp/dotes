@@ -1,4 +1,8 @@
 class GenerateText
+  host_instructions = ""
+  user_prompt = ""
+
+
   def self.call
   client = OpenAI::Client.new
   chatgpt_response = client.chat(parameters: {
