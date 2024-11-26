@@ -1,5 +1,6 @@
 class PodcastsController < ApplicationController
   def index
+    @podcasts = Podcast.all
   end
 
   def show
@@ -11,10 +12,18 @@ class PodcastsController < ApplicationController
   end
 
   def create
-
+    @podcast = Podcast.new(podcast_params)
+    if @podcast.save
+      redirect_to podcasts_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    @podcast = Podcast.find(params[:id])
+    @podcast.delete
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this podcast?"}
   end
 
   private
