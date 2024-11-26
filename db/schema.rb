@@ -72,7 +72,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_25_071520) do
     t.string "native_language"
     t.string "learning_style"
     t.string "interests"
-    t.string "suggested_topics", array: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["selected_user_language_id"], name: "index_users_on_selected_user_language_id"
