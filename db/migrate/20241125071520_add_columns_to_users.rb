@@ -6,6 +6,5 @@ class AddColumnsToUsers < ActiveRecord::Migration[7.1]
     add_column :users, :native_language, :string
     add_column :users, :learning_style, :string
     add_column :users, :interests, :string
-    add_column :users, :suggested_topics, :string, array: true
   end
 end
