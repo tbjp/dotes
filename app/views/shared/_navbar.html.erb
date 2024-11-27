@@ -1,5 +1,5 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon w-100">
-  <div class="container-fluid">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid px-0">
     <%= link_to root_path do %>
       <button class="btn menu-btn glassmorph">
         <i class="fa-solid fa-house"></i>
@@ -11,7 +11,14 @@
       </div>
     <% elsif current_page?(controller: "/podcasts", action: "index") %>
       <div class="flex-grow-1 mx-2">
-        <%= link_to "Next", podcasts_path, class: "btn nav-btn nav-btn-lg glassmorph" %>
+        <%= link_to "Create Dote", new_podcast_path, class: "btn nav-btn nav-btn-lg glassmorph" %>
+      </div>
+    <% elsif current_page?(new_user_session_path) %>
+    <% elsif current_page?(new_user_registration_path) %>
+    <% elsif current_page?(new_podcast_path) %>
+    <% elsif current_page?(controller: "/podcasts", action: "show") %>
+      <div class="flex-grow-1 mx-2">
+        <%= link_to "Back", podcasts_path, class: "btn nav-btn nav-btn-lg glassmorph" %>
       </div>
     <% else %>
       <div class="flex-grow-1 mx-2">

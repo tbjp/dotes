@@ -1,4 +1,12 @@
+.card-link {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+}
+
 .podcast-card {
+  position: relative;
   padding: 12px;
   margin: 8px;
   background-color: white;
