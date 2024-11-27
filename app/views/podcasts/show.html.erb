@@ -1,9 +1,9 @@
-<%= @transcript %>
-<%= @summary %>
-<%= @level %>
-<%= @user_language %>
-<%= @native_language %>
-<%= @learning_style %>
-<%= @title %>
-<audio controls autoplay>
+<div><%= @podcast.transcript %></div>
+<div><%= @podcast.summary %></div>
+<div><%= @podcast.user_language.language %></div>
+<div><%= @podcast.native_language %></div>
+<div><%= @podcast.learning_style %></div>
+<div><%= @podcast.title %></div>
+<audio controls>
+  <source src=<%= audio_path("/audios/demo2.mp3") %> type="audio/mpeg">
 </audio>
