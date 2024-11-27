@@ -1,6 +1,6 @@
 class PodcastsController < ApplicationController
   def index
-    @podcasts = Podcast.all
+    @podcasts = current_user.selected_user_language.podcasts
   end
 
   def show
@@ -9,9 +9,13 @@ class PodcastsController < ApplicationController
 
   def new
     @podcast = Podcast.new
+    #pass instance of user language
+    @user_language = current_user.selected_user_language
 
     # Toby's testing
     # GenerateText.call(current_user, Podcast.first)
+
+
   end
 
   def create

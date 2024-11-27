@@ -1,7 +1,34 @@
-<%= @podcasts.each do |podcast| %>
-  <div><%= podcast.title %></div>
-  <div><%= podcast.summary %></div>
-  <div><%= podcast.native_language %></div>
-  <div><%= podcast.level %></div>
-  <div><%= podcast.host.first_name %></div>
+<% content_for :title do %>
+  Dotes
 <% end %>
+<div class="glassmorph window">
+  <% @podcasts.each do |podcast| %>
+    <div class="podcast-card">
+      <div class="podcast-card-left">
+        <div class="podcast-title">
+          <%= podcast.title %>
+        </div>
+        <div class="fw-lighter">
+          <%= podcast.summary %>
+        </div>
+        <div class="podcast-card-options">
+          <div class="podcast-option fw-light">
+            <%= podcast.level %>
+          </div>
+          <div class="podcast-option fw-light">
+            <%= podcast.learning_style %>
+          </div>
+          <div class="podcast-option fw-light">
+            <%= podcast.created_at.strftime("%e/%m/%Y") %>
+          </div>
+        </div>
+      </div>
+      <div class="podcast-card-right">
+        <div class="mx-1">
+          <%= image_tag "profilowe", class: "avatar", alt: podcast.host.first_name %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="blur"></div>
+</div>
