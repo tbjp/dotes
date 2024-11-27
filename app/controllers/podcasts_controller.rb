@@ -13,7 +13,7 @@ class PodcastsController < ApplicationController
 
     # Toby's testing
     # GenerateText.call(current_user, Podcast.first)
-
+    # GenerateAudio.call
 
   end
 
