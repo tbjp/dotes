@@ -88,7 +88,7 @@ suggested_topics = ['Introduction with これ/それ/あれ” - Fun topic: favo
   '“Adjective Use (い/な)” - Fun topic: donuts vs. snacks']
 
 # Create a user
-user1 = User.new(email: "b.mikorski@gmail.com", first_name: "Bartek", last_name: "Mikorski", native_language: "English")
+user1 = User.new(email: "b.mikorski@gmail.com", first_name: "Bartek", last_name: "Mikorski", native_language: "Polish")
 user1.password = 'secret'
 user1.learning_style = 'casual'
 user1.interests = 'donuts, eating, traveling, world of warcraft, witcher (video game), elden ring, warhammer'
