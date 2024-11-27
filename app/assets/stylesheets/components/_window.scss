@@ -9,6 +9,10 @@
   width: calc(100% - 24px);
 }
 
+.window-show {
+  overflow-y: hidden;
+}
+
 .blur {
   position: sticky;
   bottom: 0;

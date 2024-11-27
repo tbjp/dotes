@@ -1,4 +1,5 @@
 class PodcastsController < ApplicationController
+
   def index
     @podcasts = current_user.selected_user_language.podcasts
   end
