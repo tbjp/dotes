@@ -1,9 +1,14 @@
-<div><%= @podcast.transcript %></div>
-<div><%= @podcast.summary %></div>
-<div><%= @podcast.user_language.language %></div>
-<div><%= @podcast.native_language %></div>
-<div><%= @podcast.learning_style %></div>
-<div><%= @podcast.title %></div>
-<audio controls>
-  <source src=<%= audio_path("/audios/demo2.mp3") %> type="audio/mpeg">
-</audio>
+<div class="window window-show glassmorph position-relative px-2">
+  <div class="wrapper pb-5 overflow-y-scroll">
+    <div class=""><%= @podcast.title %></div>
+    <div class=""><%= @podcast.summary %></div>
+    <div class=""><%= @podcast.native_language %></div>
+    <div class=""><%= @podcast.learning_style %></div>
+    <div class=""><%= @podcast.transcript %></div>
+  </div>
+  <div class="rounded-pill position-absolute bottom-0 start-0 w-100">
+    <audio controls class="w-100">
+      <source src=<%= audio_path("/audios/demo2.mp3") %> type="audio/mpeg">
+    </audio>
+  </div>
+</div>
