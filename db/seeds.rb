@@ -9,6 +9,72 @@
 #   end
 
 lorum = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+transcript = "<speak>
+    <voice languageCode='en-GB' name='en-GB-Neural2-D'>
+    Hello, Toby! Welcome to another episode of our language learning podcast, where we explore Japanese language in a fun and casual way. I'm your host, Charles Beasley. Today, we're diving into some essential Japanese vocabulary:
+    </voice>
+    <voice languageCode='ja-JP' name='ja-JP-Neural2-D'>これ, それ, あれ</voice>
+    <voice languageCode='en-GB' name='en-GB-Neural2-D'>. These words help you point out or refer to objects and are quite handy.
+    <break time='500ms' />
+    Now let's get started!
+    <break time='500ms' />
+    To make it more interesting, we'll incorporate one of my favorite topics today: donuts!
+    <break time='300ms' />
+    Who doesn't love a good donut, right?
+    <break time='500ms' />
+    So, the Japanese word
+    </voice>
+    <voice languageCode='ja-JP' name='ja-JP-Neural2-D'>これ</voice>
+    <voice languageCode='en-GB' name='en-GB-Neural2-D'>
+    means 'this' and is used to refer to something close to the speaker. Imagine you're in a donut shop.
+    <break time='300ms' />
+    If you're pointing to, say, a delicious chocolate glazed donut right in front of you, you'd say:
+    </voice>
+    <voice languageCode='ja-JP' name='ja-JP-Neural2-D'>
+    これはチョコレートドーナツです
+    </voice>
+    <voice languageCode='en-GB' name='en-GB-Neural2-D'>, which means 'This is a chocolate donut.'
+    <break time='500ms' />
+    Moving on to
+    </voice>
+    <voice languageCode='ja-JP' name='ja-JP-Neural2-D'>それ</voice>
+    <voice languageCode='en-GB' name='en-GB-Neural2-D'>, which translates to 'that,' used for objects closer to the listener. Let’s say you're talking with a friend who is closer to a matcha-flavored donut. You'd say:
+    </voice>
+    <voice languageCode='ja-JP' name='ja-JP-Neural2-D'>
+    それは抹茶ドーナツです
+    </voice>
+    <voice languageCode='en-GB' name='en-GB-Neural2-D'>, meaning 'That is a matcha donut.'
+    <break time='500ms' />
+    Now, let's talk about
+    </voice>
+    <voice languageCode='ja-JP' name='ja-JP-Neural2-D'>あれ</voice>
+    <voice languageCode='en-GB' name='en-GB-Neural2-D'>, meaning 'that over there,' used for objects far from both the speaker and listener. Imagine seeing a custard-filled donut in the distance. You'd say:
+    </voice>
+    <voice languageCode='ja-JP' name='ja-JP-Neural2-D'>
+    あれはカスタードドーナツです
+    </voice>
+    <voice languageCode='en-GB' name='en-GB-Neural2-D'>, or 'That over there is a custard donut.'
+    <break time='500ms' />
+    Remember, these little words can be quite useful.
+    <break time='300ms' />
+    Speaking of which, I remember a lovely trip to Japan where I tried a donut shop with my wife, Dorothy. We wandered around a beautiful street with paper lanterns, and oh, the scents were heavenly! Dorothy pointed out a wonderful treat in the display case, and rightly so, she'd probably say
+    </voice>
+    <voice languageCode='ja-JP' name='ja-JP-Neural2-D'>これがおいしい!</voice>
+    <voice languageCode='en-GB' name='en-GB-Neural2-D'>, meaning 'This is delicious!'
+    <break time='500ms' />
+    It's simple moments like these where
+    </voice>
+    <voice languageCode='ja-JP' name='ja-JP-Neural2-D'>これ, それ, あれ</voice>
+    <voice languageCode='en-GB' name='en-GB-Neural2-D'> come in handy for adding context to your adventures.
+    <break time='500ms' />
+    So, Toby, next time you're enjoying some scrumptious doughnuts, try using
+    </voice>
+    <voice languageCode='ja-JP' name='ja-JP-Neural2-D'>これ, それ, あれ</voice>
+    <voice languageCode='en-GB' name='en-GB-Neural2-D'>. It will surely impress your friends and make your language learning experience quite tasty.
+    <break time='500ms' />
+    That's all for today's episode. I hope you enjoyed our sweet language journey. Stay curious, Toby, until next time!
+    </voice>
+</speak>"
 
 puts 'Cleaning DB users'
 Podcast.delete_all

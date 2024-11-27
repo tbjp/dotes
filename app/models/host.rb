@@ -12,4 +12,21 @@ class Host < ApplicationRecord
   validates :likes, presence: true
   validates :dislikes, presence: true
   validates :hobbies, presence: true
+
+  def profile_for_prompt
+    <<~PROFILE
+      Host Profile:
+      Name: #{first_name} #{last_name}
+      Voice: #{voice}
+      Nationality: #{nationality}
+      Age: #{age}
+      Location: #{location}
+      Work: #{work}
+      Family: #{family}
+      Likes: #{likes}
+      Dislikes: #{dislikes}
+      Hobbies: #{hobbies}
+      Stories: #{stories.join(', ')}
+    PROFILE
+  end
 end
