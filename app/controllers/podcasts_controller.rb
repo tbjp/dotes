@@ -1,6 +1,6 @@
 class PodcastsController < ApplicationController
   def index
-    @podcasts = Podcast.all
+    @podcasts = current_user.selected_user_language.podcasts
   end
 
   def show
