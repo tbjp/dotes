@@ -1,10 +1,12 @@
 .window {
-  margin: 0 12px;
   flex-grow: 1;
   border-radius: 25px;
   max-height: calc(100vh - 62px);
   overflow-y: scroll;
   position: relative;
+  max-width: 450px;
+  margin: 0 auto;
+  width: calc(100% - 24px);
 }
 
 .blur {

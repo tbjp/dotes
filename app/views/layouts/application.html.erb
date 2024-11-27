@@ -13,7 +13,7 @@
     <%= render 'shared/ios_pwa_links' %>
   </head>
   <body>
-    <h1 class="top-header center"><%= content_for :title %></h1>
+    <h1 class="top-header center"><%= content_for(:title) ? content_for(:title) : "Dotes" %></h1>
     <%= yield %>
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
