@@ -9,6 +9,7 @@ class PodcastsController < ApplicationController
 
   def new
     @podcast = Podcast.new
+    #pass instance of user language
   end
 
   def create

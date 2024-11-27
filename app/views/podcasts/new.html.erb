@@ -1,0 +1,15 @@
+<%= form_with url: "/new", model: @podcast do |form| %>
+  <%= form.label @user_languages.suggested_topics %>
+  <%= form.select @user_languages.suggested_topics %>
+  <%= form.label :user_prompt %>
+  <%= form.text_field :user_prompt %>
+  <%= form.label :level %>
+  <%= form.select :level, Podcast::LEVELS.values %>
+  <%= form.label :learning_style %>
+  <%= form.text_field :learning_style %>
+  <%= form.label :native_language %>
+  <%= form.select :native_language, Podcast::LANGUAGES %>
+  <%= form.label :user_language %>
+  <%= form.select :user_language, Podcast::LANGUAGES %>
+  <%= form.submit "Create podcast" %>
+<% end %>
