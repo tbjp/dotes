@@ -11,7 +11,7 @@ class PodcastsController < ApplicationController
     @podcast = Podcast.new
 
     # Toby's testing
-    GenerateText.call(current_user, Podcast.first)
+    # GenerateText.call(current_user, Podcast.first)
   end
 
   def create
