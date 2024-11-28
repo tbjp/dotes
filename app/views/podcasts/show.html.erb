@@ -1,8 +1,8 @@
-<div class="swiper w-100 flex-grow-1" data-controller="swiper">
+<div class="swiper w-100 flex-grow-1 pb-3" data-controller="swiper">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
-      <div class="glassmorph window">
-        <div class="podcast-card">
+      <div class="window">
+        <div class="podcast-card glassmorph">
           <div class="podcast-card-left">
             <div class="podcast-title">
               <%= @podcast.title %>
@@ -28,26 +28,21 @@
             </div>
           </div>
         </div>
-        <div class="window window-show">
-          <div class="player-div rounded-pill">
-            <audio controls class="w-100 player">
-              <source src=<%= audio_path("/audios/demo2.mp3") %> type="audio/mpeg">
-            </audio>
-          </div>
-        </div>
       </div>
     </div>
     <div class="swiper-slide">
-      <div class="window glassmorph my-2 p-2">
-        <%= @podcast.transcript %>
-        <div class="window window-show">
-          <div class="player-div rounded-pill">
-            <audio controls class="w-100 player">
-              <source src=<%= audio_path("/audios/demo2.mp3") %> type="audio/mpeg">
-            </audio>
-          </div>
-        </div>
+      <div class="window glassmorph my-2 p-4">
+        <p class="overflow-auto">
+          <%= @podcast.transcript %>
+        </p>
       </div>
     </div>
+  </div>
+</div>
+<div class="">
+  <div class="player-div rounded-pill">
+    <audio controls class="w-100 player">
+      <source src=<%= audio_path("/audios/demo2.mp3") %> type="audio/mpeg">
+    </audio>
   </div>
 </div>
