@@ -33,6 +33,7 @@ class PodcastsController < ApplicationController
     @podcast.host = Host.first # temporary until we have select in form
 
     if @podcast.save
+<<<<<<< HEAD
       transcript = GenerateTranscript.call(current_user, @podcast)
       audio = GenerateAudio.call(transcript)
       @podcast.transcript = transcript
@@ -40,6 +41,20 @@ class PodcastsController < ApplicationController
     else
       @user_language = current_user.selected_user_language
       render :new, status: :unprocessable_entity
+=======
+      # transcript = GenerateText.call(current_user, @podcast) instead of calling the generatetext we call the job
+      transcript = GeneratePodcastJob.perform_now(generate_text)
+      # audio = GenerateAudio.call(transcript) also happen on the job too
+      audio = GeneratePodcastJob.perform_now(generate_audio)
+      full_sanitizer = Rails::HTML5::FullSanitizer.new
+      @podcast.transcript = full_sanitizer.sanitize(transcript)
+      if @podcast.save
+        redirect_to podcast_path(@podcast)
+      else
+        @user_language = current_user.selected_user_language
+        render :new, status: :unprocessable_entity
+      end
+>>>>>>> 7637eda8ea2e78a49b514da5da74a6f90c571f67
     end
   end
 

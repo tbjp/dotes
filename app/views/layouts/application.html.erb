@@ -10,11 +10,14 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <%= render 'shared/ios_pwa_links' %>
   </head>
-  <body>
+  <body class="d-flex flex-column justify-content-between">
     <h1 class="top-header center"><%= content_for(:title) ? content_for(:title) : "Dotes" %></h1>
-    <%= yield %>
+    <div class="flex-grow-1 overflow-auto d-flex flex-column">
+      <%= yield %>
+    </div>
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
   </body>

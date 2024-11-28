@@ -1,17 +1,33 @@
-<div class="window">
-  <%= form_with model: @podcast, local: true do |form| %>
-    <%= form.label :suggested_topics %>
-    <%= form.select :suggested_topics, @user_language.suggested_topics %>
-    <%= form.label :user_prompt %>
-    <%= form.text_field :user_prompt %>
-    <%= form.label :level %>
-    <%= form.select :level, Podcast::LEVELS.values, selected: @level %>
-    <%= form.label :learning_style %>
-    <%= form.text_field :learning_style, value: current_user.learning_style %>
-    <%= form.label :native_language %>
-    <%= form.select :native_language, Podcast::LANGUAGES, selected: current_user.native_language %>
-    <%= form.label :user_language %>
-    <%= form.select :user_language, Podcast::LANGUAGES, selected: @user_language.language %>
-    <%= form.submit "Create podcast" %>
+<div class="glassmorph window p-4 text-center">
+  <%= simple_form_for @podcast, local: true do |f| %>
+    <%= f.input :user_prompt,
+      label: "Choose one of the crafted topics",
+      collection: @user_language.suggested_topics,
+      as: :radio_buttons,
+      input_html: { class: "tag-selector rounded-pill" },
+      item_wrapper_class: 'tag-item' %>
+    <%= f.input :user_prompt, label: "Or create your own!", as: :string, input_html: { class: "rounded-pill" }%>
+    <%= f.input :level,
+      collection: Podcast::LEVELS.values,
+      selected: @level,
+      as: :radio_buttons,
+      collection_wrapper_tag: 'div',
+      collection_wrapper_class: 'category-wrapper',
+      item_wrapper_class: 'category-item',
+      input_html: {class: 'category-selector rounded-pill m-1'},
+      collection_wrapper_tag: 'div',
+      collection_wrapper_class: 'category-wrapper' %>
+    <%= f.input :learning_style, collection: Podcast::LEARNING, as: :select, input_html: { class: "rounded-pill" },
+      as: :radio_buttons,
+      input_html: { class: "tag-selector rounded-pill" },
+      item_wrapper_class: 'tag-item' %>
+    <%= f.input :native_language, label: "Your native language", collection: Podcast::LANGUAGES, selected: current_user.native_language, as: :select, input_html: { class: "rounded-pill" },
+      as: :radio_buttons,
+      input_html: { class: "tag-selector rounded-pill" },
+      item_wrapper_class: 'tag-item' %>
+    <%= f.input :user_language, label: "Language you want to learn", collection: Podcast::LANGUAGES, selected: @user_language.language, as: :select, input_html: { class: "rounded-pill" },
+      as: :radio_buttons,
+      input_html: { class: "tag-selector rounded-pill" },
+      item_wrapper_class: 'tag-item' %>
   <% end %>
 </div>
