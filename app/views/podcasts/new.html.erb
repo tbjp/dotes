@@ -1,7 +1,7 @@
 <div class="window">
   <%= form_with model: @podcast, local: true do |form| %>
-    <%#= form.label :suggested_topics %>
-    <%#= form.select :suggested_topics, @user_language.suggested_topics %>
+    <%= form.label :suggested_topics %>
+    <%= form.select :suggested_topics, @user_language.suggested_topics %>
     <%= form.label :user_prompt %>
     <%= form.text_field :user_prompt %>
     <%= form.label :level %>
