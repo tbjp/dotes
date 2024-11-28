@@ -36,7 +36,7 @@ class PodcastsController < ApplicationController
       transcript = GenerateText.call(current_user, @podcast)
       audio = GenerateAudio.call(transcript)
       @podcast.transcript = transcript
-      redirect_to podcasts_path
+      redirect_to podcast_path(@podcast)
     else
       @user_language = current_user.selected_user_language
       render :new, status: :unprocessable_entity
@@ -52,6 +52,5 @@ class PodcastsController < ApplicationController
 
   def podcast_params
     params.require(:podcast).permit(:title, :summary, :ai_summary, :native_language, :level, :learning_style, :user_prompt, :user_language_id, :suggested_topics)
-    # params.permit(:suggested_topics)
   end
 end
