@@ -1,9 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid px-0 mb-3">
-    <%= link_to root_path do %>
-      <button class="btn menu-btn glassmorph">
-        <i class="fa-solid fa-house"></i>
-      </button>
+    <%= link_to root_path, class: "btn menu-btn glassmorph" do %>
+      <i class="fa-solid fa-house"></i>
     <% end %>
     <% if current_page?(controller: "/pages", action: "home") %>
       <div class="flex-grow-1 mx-2">
