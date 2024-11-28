@@ -34,11 +34,9 @@ class PodcastsController < ApplicationController
 
     if @podcast.save
       # transcript = GenerateText.call(current_user, @podcast) instead of calling the generatetext we call the job
-      transcript = GeneratePodcastJob.perform_now(generate_text)
-      # audio = GenerateAudio.call(transcript) also happen on the job too
-      audio = GeneratePodcastJob.perform_now(generate_audio)
+      generated_podcast = GeneratePodcastJob.perform_now(current_user, @podcast)
       full_sanitizer = Rails::HTML5::FullSanitizer.new
-      @podcast.transcript = full_sanitizer.sanitize(transcript)
+      @podcast.transcript = full_sanitizer.sanitize(generated_podcast[0])
       if @podcast.save
         redirect_to podcast_path(@podcast)
       else
