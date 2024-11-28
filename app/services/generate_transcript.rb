@@ -1,4 +1,4 @@
-class GenerateText
+class GenerateTranscript
 #   def self.call(current_user, podcast)
 #     placeholder = <<-PLACEHOLDER
 # <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-GB">
@@ -16,7 +16,7 @@ class GenerateText
 #   end # placeholder
 
   def self.call(current_user, podcast)
-    native_voice = "en-GB-OllieMultilingualNeural"
+    # native_voice = "en-GB-OllieMultilingualNeural"
     # target_voice = "en-GB-Neural2-D"
 
     host_instructions = <<-HOST
@@ -28,7 +28,7 @@ class GenerateText
     Learning Style: #{podcast.learning_style}
 
     The podcast is 10 minutes long when spoken, as if you were actually talking into a microphone to record a podcast.
-    Write a transcript in SSML for Google Cloud TTS, your whole response will be directly sent to the API. #{podcast.native_language} voice: "#{native_voice}". #{podcast.user_language.language}
+    Write a transcript in SSML for Google Cloud TTS, your whole response will be directly sent to the API.
 
     Generate an SSML script for a Google Cloud Text-to-Speech podcast where a single speaker speaks interchangeably in English and Japanese. The speaker uses specific phrases or words from one language within sentences of the other language.
 
@@ -41,17 +41,23 @@ class GenerateText
 
     Here’s an example of what I expect:
     <speak>
-    Hello, Toby! Welcome to today's podcast, where we'll explore the fascinating world of <voice language="ja-JP" gender="male">動物園の動物,</voice><break time="250ms"/> or "zoo animals." As always, I'll guide you through this with snippets from both English and Japanese. So, let's dive right in.
-    Did you know that the word for "zoo" in Japanese is <voice language="ja-JP" gender="male">動物園</voice>? It combines <voice language="ja-JP" gender="male">動物,</voice><break time="250ms"/> meaning "animal," and <voice language="ja-JP" gender="male">園,</voice><break time="250ms"/> which means "garden" or "park." So, quite literally, it’s an "animal park."
+    Hello, Toby! Let's learn about <voice language="ja-JP" gender="male">動物園の動物,</voice><break time="500ms"/> or "zoo animals." So, let's dive right in.
+    The word for "zoo" in Japanese is <voice language="ja-JP" gender="male">動物園</voice>. It combines <voice language="ja-JP" gender="male">動物,</voice><break time="500ms"/> meaning "animal," and <voice language="ja-JP" gender="male">園,</voice><break time="500ms"/> which means "garden" or "park." So, quite literally, it’s an "animal park."
+    <voice language="ja-JP" gender="male">先週末、子供たちと動物園に行きました。</voice><break time="500ms"/>
+    The word  <voice language="ja-JP" gender="male">子供</voice><break time="500ms"/> means child, so what is  <voice language="ja-JP" gender="male">子供たち?</voice><break time="500ms"/> The  <voice language="ja-JP" gender="male">たち</voice><break time="500ms"/>, makes it plural, so  <voice language="ja-JP" gender="male">子供たち</voice><break time="500ms"/> means children.
+    <voice language="ja-JP" gender="male">先週末、子供たちと動物園に行きました。子供たちはミーアキャットがとても気に入りました。</voice><break time="500ms"/>
+
     </speak>
     Use this format throughout, ensuring every language switch is properly tagged, even for short phrases or single words.
 
     You will introduce the podcast in #{podcast.native_language}, remember to explain in #{podcast.native_language}.
-    Dip in and out of the story in #{podcast.user_language.language}, but explanation and speaking directly to the listener is in #{podcast.native_language}.
+    Dip in and out of the story in #{podcast.user_language.language}, but explain and speak directly to the listener is in #{podcast.native_language}. Try to repeat new words and sentences often, then continue with another new sentence in the target language.
 
     This is your profile, you are this person: #{podcast.host.profile_for_prompt}
 
     If appropriate, include stories from your life, you can also invent ones based on your profile or general knowledge about the world. Your tone matches the learning style.
+
+    Before we send it to the API, double check the all SSML tags and quotes are correct, so the TTS engine rejects the script.
     HOST
     # TODO Add previous podcast summaries
 

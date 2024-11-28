@@ -11,8 +11,8 @@ class PodcastsController < ApplicationController
   def new
     @podcast = Podcast.new
     @user_language = current_user.selected_user_language
-    GenerateAudio.call
     # Toby's testing
+    # GenerateAudio.call
     # GenerateText.call(current_user, Podcast.first)
     # GenerateAudio.call
 
@@ -33,7 +33,7 @@ class PodcastsController < ApplicationController
     @podcast.host = Host.first # temporary until we have select in form
 
     if @podcast.save
-      transcript = GenerateText.call(current_user, @podcast)
+      transcript = GenerateTranscript.call(current_user, @podcast)
       audio = GenerateAudio.call(transcript)
       @podcast.transcript = transcript
       redirect_to podcast_path(@podcast)
