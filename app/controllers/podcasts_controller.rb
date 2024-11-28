@@ -33,8 +33,8 @@ class PodcastsController < ApplicationController
     @podcast.host = Host.first # temporary until we have select in form
 
     if @podcast.save
-      transcript = GenerateText.call(current_user, @podcast)
-      audio = GenerateAudio.call(transcript)
+      transcript = GenerateText.call(current_user, @podcast) #instead of calling the generatetext we call the job
+      audio = GenerateAudio.call(transcript) # also happen on the job too
       full_sanitizer = Rails::HTML5::FullSanitizer.new
       @podcast.transcript = full_sanitizer.sanitize(transcript)
       if @podcast.save
