@@ -13,6 +13,7 @@ class Podcast < ApplicationRecord
   validates :user_prompt, presence: true
 
   LANGUAGES = ["English", "Polish", "Japanese"]
+  LEARNING = ["serious", "casual", "balanced", "calm", "funny", "charming"]
   LEVELS = {
     "A1" => "Beginner",
     "A2" => "Elementary",
