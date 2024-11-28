@@ -1,14 +1,53 @@
-<div class="window window-show glassmorph position-relative px-2">
-  <div class="wrapper pb-5 overflow-y-scroll">
-    <div class=""><%= @podcast.title %></div>
-    <div class=""><%= @podcast.summary %></div>
-    <div class=""><%= @podcast.native_language %></div>
-    <div class=""><%= @podcast.learning_style %></div>
-    <div class=""><%= @podcast.transcript %></div>
-  </div>
-  <div class="rounded-pill position-absolute bottom-0 start-0 w-100">
-    <audio controls class="w-100">
-      <source src=<%= audio_path("/audios/demo2.mp3") %> type="audio/mpeg">
-    </audio>
+<div class="swiper w-100 flex-grow-1" data-controller="swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <div class="glassmorph window">
+        <div class="podcast-card">
+          <div class="podcast-card-left">
+            <div class="podcast-title">
+              <%= @podcast.title %>
+            </div>
+            <div class="fw-lighter">
+              <%= @podcast.summary %>
+            </div>
+            <div class="podcast-card-options">
+              <div class="podcast-option fw-light">
+                <%= @podcast.level %>
+              </div>
+              <div class="podcast-option fw-light">
+                <%= @podcast.learning_style %>
+              </div>
+              <div class="podcast-option fw-light">
+                <%= @podcast.created_at.strftime("%e/%m/%Y") %>
+              </div>
+            </div>
+          </div>
+          <div class="podcast-card-right">
+            <div class="mx-1">
+              <%= image_tag "profilowe", class: "avatar", alt: @podcast.host.first_name %>
+            </div>
+          </div>
+        </div>
+        <div class="window window-show">
+          <div class="player-div rounded-pill">
+            <audio controls class="w-100 player">
+              <source src=<%= audio_path("/audios/demo2.mp3") %> type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-slide">
+      <div class="window glassmorph my-2 p-2">
+        <%= @podcast.transcript %>
+        <div class="window window-show">
+          <div class="player-div rounded-pill">
+            <audio controls class="w-100 player">
+              <source src=<%= audio_path("/audios/demo2.mp3") %> type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
