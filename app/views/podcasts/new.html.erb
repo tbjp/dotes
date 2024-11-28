@@ -7,7 +7,7 @@
     <%= form.label :level %>
     <%= form.select :level, Podcast::LEVELS.values, selected: @level %>
     <%= form.label :learning_style %>
-    <%= form.text_field :learning_style, value: current_user.learning_style %>
+    <%= form.select :learning_style, Podcast::LEARNING %>
     <%= form.label :native_language %>
     <%= form.select :native_language, Podcast::LANGUAGES, selected: current_user.native_language %>
     <%= form.label :user_language %>
