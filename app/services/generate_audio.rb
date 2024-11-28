@@ -1,60 +1,44 @@
-require 'net/http'
-require 'uri'
-require 'json'
-
 class GenerateAudio
-
   def self.call(transcript)
-    return '/audios/placeholder.mp3' # skip API call for now
-    key = ENV.fetch("AZURE_API_KEY")
-    region = 'japaneast'
+    client = Google::Cloud::TextToSpeech.text_to_speech do |config|
+      config.credentials = "key-google.json"
+    end
 
-    uri = URI("https://#{region}.tts.speech.microsoft.com/cognitiveservices/v1")
+    # mode = transcript.strip.start_with?("<speak>") ? "ssml" : "text"
+    # more details on > https://cloud.google.com/text-to-speech/docs/ssml
+    # if transcript is ssml your string should look like this:
+    # <speak>
+    #   Japanese Daycares
+    #   <voice language="ja-JP">
+    #     日本の保育園
+    #   </voice>
+    # </speak>
 
-    # SSML body for the TTS
-    ssml = transcript
-#     ssml = '<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-GB">
-#     <voice name="en-GB-OllieMultilingualNeural">
-#         <lang xml:lang="es-MX">¡Esperamos trabajar con usted!</lang>
-#         <lang xml:lang="en-GB">We look forward to working with you!</lang>
-#         <lang xml:lang="ja-JP">私たちはあなたと一緒に仕事をするのを楽しみにしています！</lang>
-#         <lang xml:lang="en-GB">The word,</lang>
-#         <lang xml:lang="ja-JP">鴨,</lang>
-#         <lang xml:lang="en-GB">means duck.</lang>
-#     </voice>
-# </speak>'
+    transcript = <<-SSML
+    <speak>
+    Hello, Toby! Welcome to today's podcast, where we'll explore the fascinating world of <voice language="ja-JP" gender="male">動物園の動物,</voice><break time="250ms"/> or "zoo animals." As always, I'll guide you through this with snippets from both English and Japanese. So, let's dive right in.
+    Did you know that the word for "zoo" in Japanese is <voice language="ja-JP" gender="male">動物園</voice>? It combines <voice language="ja-JP" gender="male">動物,</voice><break time="250ms"/> meaning "animal," and <voice language="ja-JP" gender="male">園,</voice><break time="250ms"/> which means "garden" or "park." So, quite literally, it’s an "animal park."
+    </speak>
+     SSML
 
-    # Build the HTTP request headers
-    headers = {
-      "Ocp-Apim-Subscription-Key" => key,
-      "Content-Type" => "application/ssml+xml",
-      # "X-Microsoft-OutputFormat" => "audio-16khz-128kbitrate-mono-mp3",
-      "X-Microsoft-OutputFormat" => "audio-48khz-96kbitrate-mono-mp3",
-      # "X-Microsoft-OutputFormat" => "audio-48khz-192kbitrate-mono-mp3",
-      "User-Agent" => "Ruby"
-    }
+    response = client.synthesize_speech(
+      input: { ssml: transcript },
+      voice: { language_code: "en-GB", name: "en-GB-Wavenet-B" },
+      audio_config: { audio_encoding: "MP3",
+                      speaking_rate: 0.85}
+    )
 
-    # Make the HTTP POST request
-    response = Net::HTTP.post(uri, ssml, headers)
+    # audio_string = response.audio_content # base64 string format
 
-    # Save the audio file
-    File.binwrite("output7.mp3", response.body)
-    puts "Audio saved as 'output.mp3'"
-    return response.body
+    # audio_path = Rails.root.join("app", "assets", "audio", "output.mp3")
+    File.binwrite('output_google.mp3', response.audio_content) # creating audio_file
+    raise
+    # writing on audio_file
+    # File.open audio_path,
+    #   "wb" do |file|
+    #     file.write audio_string, "mp3"
+    #   end
+
+    # audio_file = File.open(audio_path, "r")
   end
 end
-
-# def get_tmdb_data
-#   url = URI("https://api.themoviedb.org/3/configuration")
-#   http = Net::HTTP.new(url.host, url.port)
-#   http.use_ssl = true
-
-
-#   request = Net::HTTP::Get.new(url)
-#   request["accept"] = 'application/json'
-#   request["Authorization"] = "Bearer #{ENV['TMDB_TOKEN']}"
-
-#   response = http.request(request)
-#   puts response.read_body
-#   raise
-# end
