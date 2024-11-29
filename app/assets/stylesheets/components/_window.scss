@@ -8,6 +8,11 @@
   width: calc(100% - 24px);
 }
 
+.max-width-450 {
+  max-width: 450px;
+  margin: 0 auto;
+}
+
 .window-show {
   border-radius: 25px;
   overflow-y: scroll;
