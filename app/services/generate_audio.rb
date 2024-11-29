@@ -1,7 +1,7 @@
 class GenerateAudio
   def self.call(transcript)
-    # audio = File.read('/audios/placeholder.mp3')
-    # return audio # skip API call for now
+    audio = 'audio'
+    return audio # skip API call for now
     client = Google::Cloud::TextToSpeech.text_to_speech do |config|
       config.credentials = JSON.parse(ENV.fetch("GOOGLE_JSON_KEY"))
     end
