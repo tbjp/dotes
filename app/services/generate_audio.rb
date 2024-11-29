@@ -1,9 +1,9 @@
 class GenerateAudio
   def self.call(transcript)
-    # audio = File.read('/audios/placeholder.mp3')
+    # audio = 'audio'
     # return audio # skip API call for now
     client = Google::Cloud::TextToSpeech.text_to_speech do |config|
-      config.credentials = JSON.parse(ENV.fetch("GOOGLE_JSON_KEY"))
+      config.credentials = JSON.parse(ENV.parse["GOOGLE_JSON_KEY"])
     end
 
     # mode = transcript.strip.start_with?("<speak>") ? "ssml" : "text"
@@ -33,15 +33,8 @@ class GenerateAudio
     # audio_string = response.audio_content # base64 string format
 
     # audio_path = Rails.root.join("app", "assets", "audio", "output.mp3")
-    File.binwrite('output_google.mp3', response.audio_content) # creating audio_file
+    # File.binwrite('output_google.mp3', response.audio_content) # creating audio_file
 
-    # writing on audio_file
-    # File.open audio_path,
-    #   "wb" do |file|
-    #     file.write audio_string, "mp3"
-    #   end
-
-    # audio_file = File.open(audio_path, "r")
     return response.audio_content
   end
 end
