@@ -32,6 +32,7 @@ class GenerateTranscript
     Generate an SSML script for a Google Cloud Text-to-Speech podcast where a single speaker speaks interchangeably in English and Japanese. The speaker uses specific phrases or words from one language within sentences of the other language.
 
     Follow these rules:
+    1. Make sure the script is at least 50% in the target language. Repeat words and sentences to help the listener learn.
   	2.	When switching languages in the middle of a sentence, wrap the phrase in the appropriate <voice language="" gender=""> tag
   	3.	Include <break time=""> for natural pauses (like between words from different languages)
   	4.	Use appropriate Google Cloud SSML formatting for emphasis where needed

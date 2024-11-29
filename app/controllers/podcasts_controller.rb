@@ -1,7 +1,7 @@
 class PodcastsController < ApplicationController
 
   def index
-    @podcasts = current_user.selected_user_language.podcasts
+    @podcasts = current_user.selected_user_language.podcasts.order(created_at: :desc)
   end
 
   def show
