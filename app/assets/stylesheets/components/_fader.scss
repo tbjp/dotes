@@ -1,32 +1,24 @@
 #fader {
   position: fixed;
+  opacity: 1;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 999999;
   pointer-events: none;
-  background: white;
-  animation-duration: 300ms;
-  animation-timing-function: ease-in-out;
-}
-
-@keyframes fade-out {
-  from { opacity: 1 }
-    to { opacity: 0 }
-}
-
-@keyframes fade-in {
-  from { opacity: 0 }
-    to { opacity: 1 }
+  // background: white;
+  transition: opacity .3s ease-in-out;
+  background-image: asset-url("background.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 30% 0%;
 }
 
 #fader.fade-out {
-  opacity: 0;
-  animation-name: fade-out;
+   opacity: 0;
 }
 
 #fader.fade-in {
   opacity: 1;
-  animation-name: fade-in;
 }
