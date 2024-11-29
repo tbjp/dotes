@@ -65,7 +65,7 @@ class GenerateTranscript
     user_prompt = "Please make a podcast lesson on the following topic, grammar and/or vocabulary: #{podcast.user_prompt}"
     client = OpenAI::Client.new
     chatgpt_response = client.chat(parameters: {
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [
                   {role: "system", content: host_instructions},
                   {role: "user", content: user_prompt}
