@@ -18,14 +18,10 @@ class GeneratePodcastJob < ApplicationJob
     puts ' !!!!!!!!!!!!!!! LOOKEEE HERERERERER Transcript added !!!!!!!!!!!!!!!!'
     puts podcast.transcript
 
-    summary = GenerateSummary.call(podcast)
-    puts 'TAGGED SUMMARY'
-    puts summary
-    full_sanitizer = Rails::HTML5::FullSanitizer.new
-    sanitize_summary = full_sanitizer.sanitize(summary)
-    podcast.update(summary: sanitize_summary)
-    puts 'Summary added'
-    puts sanitize_summary
+    response = GenerateSummary.call(podcast)
+    summary_title = JSON.parse(response)
+
+    p podcast.update(summary: summary_title["summary"], title: summary_title["title"])
 
     return [transcript, audio_io]
   end
