@@ -5,6 +5,8 @@ class GeneratePodcastJob < ApplicationJob
     transcript = GenerateTranscript.call(current_user, podcast)
     puts transcript
     audio = GenerateAudio.call(transcript)
+    podcast.audio.attach(io: audio, filename: 'podcast_audio.mp3', content_type: 'audio/mpeg')
+    raise
     return [transcript, audio]
   end
 end
