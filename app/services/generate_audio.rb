@@ -3,7 +3,7 @@ class GenerateAudio
     # audio = File.read('/audios/placeholder.mp3')
     # return audio # skip API call for now
     client = Google::Cloud::TextToSpeech.text_to_speech do |config|
-      config.credentials = JSON.parse(ENV.fetch("GOOGLE_JSON_KEY"))
+      config.credentials = "key-google.json"
     end
 
     # mode = transcript.strip.start_with?("<speak>") ? "ssml" : "text"

@@ -15,11 +15,14 @@ class GeneratePodcastJob < ApplicationJob
     full_sanitizer = Rails::HTML5::FullSanitizer.new
     sanitize_transcript = full_sanitizer.sanitize(transcript)
     podcast.update(transcript: sanitize_transcript)
+    puts 'Transcript added'
 
     summary = GenerateSummary.call(podcast)
     full_sanitizer = Rails::HTML5::FullSanitizer.new
     sanitize_summary = full_sanitizer.sanitize(summary)
-    p podcast.update(summary: sanitize_summary)
+    podcast.update(summary: sanitize_summary)
+    puts 'Summary added'
+    puts sanitize_summary
 
     return [transcript, audio_io]
   end
