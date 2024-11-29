@@ -60,7 +60,6 @@ class GenerateTranscript
     HOST
     # TODO Add previous podcast summaries
 
-    # raise "Don't waste money!"
 
     user_prompt = "Please make a podcast lesson on the following topic, grammar and/or vocabulary: #{podcast.user_prompt}"
     client = OpenAI::Client.new
@@ -73,7 +72,5 @@ class GenerateTranscript
     })
     puts chatgpt_response
     return chatgpt_response["choices"][0]["message"]["content"]
-    # raise
-    # return chatgpt_response
   end
 end
