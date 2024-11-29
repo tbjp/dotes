@@ -14,7 +14,7 @@
   display: flex;
   justify-content: center;
   border-radius: 25px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .podcast-card-left {
@@ -23,6 +23,7 @@
   justify-content: space-between;
   display: flex;
   flex-direction: column;
+  color: $black;
 }
 
 .podcast-card-right {
@@ -40,6 +41,6 @@
   margin-right: 6px;
   margin-top: 2px;
   border-radius: 25px;
-  background-color: rgba(200, 200, 200, 0.4);
+  background-color: rgba(223, 223, 223, 0.4);
   color: rgb(30, 30, 30);
 }
