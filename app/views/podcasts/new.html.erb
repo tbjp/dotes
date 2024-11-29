@@ -6,7 +6,7 @@
       as: :radio_buttons,
       input_html: { class: "tag-selector rounded-pill" },
       item_wrapper_class: 'tag-item' %>
-    <%= f.input :user_prompt, label: "Or create your own!", as: :string, input_html: { class: "rounded-pill" }%>
+    <%= f.input :user_prompt, label: "Or create your own!", as: :string %>
     <%= f.input :level,
       collection: Podcast::LEVELS.values,
       selected: @level,
@@ -14,12 +14,12 @@
       collection_wrapper_tag: 'div',
       collection_wrapper_class: 'category-wrapper',
       item_wrapper_class: 'category-item',
-      input_html: {class: 'category-selector rounded-pill m-1'},
+      input_html: {class: 'category-selector m-1'},
       collection_wrapper_tag: 'div',
       collection_wrapper_class: 'category-wrapper' %>
-    <%= f.input :learning_style, collection: Podcast::LEARNING, as: :select, input_html: { class: "rounded-pill" },
+    <%= f.input :learning_style, collection: Podcast::LEARNING, as: :select,
       as: :radio_buttons,
-      input_html: { class: "tag-selector rounded-pill" },
+      input_html: { class: "tag-selector" },
       item_wrapper_class: 'tag-item' %>
     <%= f.input :native_language, label: "Your native language", collection: Podcast::LANGUAGES, selected: current_user.native_language, as: :select, input_html: { class: "rounded-pill" },
       as: :radio_buttons,
