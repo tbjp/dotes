@@ -10,14 +10,16 @@
 .tag-selector + label {
   cursor: pointer;
   display: inline-block;
-  font-size: 0.7rem;
-  border-radius: 50rem;
-  padding: 0.1rem 0.5rem;
+  font-size: 1rem;
+  border-radius: 15px;
+  // padding: 0.1rem 0.5rem;
+  padding: 10px;
   background-color: white;
   color: $dark-gray;
-  border: 1px solid $dark-gray;
-  margin-right: 0.6rem;
-  margin-bottom: 0.4rem;
+  // border: 1px solid $dark-gray;
+  // margin-right: 0.6rem;
+  // margin-bottom: 0.4rem;
+  margin: 0.3rem 0.3rem;
 }
 
 .tag-selector:checked + label {
@@ -51,11 +53,11 @@ label abbr {
   cursor: pointer;
   box-sizing: border-box;
   width: 100%;
-  font-size: 12px;
-  text-align: left;
-  padding: 10px 10px 30px 10px;
-  border: 1px solid #EAEAEA;
-  border-radius: 4px;
+  font-size: 1rem;
+  text-align: center;
+  padding: 10px;
+  // border: 1px solid #eaeaea;
+  border-radius: 15px;
   background-color: white;
 }
 
@@ -65,7 +67,23 @@ label abbr {
   border-color: $dark-gray;
 }
 
+// Selects labels but not ideal! Can we add a class to the label?
+#new_podcast legend {
+  font-size: 1.2rem !important;
+  font-weight: lighter;
+  padding-bottom: 15px !important;
+}
 
+#new_podcast > div > label {
+  font-size: 1.2rem !important;
+  font-weight: lighter;
+  padding-bottom: 15px !important;
+}
+
+#podcast_user_prompt {
+  background-color: $white;
+  border-radius: 15px;
+}
 // #snippet_category_ruby + label {
 //   color: #FD1015;
 // }
@@ -75,7 +93,6 @@ label abbr {
 //   border-color: #FD1015;
 // }
 
-
 // #snippet_category_javascript + label {
 //   color: #FFC65A;
 // }
@@ -84,7 +101,6 @@ label abbr {
 //   background-color: #FFC65A;
 //   border-color: #FFC65A;
 // }
-
 
 // #snippet_category_css + label {
 //   color: #62DDF5;

@@ -53,6 +53,7 @@ gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "ruby-openai"
+gem "google-cloud-text_to_speech"
 gem "solid_queue"
 
 group :development, :test do

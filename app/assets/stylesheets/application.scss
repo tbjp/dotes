@@ -12,7 +12,7 @@
 @import "pages/index";
 
 body {
-  background-image: asset-url('background.webp');
+  background-image: asset-url("background.webp");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -20,9 +20,9 @@ body {
   display: flex;
   flex-direction: column;
   color: $dark-gray;
-  font-size: larger;
-  font-weight: bold;
-  text-shadow: 2px 3px 5px rgba(150, 150, 150, 0.2);
+  // font-size: larger;
+  // font-weight: bold;
+  // text-shadow: 2px 3px 5px rgba(150, 150, 150, 0.2);
   h1 {
     color: white;
   }
