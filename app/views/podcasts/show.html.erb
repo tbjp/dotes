@@ -15,7 +15,7 @@
                 <%= @podcast.created_at.strftime("%e/%m/%Y") %>
               </div>
             </div>
-            <div class="fw-lighter p-3 host-sum">
+            <div class="fw-light p-3 host-sum">
               <%= @podcast.summary %>
             </div>
           </div>
@@ -23,7 +23,7 @@
             <div class="mx-1">
               <%= image_tag "profilowe.png", class: "avatar m-2", alt: @podcast.host.first_name %>
             </div>
-            <div class="fw-lighter p-2 host-desc">
+            <div class="fw-light p-2 host-desc">
               Your host, <%= @host.first_name %>, is a <%= @host.age %> years old <%= @host.nationality %> national. <%= @host.likes %> <%= @host.work %>
             </div>
           </div>
@@ -40,7 +40,7 @@
     </div>
     <div class="swiper-slide">
       <div class="window glassmorph my-2 p-4">
-        <p class="overflow-auto">
+        <p class="overflow-auto fw-light">
           <%= @podcast.transcript %>
         </p>
       </div>
