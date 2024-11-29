@@ -31,12 +31,13 @@ class PodcastsController < ApplicationController
 
     @podcast.user_language = current_user.selected_user_language # temporary
     @podcast.host = Host.first # temporary until we have select in form
+    raise
 
     if @podcast.save
-      # transcript = GenerateText.call(current_user, @podcast) instead of calling the generatetext we call the job
-      transcript = GeneratePodcastJob.perform_now(generate_text)
-      # audio = GenerateAudio.call(transcript) also happen on the job too
-      audio = GeneratePodcastJob.perform_now(generate_audio)
+      # transcript = GenerateText.call(current_user, @podcast)
+      transcript = GeneratePodcastJob.perform_later(generate_text)
+      # audio = GenerateAudio.call(transcript)
+      audio = GeneratePodcastJob.perform_later(generate_audio)
       full_sanitizer = Rails::HTML5::FullSanitizer.new
       @podcast.transcript = full_sanitizer.sanitize(transcript)
       if @podcast.save
