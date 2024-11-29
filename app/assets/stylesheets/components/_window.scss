@@ -1,7 +1,6 @@
 .window {
   border-radius: 25px;
   height: 100%;
-  // max-height: calc(100vh - 62px);
   overflow-y: scroll;
   position: relative;
   max-width: 450px;
@@ -9,9 +8,25 @@
   width: calc(100% - 24px);
 }
 
-// .window-show {
-//   overflow-y: hidden;
-// }
+.window-show {
+  border-radius: 25px;
+  overflow-y: scroll;
+  position: relative;
+  max-width: 450px;
+  margin: 0 auto;
+  width: calc(100% - 24px);
+}
+
+.host-desc {
+  min-height: 180px;
+  max-height: 260px;
+  overflow-y: scroll;
+}
+
+.host-sum {
+  max-height: 230px;
+  overflow-y: scroll;
+}
 
 .blur {
   position: sticky;

@@ -6,6 +6,7 @@ class PodcastsController < ApplicationController
 
   def show
     @podcast = Podcast.find(params[:id])
+    @host = @podcast.host
   end
 
   def new
