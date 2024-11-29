@@ -16,7 +16,7 @@
   <body class="d-flex flex-column justify-content-between" data-controller="fade">
     <h1 class="top-header center"><%= content_for(:title) ? content_for(:title) : "Dotes" %></h1>
     <div class="flex-grow-1 overflow-auto d-flex flex-column position-relative">
-      <div data-fade-target="overlay" id="fader" class="position-absolute"></div>
+      <!-- <div data-fade-target="overlay" id="fader" class="position-absolute"></div> -->
       <%= yield %>
     </div>
     <%= render "shared/navbar" %>

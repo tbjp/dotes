@@ -12,11 +12,6 @@ class PodcastsController < ApplicationController
   def new
     @podcast = Podcast.new
     @user_language = current_user.selected_user_language
-    # Toby's testing
-    # GenerateAudio.call
-    # GenerateText.call(current_user, Podcast.first)
-    # GenerateAudio.call
-
   end
 
   def create

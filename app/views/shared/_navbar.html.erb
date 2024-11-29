@@ -15,7 +15,7 @@
     <% elsif current_page?(new_user_registration_path) %>
     <% elsif current_page?(new_podcast_path) %>
       <div class="flex-grow-1 mx-2">
-        <button type="submit" form="new_podcast" data-action="click->fade#fadeIn" class="btn nav-btn nav-btn-lg glassmorph">Generate!</button>
+        <button type="submit" form="new_podcast" class="btn nav-btn nav-btn-lg glassmorph">Generate!</button>
       </div>
     <% elsif current_page?(controller: "/podcasts", action: "show") %>
       <div class="flex-grow-1 mx-2">
