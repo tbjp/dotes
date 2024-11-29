@@ -6,6 +6,7 @@ class PodcastsController < ApplicationController
 
   def show
     @podcast = Podcast.find(params[:id])
+    @host = @podcast.host
   end
 
   def new
@@ -34,7 +35,7 @@ class PodcastsController < ApplicationController
 
     if @podcast.save
       # transcript = GenerateText.call(current_user, @podcast) instead of calling the generatetext we call the job
-      generated_podcast = GeneratePodcastJob.perform_later(current_user, @podcast)
+      GeneratePodcastJob.perform_later(current_user, @podcast)
       if @podcast.save
         redirect_to podcast_path(@podcast)
       else
