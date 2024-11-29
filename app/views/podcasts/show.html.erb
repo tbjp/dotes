@@ -1,16 +1,10 @@
 <div class="swiper w-100 flex-grow-1 pb-3" data-controller="swiper">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
-      <div class="window">
-        <div class="podcast-card glassmorph">
-          <div class="podcast-card-left">
-            <div class="podcast-title">
-              <%= @podcast.title %>
-            </div>
-            <div class="fw-lighter">
-              <%= @podcast.summary %>
-            </div>
-            <div class="podcast-card-options">
+      <div class="window-show d-flex flex-column justify-content-between">
+        <div class="podcast-card glassmorph flex-column">
+          <div class="podcast-card-left w-100">
+            <div class="podcast-card-options p-2">
               <div class="podcast-option fw-light">
                 <%= @podcast.level %>
               </div>
@@ -21,12 +15,26 @@
                 <%= @podcast.created_at.strftime("%e/%m/%Y") %>
               </div>
             </div>
-          </div>
-          <div class="podcast-card-right">
-            <div class="mx-1">
-              <%= image_tag "profilowe", class: "avatar", alt: @podcast.host.first_name %>
+            <div class="fw-lighter p-3 host-sum">
+              <%= @podcast.summary %>
             </div>
           </div>
+          <div class="podcast-card-right d-flex w-100">
+            <div class="mx-1">
+              <%= image_tag "profilowe", class: "avatar m-2", alt: @podcast.host.first_name %>
+            </div>
+            <div class="fw-lighter p-2 host-desc">
+              Your host, <%= @host.first_name %>, is a <%= @host.age %> years old <%= @host.nationality %> national. <%= @host.likes %> <%= @host.work %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-column justify-content-between">
+        <div class="text-white text-center">
+          Swipe to see the transcript >>
+        </div>
+        <div class="podcast-title text-center text-white fw-light fs-3">
+          <%= @podcast.title %>
         </div>
       </div>
     </div>
