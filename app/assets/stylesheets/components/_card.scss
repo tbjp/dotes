@@ -5,6 +5,20 @@
   top: 0;
 }
 
+.podcast-card-but-not-really {
+  max-height: calc(100vh - 260px);
+  position: relative;
+  padding: 12px;
+  margin: 8px;
+  background-color: white;
+  height: fit-content;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-content: center;
+  border-radius: 25px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
 .podcast-card {
   position: relative;
   padding: 12px;
