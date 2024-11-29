@@ -10,6 +10,7 @@ class GenerateSummary
       3.	the title will have a max of 40 characters
       4.  the summary will only have commas for puncuation
       5.  the summary will have a max of 80 characters
+      6.  Between the title and summary and a new line
 
       Here are some examples of what I expect for the title:
       "Past tense stories"
@@ -32,6 +33,7 @@ class GenerateSummary
                 ]
     })
     puts chatgpt_response
+    raise
     return chatgpt_response["choices"][0]["message"]["content"]
   end
 end
