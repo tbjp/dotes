@@ -37,6 +37,7 @@ class PodcastsController < ApplicationController
       generated_podcast = GeneratePodcastJob.perform_now(current_user, @podcast)
       full_sanitizer = Rails::HTML5::FullSanitizer.new
       @podcast.transcript = full_sanitizer.sanitize(generated_podcast[0])
+      raise
       if @podcast.save
         redirect_to podcast_path(@podcast)
       else
