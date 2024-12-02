@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :user_languages
-  belongs_to :selected_user_language, class_name: "UserLanguage"
+  belongs_to :selected_user_language, class_name: "UserLanguage", optional: true
   has_many :podcasts, through: :user_languages
 end

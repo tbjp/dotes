@@ -92,21 +92,21 @@ user1 = User.new(email: "b.mikorski@gmail.com", first_name: "Bartek", last_name:
 user1.password = 'secret'
 user1.learning_style = 'casual'
 user1.interests = 'donuts, eating, traveling, world of warcraft, witcher (video game), elden ring, warhammer'
-user1.save
+user1.save!
 
 
 user2 = User.new(email: "jarodmiz2018@gmail.com", first_name: "Jarod", last_name: "Mizgalski", native_language: "English")
 user2.password = 'secret'
 user2.learning_style = 'serious'
 user2.interests = ['donuts', 'vintage japanese cars', 'working out', 'studying japanese', 'sushi']
-user2.save
+user2.save!
 
 
 user3 = User.new(email: "tobypalethorpe@gmail.com", first_name: "Toby", last_name: "Palethorpe", native_language: "English")
 user3.password = 'secret'
 user3.learning_style = 'balanced'
 user3.interests = ['photography', 'UK dance music', 'anthropology', 'history', 'science', 'technology', 'japanese culture', 'thailand']
-user3.save
+user3.save!
 
 puts 'Making hosts'
 
@@ -158,7 +158,7 @@ stories: ["a"]
 puts 'Making 3 users with 2 languages and 6 placeholder podcasts each for Japanese'
 
 [user1, user2, user3].each do |user|
-  user_language = UserLanguage.new(user: user, language: "Japanese", level: "Beginner", suggested_topics: suggested_topics)
+  user_language = UserLanguage.create(user: user, language: "Japanese", level: "Beginner", suggested_topics: suggested_topics)
   podcast = Podcast.new(title: "Introduction with これ/それ/あれ",
                              summary: "In this episode, we will learn how to use the basic Japanese pronouns これ/それ/あれ",
                              ai_summary: "This episode is an introduction to the basic Japanese pronouns これ/それ/あれ, you spoke about your favorite donuts",
@@ -233,7 +233,8 @@ puts 'Making 3 users with 2 languages and 6 placeholder podcasts each for Japane
 end
 
 [user1, user2, user3].each do |user|
-  user_language = UserLanguage.new(user: user, language: "Polish", level: "Beginner", suggested_topics: suggested_topics)
+  user_language = UserLanguage.create(user: user, language: "Polish", level: "Beginner", suggested_topics: suggested_topics)
+  user_language_2 = UserLanguage.create(user: user, language: "English", level: "Beginner", suggested_topics: suggested_topics)
   podcast = Podcast.new(title: "Introduction with polish things",
                              summary: "In this episode, we will learn how to use the basic Japanese pronouns これ/それ/あれ",
                              ai_summary: "This episode is an introduction to the basic Japanese pronouns これ/それ/あれ, you spoke about your favorite donuts",
@@ -245,9 +246,9 @@ end
 
   podcast.user_language = user_language
   podcast.host = Host.first
-  user_language.user = user
   podcast.save
-  user_language.save
+  user.selected_user_language = user_language
+  user.save
 end
 
 puts 'Japanese language set as selected language for all users'

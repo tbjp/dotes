@@ -1,7 +1,11 @@
 class PodcastsController < ApplicationController
 
   def index
-    @podcasts = current_user.selected_user_language.podcasts.order(created_at: :desc)
+    if current_user.selected_user_language.podcasts.empty?
+      redirect_to new_podcast_path
+    else
+      @podcasts = current_user.selected_user_language.podcasts.order(created_at: :desc)
+    end
   end
 
   def show
