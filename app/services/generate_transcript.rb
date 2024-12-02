@@ -1,18 +1,18 @@
 class GenerateTranscript
 #   def self.call(current_user, podcast)
 
-#     placeholder2 = <<-PLACEHOLDER
-#     <speak>
-#     Hello, Toby! Welcome to today's podcast. We're going to dive into an exciting topic: verbs related to sports! Ready to learn?
-#     </speak>
-#     PLACEHOLDER
+    # placeholder2 = <<-PLACEHOLDER
+    # <speak>
+    # Hello, Toby! Welcome to today's podcast. We're going to dive into an exciting topic: verbs related to sports! Ready to learn?
+    # </speak>
+    # PLACEHOLDER
 
 #     placeholder = <<-PLACEHOLDER
 # <speak>\nHello, Toby! Welcome to today's podcast. We're going to dive into an exciting topic: verbs related to sports! <break time=\"500ms\"/> Ready to learn? \n\nIn English, we often use specific verbs to describe actions in sports. For example, we say <voice language=\"ja-JP\" gender=\"male\">ボールを蹴る</voice>, which means \"to kick a ball.\" <break time=\"500ms\"/> The verb \"蹴る\" is a great one to remember when talking about football (or soccer, as some call it).\n\nAnother common verb is <voice language=\"ja-JP\" gender=\"male\">打つ</voice>, meaning \"to hit.\" So, if you're describing baseball, you would say <voice language=\"ja-JP\" gender=\"male\">野球のボールを打つ</voice>, which means \"hit the baseball.\" <break time=\"500ms\"/> \n\nLet's look at a few more verbs. For example, if you swim, you'd use the verb <voice language=\"ja-JP\" gender=\"male\">泳ぐ</voice>, or \"to swim.\" You might say <voice language=\"ja-JP\" gender=\"male\">彼は速く泳ぐ</voice>, which means \"He swims fast.\" <break time=\"500ms\"/> \n\nIn basketball, we often say <voice language=\"ja-JP\" gender=\"male\">シュートする</voice>, meaning \"to shoot\" (the ball). So, we could say <voice language=\"ja-JP\" gender=\"male\">彼女はバスケットボールをシュートする</voice>, which means \"She shoots the basketball.\" <break time=\"500ms\"/>\n\nNow, let's practice repeating some verbs together. <break time=\"500ms\"/> First, let's start with "to kick." Try saying it: <voice language=\"ja-JP\" gender=\"male\">蹴る</voice>. Excellent! Now, \"to hit\": <voice language=\"ja-JP\" gender=\"male\">打つ</voice>. Great job! And \"to swim\": <voice language=\"ja-JP\" gender=\"male\">泳ぐ</voice>. Well done!\n\nDo you play any sports yourself? <break time=\"500ms\"/> I remember one time, I took my son Kit to a football match when he was younger. He loved to <voice language=\"ja-JP\" gender=\"male\">ボールを蹴る</voice> and would practice all weekend long. Watching him kick the ball was so much fun! \n\nLet's review some of what we learned today. The verbs we discussed include <voice language=\"ja-JP\" gender=\"male\">蹴る</voice> for \"kick,\"  <voice language=\"ja-JP\" gender=\"male\">打つ</voice> for \"hit,\" and <voice language=\"ja-JP\" gender=\"male\">泳ぐ</voice> for \"swim.\" <break time=\"500ms\"/> These verbs are essential when talking about sports in Japanese.\n\nNow, go ahead and try to use these verbs in a sentence. For instance, you could say <voice language=\"ja-JP\" gender=\"male\">私の友達は週末にサッカーをする。</voice><break time=\"500ms\"/> This means \"My friend plays soccer on the weekend.\" <break time=\"500ms\"/> \n\nThat's all for today's episode! I hope you enjoyed learning about sports verbs. Keep practicing, and don't forget to use them next time you talk about your favorite sport. Bye for now, Toby! <break time=\"500ms\"/> またね！ \n</speak>
 #     PLACEHOLDER
 #     return placeholder
 #   end
-# end # placeholder
+# end
 
   def self.call(current_user, podcast)
     # native_voice = "en-GB-OllieMultilingualNeural"
