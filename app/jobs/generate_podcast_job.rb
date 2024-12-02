@@ -30,5 +30,6 @@ class GeneratePodcastJob < ApplicationJob
     summary_title = JSON.parse(response)
 
     p podcast.update(summary: summary_title["summary"], title: summary_title["title"])
+
   end
 end
