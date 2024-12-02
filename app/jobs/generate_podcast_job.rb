@@ -15,10 +15,10 @@ class GeneratePodcastJob < ApplicationJob
       return
     end
 
-    begin
+    # begin
     p transcript = GenerateTranscript.call(current_user, podcast)
 
-    audio_data = GenerateAudio.call(transcript)
+    audio_data = GenerateAudio.call(transcript, current_user)
     audio_io = StringIO.new(audio_data)
     audio_io.rewind
 
@@ -27,17 +27,15 @@ class GeneratePodcastJob < ApplicationJob
     full_sanitizer = Rails::HTML5::FullSanitizer.new
     sanitize_transcript = full_sanitizer.sanitize(transcript)
     podcast.update(transcript: sanitize_transcript)
-    puts ' !!!!!!!!!!!!!!! LOOKEEE HERERERERER Transcript added !!!!!!!!!!!!!!!!'
-    puts podcast.transcript
 
     response = GenerateSummary.call(podcast)
     summary_title = JSON.parse(response)
 
     p podcast.update(summary: summary_title["summary"], title: summary_title["title"])
-    rescue => e
-      podcast.update(status: 'failed', error_message: e.message)
-      # Optionally, log the error or notify someone
-      Rails.logger.error("GeneratePodcastJob failed: #{e.message}")
-    end
+    # rescue => e
+    #   podcast.update(status: 'failed', error_message: e.message)
+    #   # Optionally, log the error or notify someone
+    #   Rails.logger.error("GeneratePodcastJob failed: #{e.message}")
+    # end
   end
 end

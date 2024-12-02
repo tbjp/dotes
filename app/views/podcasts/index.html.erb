@@ -27,7 +27,7 @@
         <%= image_tag "profilowe.png", class: "avatar pb-1", alt: podcast.host.first_name %>
         <%= link_to podcast_path(podcast), data: {
             turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-          <i class="fa-regular fa-square-minus text-dark-grey hover red-hover" type="button"></i>
+          <i class="fas fa-times text-dark-grey hover red-hover fs-5 ps-1" type="button"></i>
         <% end %>
       </div>
       <%= link_to "", podcast_path(podcast), class: 'card-link' %>

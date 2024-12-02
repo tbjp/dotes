@@ -38,18 +38,27 @@ class GenerateTranscript
 
 
 
-    # native_voice = "en-GB-OllieMultilingualNeural"
-    # target_voice = "en-GB-Neural2-D"
+    case current_user.selected_user_language.language
+    when "English"
+      target_lang = "en-GB"
+      gender = "female"
+    when "Polish"
+      target_lang = "pl-PL"
+      gender = "female"
+    when "Japanese"
+      target_lang = "ja-JP"
+      gender = "male"
+    end
 
     host_instructions = <<-HOST
     You are a language teacher and podcast host. You are creating a podcast for your student. This is their profile -
-    Name:#{current_user.first_name} #{current_user.last_name}
+    Student name:#{current_user.first_name} #{current_user.last_name}
     Native Language: #{podcast.native_language}
     Target Language: #{podcast.user_language.language}
     Level: #{podcast.level}
     Learning Style: #{podcast.learning_style}
 
-    The podcast is 10 minutes long when spoken, as if you were actually talking into a microphone to record a podcast.
+    The podcast must be 500 words long, give many examples with the same vocabulary and grammar. It is spoken as if you were actually talking into a microphone to record a podcast.
     Write a transcript in SSML for Google Cloud TTS, your whole response will be directly sent to the API.
 
     Generate an SSML script for a Google Cloud Text-to-Speech podcast where a single speaker speaks interchangeably in English and Japanese. The speaker uses specific phrases or words from one language within sentences of the other language.
@@ -58,23 +67,23 @@ class GenerateTranscript
     1. Make sure the script is at least 50% in the target language. Repeat words and sentences to help the listener learn.
   	2.	When switching languages in the middle of a sentence, wrap the phrase in the appropriate <voice language="" gender=""> tag
   	3.	Include <break time=""> for natural pauses (like between words from different languages)
-  	4.	Use appropriate Google Cloud SSML formatting for emphasis where needed
+  	4.	Only use tags for speak, voice and break. Don't add tags for prosody, emphasis, or other SSML features
     5.  Do not switch <voice> tags for punctuation marks like commas or periods
 
 
-    Here’s an example of what I expect:
+    Here’s an example of what I expect (but for Japanese, your script will be in #{podcast.native_language} and #{podcast.user_language.language}):
     <speak>
-    Hello, Toby! Let's learn about <voice language="ja-JP" gender="male">動物園の動物,</voice><break time="500ms"/> or zoo animals. So, let's dive right in.
-    The word for "zoo" in Japanese is <voice language="ja-JP" gender="male">動物園</voice>. It combines <voice language="ja-JP" gender="male">動物,</voice><break time="500ms"/> meaning "animal," and <voice language="ja-JP" gender="male">園,</voice><break time="500ms"/> which means garden or park. So, quite literally, it’s an animal park.
-    <voice language="ja-JP" gender="male">先週末、子供たちと動物園に行きました。</voice><break time="500ms"/>
-    The word  <voice language="ja-JP" gender="male">子供</voice><break time="500ms"/> means child, so what is  <voice language="ja-JP" gender="male">子供たち?</voice><break time="500ms"/> The  <voice language="ja-JP" gender="male">たち</voice><break time="500ms"/>, makes it plural, so  <voice language="ja-JP" gender="male">子供たち</voice><break time="500ms"/> means children.
-    <voice language="ja-JP" gender="male">先週末、子供たちと動物園に行きました。子供たちはミーアキャットがとても気に入りました。</voice><break time="500ms"/>
+    Hello, (student)! Let's learn about <voice language="ja-JP" gender="#{gender}">動物園の動物,</voice><break time="500ms"/> or zoo animals. So, let's dive right in.
+    The word for "zoo" in Japanese is <voice language="ja-JP" gender="#{gender}">動物園</voice>. It combines <voice language="ja-JP" gender="#{gender}">動物,</voice><break time="500ms"/> meaning "animal," and <voice language="ja-JP" gender="#{gender}">園,</voice><break time="500ms"/> which means garden or park. So, quite literally, it’s an animal park.
+    <voice language="ja-JP" gender="#{gender}">先週末、子供たちと動物園に行きました。</voice><break time="500ms"/>
+    The word  <voice language="ja-JP" gender="#{gender}">子供</voice><break time="500ms"/> means child, so what is  <voice language="ja-JP" gender="#{gender}">子供たち?</voice><break time="500ms"/> The  <voice language="ja-JP" gender="#{gender}">たち</voice><break time="500ms"/>, makes it plural, so  <voice language="ja-JP" gender="#{gender}">子供たち</voice><break time="500ms"/> means children.
+    <voice language="ja-JP" gender="#{gender}">先週末、子供たちと動物園に行きました。子供たちはミーアキャットがとても気に入りました。</voice><break time="500ms"/>
 
     </speak>
     Use this format throughout, ensuring every language switch is properly tagged, even for short phrases or single words.
 
     You will introduce the podcast in #{podcast.native_language}, remember to explain in #{podcast.native_language}.
-    Dip in and out of the story in #{podcast.user_language.language}, but explain and speak directly to the listener is in #{podcast.native_language}. Try to repeat new words and sentences often, then continue with another new sentence in the target language.
+    Tell stories in #{podcast.user_language.language}, but explain and speak directly to the listener is in #{podcast.native_language}. Try to repeat new words and sentences often, then continue with another new sentence in the target language.
 
     This is your profile, you are this person: #{podcast.host.profile_for_prompt}
 
@@ -92,7 +101,8 @@ class GenerateTranscript
       messages: [
                   {role: "system", content: host_instructions},
                   {role: "user", content: user_prompt}
-      ]
+      ],
+      max_tokens: 4000,
     })
     puts chatgpt_response
     return chatgpt_response["choices"][0]["message"]["content"]
