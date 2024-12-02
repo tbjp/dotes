@@ -55,6 +55,7 @@ gem "sassc-rails"
 gem "ruby-openai"
 gem "google-cloud-text_to_speech"
 gem "solid_queue"
+gem "solid_cable"
 
 group :development, :test do
   gem "dotenv-rails"
