@@ -4,14 +4,17 @@
       <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
         <%= image_tag "#{current_user.selected_user_language.language}.png", alt: "#{current_user.selected_user_language.language} Mountain", class: 'flag-icon rounded-4 box-shadow-sm' %>
       </div>
-      <ul class="dropdown-menu"> <!-- why is this not a comment -->
+      <ul class="dropdown-menu glassmorph rounded-5 border-0"> <!-- why is this not a comment -->
         <div class="d-flex">
-          <% Podcast::LANGUAGES.each do |language| %>
+          <% current_user.user_languages.pluck(:language).each do |language| %>
             <% if current_user.selected_user_language.language != language %>
               <li>
-                <%= link_to root_path, class: 'dropdown-item' do %>
-                  <%= image_tag "#{language}.png", alt: "#{language} Mountain", class: 'flag-icon rounded-4 box-shadow-sm' %>
-                <% end %>
+                <div class='dropdown-item'>
+                  <%= simple_form_for current_user do |f| %>
+                    <%= f.input :selected_user_language_id, as: :hidden, input_html: { value: current_user.user_languages.find_by(language: language).id } %>
+                    <%= f.submit "", style: "background: url(#{asset_url(language + '.png')}); background-position: center; background-size: 40px 30px; border: none; border-radius: 5px; width: 40px; height: 30px;" %>
+                  <% end %>
+                </div>
               </li>
             <% end %>
           <% end %>
