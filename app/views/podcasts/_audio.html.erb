@@ -1,0 +1,12 @@
+<div id="audio">
+  <div class="player-div rounded-pill">
+    <% if podcast.audio.attached? %>
+      <audio controls class="w-100 player">
+        <source src="<%= url_for(podcast.audio) %>" type="<%= podcast.audio.content_type %>">
+        Your browser does not support the audio element.
+      </audio>
+    <% else %>
+      <p>No audio file attached.</p>
+    <% end %>
+  </div>
+</div>
