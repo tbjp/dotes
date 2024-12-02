@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_29_023935) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_02_013743) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,6 +74,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_29_023935) do
     t.datetime "updated_at", null: false
     t.index ["host_id"], name: "index_podcasts_on_host_id"
     t.index ["user_language_id"], name: "index_podcasts_on_user_language_id"
+  end
+
+  create_table "solid_cable_messages", force: :cascade do |t|
+    t.text "channel"
+    t.text "payload"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel"], name: "index_solid_cable_messages_on_channel"
+    t.index ["created_at"], name: "index_solid_cable_messages_on_created_at"
   end
 
   create_table "solid_queue_blocked_executions", force: :cascade do |t|

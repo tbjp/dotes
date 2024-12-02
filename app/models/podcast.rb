@@ -19,4 +19,23 @@ class Podcast < ApplicationRecord
     "C1" => "Proficient",
     "C2" => "Expert"
   }
+
+  after_update_commit :broadcast_podcast
+  after_update_commit :broadcast_audio
+
+  private
+
+  def broadcast_podcast
+    broadcast_replace_to "podcast_#{self.id}",
+                        partial: "podcasts/podcast",
+                        target: "podcast",
+                        locals: { podcast: self }
+  end
+
+  def broadcast_audio
+    broadcast_replace_to "podcast_#{self.id}_audio",
+                        partial: "podcasts/audio",
+                        target: "audio",
+                        locals: { podcast: self }
+  end
 end
