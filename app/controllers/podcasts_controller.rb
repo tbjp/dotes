@@ -32,11 +32,20 @@ class PodcastsController < ApplicationController
       # transcript = GenerateText.call(current_user, @podcast) instead of calling the generatetext we call the job
       GeneratePodcastJob.perform_later(current_user, @podcast)
       if @podcast.save
-        redirect_to podcast_path(@podcast)
+        respond_to do |format|
+          format.turbo_stream do
+            render turbo_stream: turbo_stream.append(:podcast, partial: "podcasts/audio",
+            target: "podcast",
+            locals: { podcast: @podcast })
+          end
+          format.html { redirect_to podcast_path(@podcast) }
+        end
       else
-        @user_language = current_user.selected_user_language
-        render :new, status: :unprocessable_entity
+        render "podcasts/show", status: :unprocessable_entity
       end
+    else
+      @user_language = current_user.selected_user_language
+      render :new, status: :unprocessable_entity
     end
   end
 

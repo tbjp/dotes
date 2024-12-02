@@ -23,6 +23,6 @@ class GeneratePodcastJob < ApplicationJob
 
     p podcast.update(summary: summary_title["summary"], title: summary_title["title"])
 
-    return [transcript, audio_io]
+    return [transcript, audio_io] #maybe need to get rid of?
   end
 end
