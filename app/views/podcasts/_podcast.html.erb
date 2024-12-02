@@ -16,7 +16,11 @@
               </div>
             </div>
             <div class="fw-light p-3 host-sum">
-              <%= podcast.summary %>
+              <% if podcast.summary %>
+                <%= podcast.summary  %>
+              <% else %>
+                <%= render "shared/loading_bar" %>
+              <% end %>
             </div>
           </div>
           <div class="podcast-card-right d-flex w-100">
@@ -34,14 +38,22 @@
           Swipe to see the transcript >>
         </div>
         <div class="podcast-title text-center text-white fw-light fs-3 max-width-450">
-          <%= podcast.title %>
+          <% if podcast.title %>
+            <%= podcast.title  %>
+          <% else %>
+            <%= render "shared/loading_bar" %>
+          <% end %>
         </div>
       </div>
     </div>
     <div class="swiper-slide">
       <div class="window glassmorph my-2 p-4">
         <p class="overflow-auto fw-light">
-          <%= podcast.transcript %>
+          <% if podcast.transcript %>
+            <%= podcast.transcript  %>
+          <% else %>
+            <%= render "shared/loading_bar" %>
+          <% end %>
         </p>
       </div>
     </div>
