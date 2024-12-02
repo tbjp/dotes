@@ -10,9 +10,9 @@
 
 .loading__bar {
   position: relative;
-  height: 5px;
+  height: 10px;
   width: 12rem;
-  background-color: rgb(169, 169, 169);
+  background-color: rgba(255, 255, 255, 0.845);
   border-radius: 1em;
   overflow: hidden;
 }
@@ -25,7 +25,11 @@
   width: 50%;
   height: 100%;
   // background-color: rgba(230, 230, 230, 0.891);
-  background: linear-gradient(90deg, #fff5, rgba(230, 230, 230, 0.891));
+  background: linear-gradient(
+    90deg,
+    rgba(105, 200, 231, 0.124),
+    rgba(105, 199, 231, 0.856)
+  );
   animation: loading-animation 1.3s infinite;
   border-radius: 1em;
 }
