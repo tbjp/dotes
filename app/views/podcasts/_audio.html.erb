@@ -1,3 +1,8 @@
+<% if podcast.status == 'failed'  %>
+  <script type="text/javascript">
+    window.location.href="/podcasts/new"  // put your correct path in a string here
+  </script>
+<% end %>
 <div id="audio">
   <div class="player-div rounded-pill">
     <% if podcast.audio.attached? %>

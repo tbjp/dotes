@@ -14,11 +14,16 @@ class PodcastsController < ApplicationController
   end
 
   def new
+    if current_user.selected_user_language.podcasts.last.status == 'failed'
+      @podcast = current_user.selected_user_language.podcasts.last
+    else
     @podcast = Podcast.new
+    end
     @user_language = current_user.selected_user_language
   end
 
   def create
+    @podcast.update(status: 'new') if @podcast.present?
     strong_params = podcast_params
     suggested_topics = podcast_params[:suggested_topics]
     strong_params.delete(:suggested_topics)

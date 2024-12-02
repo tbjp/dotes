@@ -19,6 +19,7 @@ class Podcast < ApplicationRecord
     "C1" => "Proficient",
     "C2" => "Expert"
   }
+  STATUS = ["new", "failed", "completed"]
 
   after_update_commit :broadcast_podcast
   after_update_commit :broadcast_audio

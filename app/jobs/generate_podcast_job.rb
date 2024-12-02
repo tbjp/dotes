@@ -10,8 +10,12 @@ class GeneratePodcastJob < ApplicationJob
       podcast.summary = Podcast.second_to_last.summary
       podcast.title = Podcast.second_to_last.title
       podcast.save
+      sleep 3
+      podcast.update(status: 'failed')
       return
     end
+
+    begin
     p transcript = GenerateTranscript.call(current_user, podcast)
 
     audio_data = GenerateAudio.call(transcript)
@@ -30,6 +34,10 @@ class GeneratePodcastJob < ApplicationJob
     summary_title = JSON.parse(response)
 
     p podcast.update(summary: summary_title["summary"], title: summary_title["title"])
-
+    rescue => e
+      podcast.update(status: 'failed', error_message: e.message)
+      # Optionally, log the error or notify someone
+      Rails.logger.error("GeneratePodcastJob failed: #{e.message}")
+    end
   end
 end
