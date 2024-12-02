@@ -43,6 +43,7 @@ class PodcastsController < ApplicationController
   def destroy
     @podcast = Podcast.find(params[:id])
     @podcast.delete
+    redirect_to podcasts_path
   end
 
   private

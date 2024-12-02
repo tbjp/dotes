@@ -7,3 +7,15 @@
   font-size: 48px;
   font-weight: bold;
 }
+
+.text-dark-grey {
+  color: $dark-gray;
+}
+
+.hover {
+  transition: color 0.1s;
+}
+
+.red-hover:hover {
+  color: $red;
+}
