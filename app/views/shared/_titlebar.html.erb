@@ -1,20 +1,28 @@
 <% if user_signed_in? %>
-  <div>
-    <div class="d-inline-flex gap-1">
-      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        <%= image_tag 'poland.png', alt: 'Poland Mountain', class: 'flag-icon transparent-background small-nice-and-rounded' %>
-      </button>
-      <h1 class="top-header center"><%= content_for(:title) ? content_for(:title) : "Dotes" %></h1>
-    </div>
-    <div class="collapse" id="collapseExample"> <!-- why is this not a comment -->
-      <div class="">
-        <%= image_tag 'japan.png', alt: 'Japan Mountain', class: 'flag-icon transparent-background small-nice-and-rounded' %>
-        <%= image_tag 'uk.png', alt: 'UK Mountain', class: 'flag-icon transparent-background small-nice-and-rounded' %>
-        <!-- conditional that causes selected language not to be displayed in this list -->
-        <%= image_tag 'poland.png', alt: 'Poland Mountain', class: 'flag-icon transparent-background small-nice-and-rounded' %>
+  <div type='mama-div position-relative' class=''>
+    <div class="dropdown d-inline-flex gap-2 ms-2 mt-2 position-absolute top-0 start-0">
+      <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <%= image_tag "#{current_user.selected_user_language.language}.png", alt: "#{current_user.selected_user_language.language} Mountain", class: 'flag-icon rounded-4 box-shadow-sm' %>
       </div>
+      <ul class="dropdown-menu"> <!-- why is this not a comment -->
+        <div class="d-flex">
+          <% Podcast::LANGUAGES.each do |language| %>
+            <% if current_user.selected_user_language.language != language %>
+              <li>
+                <%= link_to root_path, class: 'dropdown-item' do %>
+                  <%= image_tag "#{language}.png", alt: "#{language} Mountain", class: 'flag-icon rounded-4 box-shadow-sm' %>
+                <% end %>
+              </li>
+            <% end %>
+          <% end %>
+        </div>
+      </ul>
     </div>
   </div>
+  <div>
+    <h1 class="top-header center"><%= content_for(:title) ? content_for(:title) : "Dotes" %></h1>
+  </div>
+</div>
 <% else %>
   <h1 class="top-header center"><%= content_for(:title) ? content_for(:title) : "Dotes" %></h1>
 <% end %>
