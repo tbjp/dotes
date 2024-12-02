@@ -1,0 +1,31 @@
+<% if user_signed_in? %>
+  <div type='mama-div position-relative' class=''>
+    <div class="dropdown d-inline-flex gap-2 ms-2 mt-2 position-absolute top-0 start-0">
+      <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <%= image_tag "#{current_user.selected_user_language.language}.png", alt: "#{current_user.selected_user_language.language} Mountain", class: 'flag-icon rounded-4 box-shadow-sm' %>
+      </div>
+      <ul class="dropdown-menu glassmorph rounded-5 border-0"> <!-- why is this not a comment -->
+        <div class="d-flex">
+          <% current_user.user_languages.pluck(:language).each do |language| %>
+            <% if current_user.selected_user_language.language != language %>
+              <li>
+                <div class='dropdown-item'>
+                  <%= simple_form_for current_user do |f| %>
+                    <%= f.input :selected_user_language_id, as: :hidden, input_html: { value: current_user.user_languages.find_by(language: language).id } %>
+                    <%= f.submit "", style: "background: url(#{asset_url(language + '.png')}); background-position: center; background-size: 40px 30px; border: none; border-radius: 5px; width: 40px; height: 30px;" %>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          <% end %>
+        </div>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <h1 class="top-header center"><%= content_for(:title) ? content_for(:title) : "Dotes" %></h1>
+  </div>
+</div>
+<% else %>
+  <h1 class="top-header center"><%= content_for(:title) ? content_for(:title) : "Dotes" %></h1>
+<% end %>
