@@ -23,10 +23,11 @@
           </div>
         </div>
       </div>
-      <div class="podcast-card-right">
-        <div class="mx-1">
-          <%= image_tag "profilowe.png", class: "avatar", alt: podcast.host.first_name %>
-        </div>
+      <div class="podcast-card-right d-flex flex-column align-items-center z-index-2">
+        <%= image_tag "profilowe.png", class: "avatar pb-1", alt: podcast.host.first_name %>
+        <%= link_to podcast_path(podcast), data: {turbo_method: :delete} do %>
+          <i class="fa-regular fa-square-minus"></i>
+        <% end %>
       </div>
       <%= link_to "", podcast_path(podcast), class: 'card-link' %>
     </div>
