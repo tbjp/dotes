@@ -1,0 +1,20 @@
+<% if user_signed_in? %>
+  <div>
+    <div class="d-inline-flex gap-1">
+      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <%= image_tag 'poland.png', alt: 'Poland Mountain', class: 'flag-icon transparent-background small-nice-and-rounded' %>
+      </button>
+      <h1 class="top-header center"><%= content_for(:title) ? content_for(:title) : "Dotes" %></h1>
+    </div>
+    <div class="collapse" id="collapseExample"> <!-- why is this not a comment -->
+      <div class="">
+        <%= image_tag 'japan.png', alt: 'Japan Mountain', class: 'flag-icon transparent-background small-nice-and-rounded' %>
+        <%= image_tag 'uk.png', alt: 'UK Mountain', class: 'flag-icon transparent-background small-nice-and-rounded' %>
+        <!-- conditional that causes selected language not to be displayed in this list -->
+        <%= image_tag 'poland.png', alt: 'Poland Mountain', class: 'flag-icon transparent-background small-nice-and-rounded' %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <h1 class="top-header center"><%= content_for(:title) ? content_for(:title) : "Dotes" %></h1>
+<% end %>
