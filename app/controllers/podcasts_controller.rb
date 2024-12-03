@@ -1,5 +1,4 @@
 class PodcastsController < ApplicationController
-
   def index
     if current_user.selected_user_language.podcasts.empty?
       redirect_to new_podcast_path
