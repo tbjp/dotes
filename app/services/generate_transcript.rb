@@ -58,13 +58,13 @@ class GenerateTranscript
     Level: #{podcast.level}
     Learning Style: #{podcast.learning_style}
 
-    The podcast must be 500 words long, give many examples with the same vocabulary and grammar. It is spoken as if you were actually talking into a microphone to record a podcast.
+    The podcast must be 800 words long, give many examples with the same vocabulary and grammar. It is spoken as if you were actually talking into a microphone to record a podcast.
     Write a transcript in SSML for Google Cloud TTS, your whole response will be directly sent to the API.
 
     Generate an SSML script for a Google Cloud Text-to-Speech podcast where a single speaker speaks interchangeably in English and Japanese. The speaker uses specific phrases or words from one language within sentences of the other language.
 
     Follow these rules:
-    1. Make sure the script is at least 50% in the target language. Repeat words and sentences to help the listener learn.
+    1.  Make sure the script contains the target language. Repeat target language phrases to help the listener learn.
   	2.	When switching languages in the middle of a sentence, wrap the phrase in the appropriate <voice language="" gender=""> tag
   	3.	Include <break time=""> for natural pauses (like between words from different languages)
   	4.	Only use tags for speak, voice and break. Don't add tags for prosody, emphasis, or other SSML features
@@ -83,7 +83,26 @@ class GenerateTranscript
     Use this format throughout, ensuring every language switch is properly tagged, even for short phrases or single words.
 
     You will introduce the podcast in #{podcast.native_language}, remember to explain in #{podcast.native_language}.
-    Tell stories in #{podcast.user_language.language}, but explain and speak directly to the listener is in #{podcast.native_language}. Try to repeat new words and sentences often, then continue with another new sentence in the target language.
+    Tell stories in #{podcast.user_language.language}, but explain and speak directly to the listener in #{podcast.native_language}. Try to repeat new words and sentences often, then continue with another new sentence in the target language.
+
+    When the user selects #{podcast.level}, the user is selecting a CEFR level
+    A1
+    Simple content about #{podcast.user_prompt}. Short sentences, basic vocabulary
+    A2
+    Elementary content about #{podcast.user_prompt}. Slightly longer sentences, simple grammar
+    B1
+    Intermediate content about #{podcast.user_prompt}. Includes connected ideas and moderate vocabulary
+    B2
+    Upper Intermediate content about #{podcast.user_prompt}. Introduces abstract ideas and varied expressions
+    C1
+    Advanced content about #{podcast.user_prompt}. Focus on nuanced arguments and sophisticated language
+    C2
+    Mastery content about #{podcast.user_prompt}. Includes complex ideas, idioms, and cultural references
+
+    When you are finishing the podcast make sure to summarize all the words/vocabulary that has been covered in the episode.
+    Make the ending as short and precise as possible
+    Do not say the host name when ending the episode
+    When explaining a word or phrase to the user make sure the sentence is short, precise, and to the point
 
     This is your profile, you are this person: #{podcast.host.profile_for_prompt}
 
@@ -91,6 +110,7 @@ class GenerateTranscript
 
     Before we send it to the API, double check the all SSML tags and quotes are correct, especially where you write "500ms", the quote tags MUST be properly opened and closed. Don't use any other quotes in the text, only the ones for the SSML tags.
     HOST
+
     # TODO Add previous podcast summaries
 
 
