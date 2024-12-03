@@ -125,22 +125,35 @@ work: "He used to work as a field recordist for wildlife and travel TV shows for
 likes: "He likes: lemon flavours, chocolate, spiced food like chai tea, nature, reading fantasy novels, music from local cultures, baking, walking his dog, playing video games from the 90s.",
 dislikes: "Coriander herb",
 hobbies: "Line drawing houses, baking, learning languages.",
-stories: ["a"]
+stories: [
+  "One misty morning, Charles took Harry for a walk along the river. Harry suddenly jumped into the water, barking at a duck. Charles laughed as he scrambled to pull the drenched and unapologetic dog out.",
+  "During a summer picnic with his family, Charles attempted to bake bread over an open flame. The bread ended up more like a biscuit, but they all loved it and called it 'Beasley’s Bakes'.",
+  "While recording bird sounds for a TV show in Scotland, Charles accidentally recorded his own sneeze, which somehow made it into the final episode. His family still teases him about it.",
+  "One snowy Christmas Eve, Charles and Dorothea baked spiced biscuits together while singing old carols. Harry managed to steal one biscuit, but Charles let it slide with a chuckle.",
+  "While line drawing a picturesque cottage, Charles realized he’d accidentally sketched a giant cat on the roof. Aletta loved it and made it into a greeting card.",
+  "Charles once joined a local baking competition and won second place with his signature lemon loaf. He joked it was the spiced chai icing that secured the win.",
+  "On a trip to India, Charles was mesmerized by a street musician playing a sitar. Inspired, he recorded the performance and blended it into an ambient track that became a family favorite.",
+  "One evening, Kit introduced Charles to a retro video game from the 90s. Charles became so hooked he stayed up until 3 a.m. playing, and the next morning, Harry had to nudge him awake.",
+  "While hiking with his family in Wales, Charles spotted a rare butterfly. He was so excited he spent the next hour trying to take the perfect photo while everyone else teased him.",
+  "One rainy afternoon, Charles taught Aletta how to bake her favorite chocolate torte. They ended up covered in flour, and Harry had a field day licking up the mess."
+]
 )
 
 host2 = Host.create!(
-first_name: "a",
-last_name: "a",
-voice: "a",
-nationality: "a",
-age: "a",
-location: "a",
-family: "a",
-work: "a",
-likes: "a",
-dislikes: "a",
-hobbies: "a",
-stories: ["a"]
+first_name: "Berta",
+last_name: "Mikorska",
+voice: "PH",
+nationality: "Polish",
+age: 30,
+location: "Wroclaw, Poland",
+family: "She has two younger sisters and a younger brother. His parents died in a terrible motorcycle incident when they were going to sign their divorce papers.",
+work: "She is a software developer and a founder of a digital marketing startup.",
+likes: "Pączki, coke zero, meat and pancakes.",
+dislikes: "She doesn’t like coriander and winter (because she cannot ride her motorcycle during winter).",
+hobbies: "He likes riding motorcycles, playing video games and boardgames.",
+stories: ["I was cruising down the familiar roads on my motorcycle, the wind in my face, feeling that rush that only a ride like this could give me. The streets of Wrocław had an energy about them, even in the early morning, when they were still quiet. But as I took a corner a little too fast, I felt the engine sputter. Great. Another issue with the bike. I pulled over and inspected it, but of course, I had no tools. That’s when I saw him, an older man walking his dog. He offered to help, and we ended up chatting about bikes for nearly an hour. He reminded me a lot of my dad—minus the motorcycle obsession. It was a random encounter, but one I appreciated. Sometimes, the best rides aren’t the ones we plan, but the ones that happen when we least expect it.",
+ "Winter in Wrocław sucks. I can’t ride my motorcycle, and it feels like the whole city slows down. To cope, I find comfort in the little things. Every year, I make a trip to my favorite bakery for a box of pączki. There’s something about biting into that soft, sugary dough filled with fruit preserves or chocolate that makes winter just a bit more bearable. Last year, I went with my brother and sisters, and we devoured a box of them in less than an hour. It's these small traditions that help me get through the tough months.",
+"I hate winter. The snow, the cold—it all just gets in the way of riding. But one day, when the storm was at its peak, I decided to go out anyway. I suited up, braved the weather, and took my bike out for a quick spin around the city. It was chaotic, but there was something about riding in the snow that felt freeing. The world was quieter, the streets empty, and for a moment, it was just me and my bike. I couldn’t ride for long, but that brief escape was worth the frostbite."]
 )
 
 host3 = Host.create!(
@@ -248,7 +261,7 @@ end
                               transcript: lorum)
 
   podcast.user_language = user_language
-  podcast.host = Host.first
+  podcast.host = Host.second
   podcast.save
   user.selected_user_language = user_language
   user.save

@@ -30,7 +30,7 @@
           </div>
           <div class="podcast-card-right d-flex w-100">
             <div class="mx-1">
-              <%= image_tag "profilowe.png", class: "avatar m-2", alt: podcast.host.first_name %>
+              <%= image_tag "#{podcast.host.first_name.downcase}.png", class: "avatar m-2", alt: podcast.host.first_name %>
             </div>
             <div class="fw-light p-2 host-desc">
               Your host, <%= podcast.host.first_name %>, is a <%= podcast.host.age %> years old <%= podcast.host.nationality %> national. <%= podcast.host.likes %> <%= podcast.host.work %>

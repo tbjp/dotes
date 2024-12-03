@@ -39,8 +39,14 @@ class PodcastsController < ApplicationController
     # Use suggested_topics to populate user_prompt if user_prompt is empty
     @podcast.user_prompt = suggested_topics if @podcast.user_prompt.blank? && suggested_topics.present?
 
-    @podcast.user_language = current_user.selected_user_language # temporary
-    @podcast.host = Host.first # temporary until we have select in form
+    @podcast.user_language = current_user.selected_user_language
+
+    if current_user.selected_user_language.language == "Polish"
+      @podcast.host = Host.second # temporary until we have select in form
+    else
+      @podcast.host = Host.first
+    end
+
 
     if @podcast.save
       # transcript = GenerateText.call(current_user, @podcast) instead of calling the generatetext we call the job
