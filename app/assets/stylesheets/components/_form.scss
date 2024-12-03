@@ -83,6 +83,10 @@ label abbr {
 #podcast_user_prompt {
   background-color: $white;
   border-radius: 15px;
+  border: none;
+  padding: 15px;
+  width: 100%;
+  margin-bottom: 15px;
 }
 // #snippet_category_ruby + label {
 //   color: #FD1015;

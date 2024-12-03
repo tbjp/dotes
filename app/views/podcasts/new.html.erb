@@ -1,12 +1,12 @@
-<div class="glassmorph window p-4 text-center">
+<div class="glassmorph window p-4 text-center" data-controller="topic-selector">
   <%= simple_form_for @podcast, local: true do |f| %>
     <%= f.input :user_prompt,
       label: "Choose one of the crafted topics",
-      collection: @user_language.suggested_topics,
+      collection: @user_language.suggested_topics + ["Choose your own topic"],
       as: :radio_buttons,
-      input_html: { class: "tag-selector rounded-pill" },
+      input_html: { class: "tag-selector rounded-pill", data: { action: 'change->topic-selector#showInput' }},
       item_wrapper_class: 'tag-item' %>
-    <%= f.input :user_prompt, label: "Or create your own!", as: :string %>
+    <input type="text" name="podcast[user_prompt]" data-topic-selector-target="userInput" class="d-none " id="podcast_user_prompt">
     <%= f.input :level,
       collection: Podcast::LEVELS.values,
       selected: @level,
