@@ -55,7 +55,7 @@
       <div class="window glassmorph my-2 p-4">
         <p class="overflow-auto fw-light">
           <% if podcast.transcript %>
-            <%= podcast.transcript  %>
+            <%= simple_format(podcast.transcript)  %>
           <% else %>
             <%= render "shared/loading_bar" %>
           <% end %>

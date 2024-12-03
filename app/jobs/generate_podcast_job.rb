@@ -29,11 +29,9 @@ class GeneratePodcastJob < ApplicationJob
 
     podcast.audio.attach(io: audio_io, filename: 'podcast_audio.mp3', content_type: 'audio/mpeg')
 
-    full_sanitizer = Rails::HTML5::FullSanitizer.new
-    sanitize_transcript = full_sanitizer.sanitize(transcript)
-    podcast.update(transcript: sanitize_transcript)
-
-    doc = Loofah.html5_document(sanitize_transcript)
+    doc = Loofah.html5_document(transcript)
+    scrubbed_doc = doc.text(encode_special_chars: false)
+    podcast.update(transcript: scrubbed_doc)
 
     response = GenerateSummary.call(podcast)
     summary_title = JSON.parse(response)
