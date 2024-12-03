@@ -90,6 +90,11 @@ suggested_topics = ['Introduction with これ/それ/あれ” - Fun topic: favo
  '“Simple Verbs in Present Tense” - Fun topic: World of Warcraft gameplay',
   '“Adjective Use (い/な)” - Fun topic: donuts vs. snacks']
 
+suggested_topics_pl = ['	Introducing yourself and basic greetings.',
+	'Numbers, days of the week, and telling time.',
+	'Ordering food and drinks at a café or restaurant.',
+	'Asking for directions and basic navigation phrases.']
+
 # Create a user
 user1 = User.new(email: "b.mikorski@gmail.com", first_name: "Bartek", last_name: "Mikorski", native_language: "Polish")
 user1.password = 'secret'
@@ -249,8 +254,8 @@ puts 'Making 3 users with 2 languages and 6 placeholder podcasts each for Japane
 end
 
 [user1, user2, user3].each do |user|
-  user_language = UserLanguage.create(user: user, language: "Polish", level: "Beginner", suggested_topics: suggested_topics)
-  user_language_2 = UserLanguage.create(user: user, language: "English", level: "Beginner", suggested_topics: suggested_topics)
+  user_language = UserLanguage.create(user: user, language: "Polish", level: "Beginner", suggested_topics: suggested_topics_pl)
+  user_language_2 = UserLanguage.create(user: user, language: "English", level: "Beginner", suggested_topics: suggested_topics_pl)
   podcast = Podcast.new(title: "Introduction with polish things",
                              summary: "In this episode, we will learn how to use the basic Japanese pronouns これ/それ/あれ",
                              ai_summary: "This episode is an introduction to the basic Japanese pronouns これ/それ/あれ, you spoke about your favorite donuts",
