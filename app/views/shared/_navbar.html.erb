@@ -12,7 +12,13 @@
         <%= link_to "Create Dote", new_podcast_path, class: "btn nav-btn nav-btn-lg glassmorph py-3", data: {action:"click->fade#fadeIn"} %>
       </div>
     <% elsif current_page?(new_user_session_path) %>
+      <div class="flex-grow-1 mx-2">
+        <button type="submit" form="new_user" class="btn nav-btn nav-btn-lg glassmorph py-3">Log in</button>
+      </div>
     <% elsif current_page?(new_user_registration_path) %>
+      <div class="flex-grow-1 mx-2">
+        <button type="submit" form="new_user" class="btn nav-btn nav-btn-lg glassmorph py-3">Sign up</button>
+      </div>
     <% elsif current_page?(new_podcast_path) %>
       <div class="flex-grow-1 mx-2">
         <button type="submit" form="new_podcast" class="btn nav-btn nav-btn-lg glassmorph py-3">Generate!</button>
