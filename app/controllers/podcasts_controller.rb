@@ -14,11 +14,15 @@ class PodcastsController < ApplicationController
   end
 
   def new
-    if current_user.selected_user_language.podcasts.last.status == 'failed'
-      @podcast = current_user.selected_user_language.podcasts.last
-    else
     @podcast = Podcast.new
+    unless current_user.selected_user_language.podcasts.empty?
+      last_podcast = current_user.selected_user_language.podcasts.last
+      if last_podcast.present? && last_podcast.status == 'failed'
+        @podcast = last_podcast.dup
+        last_podcast.delete
+      end
     end
+
     @user_language = current_user.selected_user_language
   end
 
@@ -30,7 +34,7 @@ class PodcastsController < ApplicationController
     strong_params.delete(:suggested_topics)
 
     # Initialize a new Podcast with the remaining parameters
-    @podcast = Podcast.new(strong_params)
+    @podcast = Podcast.new(strong_params) unless @podcast.present?
 
     # Use suggested_topics to populate user_prompt if user_prompt is empty
     @podcast.user_prompt = suggested_topics if @podcast.user_prompt.blank? && suggested_topics.present?

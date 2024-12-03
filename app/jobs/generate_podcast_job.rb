@@ -18,9 +18,14 @@ class GeneratePodcastJob < ApplicationJob
     # begin
     p transcript = GenerateTranscript.call(current_user, podcast)
 
-    audio_data = GenerateAudio.call(transcript, current_user)
-    audio_io = StringIO.new(audio_data)
-    audio_io.rewind
+    audio_response = GenerateAudio.call(transcript, current_user)
+    if audio_response.audio_content.nil?
+      podcast.update(status: 'failed')
+      return
+    else
+      audio_io = StringIO.new(audio_response.audio_content)
+      audio_io.rewind
+    end
 
     podcast.audio.attach(io: audio_io, filename: 'podcast_audio.mp3', content_type: 'audio/mpeg')
 
@@ -31,11 +36,9 @@ class GeneratePodcastJob < ApplicationJob
     response = GenerateSummary.call(podcast)
     summary_title = JSON.parse(response)
 
-    p podcast.update(summary: summary_title["summary"], title: summary_title["title"])
-    # rescue => e
-    #   podcast.update(status: 'failed', error_message: e.message)
-    #   # Optionally, log the error or notify someone
-    #   Rails.logger.error("GeneratePodcastJob failed: #{e.message}")
-    # end
+    podcast.update(summary: summary_title["summary"], title: summary_title["title"])
+    podcast.errors.full_messages.each do |message|
+      puts message
+    end
   end
 end
