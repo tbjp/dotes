@@ -13,13 +13,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <%= render 'shared/ios_pwa_links' %>
   </head>
-  <body class="d-flex flex-column justify-content-between" data-controller="fade">
-    <%= render "shared/titlebar" %>
-    <div class="flex-grow-1 overflow-auto d-flex flex-column position-relative">
-      <!-- <div data-fade-target="overlay" id="fader" class="position-absolute"></div> -->
-      <%= yield %>
+  <body data-controller="fade">
+    <div class="d-flex flex-column justify-content-between">
+      <%= render "shared/titlebar" %>
+      <div class="flex-grow-1 overflow-auto d-flex flex-column position-relative">
+        <!-- <div data-fade-target="overlay" id="fader" class="position-absolute"></div> -->
+        <%= yield %>
+      </div>
+      <%= render "shared/navbar" %>
+      <%= render "shared/flashes" %>
     </div>
-    <%= render "shared/navbar" %>
-    <%= render "shared/flashes" %>
   </body>
 </html>

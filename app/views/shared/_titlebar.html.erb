@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
-  <div type='mama-div position-relative' class=''>
-    <div class="dropdown d-inline-flex gap-2 ms-2 mt-2 position-absolute top-0 start-0">
+  <div class='mama-div position-relative'>
+    <div class="dropdown d-inline-flex gap-2 ms-2 mt-2 position-absolute top-0 start-0" style="top: 5px !important;">
       <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
         <%= image_tag "#{current_user.selected_user_language.language}.png", alt: "#{current_user.selected_user_language.language} Mountain", class: 'flag-icon rounded-4 box-shadow-sm' %>
       </div>
@@ -21,8 +21,6 @@
         </div>
       </ul>
     </div>
-  </div>
-  <div>
     <h1 class="top-header center"><%= content_for(:title) ? content_for(:title) : "Dotes" %></h1>
   </div>
 </div>
