@@ -80,6 +80,7 @@ puts 'Cleaning DB users'
 User.all.each do |user|
   user.update(selected_user_language: nil)
 end
+Podcast.destroy_all
 Host.delete_all
 UserLanguage.delete_all
 User.delete_all
