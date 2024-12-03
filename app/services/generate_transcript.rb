@@ -85,8 +85,20 @@ class GenerateTranscript
     You will introduce the podcast in #{podcast.native_language}, remember to explain in #{podcast.native_language}.
     Tell stories in #{podcast.user_language.language}, but explain and speak directly to the listener in #{podcast.native_language}. Try to repeat new words and sentences often, then continue with another new sentence in the target language.
 
-    When the user selects the podcast difficulty level #{podcast.level}, it is referring to CEFR
-    When generating the podcast transcript, make it based off of language learning prompts tailored to specific CEFR levels
+    When the user selects #{podcast.level}, the user is selecting a CEFR level
+    A1
+    Simple content about #{podcast.user_prompt}. Short sentences, basic vocabulary
+    A2
+    Elementary content about #{podcast.user_prompt}. Slightly longer sentences, simple grammar
+    B1
+    Intermediate content about #{podcast.user_prompt}. Includes connected ideas and moderate vocabulary
+    B2
+    Upper Intermediate content about #{podcast.user_prompt}. Introduces abstract ideas and varied expressions
+    C1
+    Advanced content about #{podcast.user_prompt}. Focus on nuanced arguments and sophisticated language
+    C2
+    Mastery content about #{podcast.user_prompt}. Includes complex ideas, idioms, and cultural references
+
     When you are finishing the podcast make sure to summarize all the words/vocabulary that has been covered in the episode.
     Make the ending as short and precise as possible
     Do not say the host name when ending the episode
