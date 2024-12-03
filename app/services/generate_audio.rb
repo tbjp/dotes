@@ -2,7 +2,7 @@ require 'nokogiri'
 
 class GenerateAudio
   def self.call(transcript, user)
-    # transcript = validate_ssml(transcript)
+    transcript = validate_ssml(transcript)
 
     client = Google::Cloud::TextToSpeech.text_to_speech do |config|
       config.credentials = JSON.parse(ENV.fetch("GOOGLE_JSON_KEY"))
@@ -30,17 +30,17 @@ class GenerateAudio
                       speaking_rate: 0.85 }
     )
     p response
-    return response.audio_content
+    return response
   end
 
   def self.validate_ssml(ssml)
     doc = Nokogiri::XML(ssml)
 
-    # if doc.errors.any?
-    #   puts "Invalid SSML: #{doc.errors.join(', ')}"
+    if doc.errors.any?
+      puts "Invalid SSML: #{doc.errors.join(', ')}"
       return correct_break_tags(ssml)
-    # end
-    # return ssml
+    end
+    return ssml
   end
 
   def self.correct_break_tags(ssml)

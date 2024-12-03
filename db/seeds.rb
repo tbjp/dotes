@@ -77,7 +77,9 @@ transcript = "<speak>
 </speak>"
 
 puts 'Cleaning DB users'
-Podcast.delete_all
+User.all.each do |user|
+  user.update(selected_user_language: nil)
+end
 Host.delete_all
 UserLanguage.delete_all
 User.delete_all
