@@ -1,6 +1,6 @@
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
-  <div class="glassmorph window p-4 text-center">
+  <div class="glassmorph window p-4 text-center" data-controller="topic-selector">
     <h2>Sign up</h2>
     <div class="form-inputs">
       <%= f.input :email,
@@ -14,6 +14,13 @@
       <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password", class: "rounded-pill" } %>
+      <%= f.input :native_language, label: "Your native language",
+      collection: Podcast::LANGUAGES,
+      as: :select,
+      input_html: { class: "rounded-pill" },
+      as: :radio_buttons,
+      input_html: { class: "tag-selector rounded-pill" },
+      item_wrapper_class: 'tag-item' %>
     </div>
     <div class="form-actions">
       <%= f.button :submit, "Sign up", class: "rounded-pill btn btn-light" %>
