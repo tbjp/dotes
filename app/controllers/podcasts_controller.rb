@@ -27,7 +27,6 @@ class PodcastsController < ApplicationController
   end
 
   def create
-    # raise
     @podcast.update(status: 'new') if @podcast.present?
     strong_params = podcast_params
     suggested_topics = podcast_params[:suggested_topics]
