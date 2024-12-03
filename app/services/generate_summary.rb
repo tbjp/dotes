@@ -11,7 +11,7 @@ class GenerateSummary
       4.  the summary will have a max of 80 characters
       5.  Return a raw JSON with this schema but no extra formatting{ title: <title of podcast>, summary: <summary of podcast>}
       6.  do not include the current language in the title of the podcast
-      7.  include target langauge phrases in the summary
+      7.  include target language phrases in the summary
 
       Here are some examples of what I expect for the title:
       "Past tense stories"
