@@ -98,21 +98,21 @@ suggested_topics_pl = ['	Introducing yourself and basic greetings.',
 # Create a user
 user1 = User.new(email: "b.mikorski@gmail.com", first_name: "Bartek", last_name: "Mikorski", native_language: "Polish")
 user1.password = 'secret'
-user1.learning_style = 'casual'
+user1.learning_style = 'test'
 user1.interests = 'donuts, eating, traveling, world of warcraft, witcher (video game), elden ring, warhammer'
 user1.save!
 
 
 user2 = User.new(email: "jarodmiz2018@gmail.com", first_name: "Jarod", last_name: "Mizgalski", native_language: "English")
 user2.password = 'secret'
-user2.learning_style = 'serious'
+user2.learning_style = 'test'
 user2.interests = ['donuts', 'vintage japanese cars', 'working out', 'studying japanese', 'sushi']
 user2.save!
 
 
 user3 = User.new(email: "tobypalethorpe@gmail.com", first_name: "Toby", last_name: "Palethorpe", native_language: "English")
 user3.password = 'secret'
-user3.learning_style = 'balanced'
+user3.learning_style = 'test'
 user3.interests = ['photography', 'UK dance music', 'anthropology', 'history', 'science', 'technology', 'japanese culture', 'thailand']
 user3.save!
 
