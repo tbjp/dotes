@@ -35,10 +35,12 @@ class PodcastsController < ApplicationController
     # Initialize a new Podcast with the remaining parameters
     @podcast = Podcast.new(strong_params) unless @podcast.present?
 
+
     # Use suggested_topics to populate user_prompt if user_prompt is empty
     @podcast.user_prompt = suggested_topics if @podcast.user_prompt.blank? && suggested_topics.present?
 
     @podcast.user_language = current_user.selected_user_language
+    @podcast.native_language = current_user.native_language
 
     if current_user.selected_user_language.language == "Polish"
       @podcast.host = Host.second # temporary until we have select in form

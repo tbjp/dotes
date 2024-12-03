@@ -21,13 +21,5 @@
       as: :radio_buttons,
       input_html: { class: "tag-selector" },
       item_wrapper_class: 'tag-item' %>
-    <%= f.input :native_language, label: "Your native language", collection: Podcast::LANGUAGES, selected: current_user.native_language, as: :select, input_html: { class: "rounded-pill" },
-      as: :radio_buttons,
-      input_html: { class: "tag-selector rounded-pill" },
-      item_wrapper_class: 'tag-item' %>
-    <%= f.input :user_language, label: "Language you want to learn", collection: Podcast::LANGUAGES, selected: @user_language.language, as: :select, input_html: { class: "rounded-pill" },
-      as: :radio_buttons,
-      input_html: { class: "tag-selector rounded-pill" },
-      item_wrapper_class: 'tag-item' %>
   <% end %>
 </div>
