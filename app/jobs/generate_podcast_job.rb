@@ -33,6 +33,8 @@ class GeneratePodcastJob < ApplicationJob
     sanitize_transcript = full_sanitizer.sanitize(transcript)
     podcast.update(transcript: sanitize_transcript)
 
+    doc = Loofah.html5_document(sanitize_transcript)
+
     response = GenerateSummary.call(podcast)
     summary_title = JSON.parse(response)
 

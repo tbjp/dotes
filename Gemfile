@@ -56,6 +56,7 @@ gem "ruby-openai"
 gem "google-cloud-text_to_speech"
 gem "solid_queue"
 gem "solid_cable"
+gem "loofah"
 
 group :development, :test do
   gem "dotenv-rails"
