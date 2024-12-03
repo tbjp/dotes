@@ -2,7 +2,9 @@
   <div class='mama-div position-relative'>
     <div class="dropdown d-inline-flex gap-2 ms-2 mt-2 position-absolute top-0 start-0" style="top: 5px !important;">
       <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        <%= image_tag "#{current_user.selected_user_language.language}.png", alt: "#{current_user.selected_user_language.language} Mountain", class: 'flag-icon rounded-4 box-shadow-sm' %>
+        <% if current_user.selected_user_language %>
+          <%= image_tag "#{current_user.selected_user_language.language}.png", alt: "#{current_user.selected_user_language.language} Mountain", class: 'flag-icon rounded-4 box-shadow-sm' %>
+        <% end %>
       </div>
       <ul class="dropdown-menu glassmorph rounded-5 border-0"> <!-- why is this not a comment -->
         <div class="d-flex">
