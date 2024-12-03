@@ -451,6 +451,7 @@ DEPENDENCIES
   google-cloud-text_to_speech
   importmap-rails
   jbuilder
+  loofah
   ostruct
   pg (~> 1.1)
   puma (>= 5.0)
