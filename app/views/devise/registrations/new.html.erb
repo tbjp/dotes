@@ -3,6 +3,14 @@
   <div class="glassmorph window p-4 text-center" data-controller="topic-selector">
     <h2>Sign up</h2>
     <div class="form-inputs">
+      <%= f.input :first_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "first name", class: "rounded-pill" }%>
+      <%= f.input :last_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "last name", class: "rounded-pill" }%>
       <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -15,12 +23,10 @@
                 required: true,
                 input_html: { autocomplete: "new-password", class: "rounded-pill" } %>
       <%= f.input :native_language, label: "Your native language",
-      collection: Podcast::LANGUAGES,
-      as: :select,
-      input_html: { class: "rounded-pill" },
-      as: :radio_buttons,
-      input_html: { class: "tag-selector rounded-pill" },
-      item_wrapper_class: 'tag-item' %>
+                collection: Podcast::LANGUAGES,
+                as: :radio_buttons,
+                input_html: { class: "tag-selector rounded-pill" },
+                item_wrapper_class: 'tag-item' %>
     </div>
     <div class="form-actions">
       <%= f.button :submit, "Sign up", class: "rounded-pill btn btn-light" %>
