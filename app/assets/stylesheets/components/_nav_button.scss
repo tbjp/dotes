@@ -3,6 +3,16 @@
   background: none;
   border: none;
   border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.753) !important;
+  color: #ececec;
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+.nav-btn:hover {
+  // background-color: rgba(0, 0, 0, 0.615) !important;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.35) !important;
 }
 
 .nav-btn-lg {
