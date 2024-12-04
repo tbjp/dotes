@@ -1,20 +1,19 @@
 <div class="swiper w-100 flex-grow-1 pb-3" data-controller="swiper" id="podcast">
   <div class="swiper-wrapper">
-    <div class="swiper-slide left">
+    <div class="swiper-slide left d-flex flex-column">
       <%= render "podcasts/flashcard", podcast: podcast, flashcard: podcast.incomplete_flashcard %>
     </div>
-    <div class="swiper-slide middle">
+    <div class="swiper-slide middle d-flex flex-column">
       <div class="d-flex flex-column justify-content-between">
-        <div class="podcast-title text-center text-white fw-light fs-3 max-width-450 pt-3">
+        <div class="podcast-title text-center text-white fw-light fs-3 max-width-450 pt-1">
           <% if podcast.title %>
             <%= podcast.title %> <br>
-            Transcript
           <% else %>
             <%= render "shared/loading_bar" %>
           <% end %>
         </div>
       </div>
-      <div class="window-80 glassmorph my-2 p-4">
+      <div class="window-80 glassmorph my-2 p-4 flex-grow-1">
         <p class="overflow-auto fw-light">
           <% if podcast.transcript %>
             <%= simple_format(podcast.transcript)  %>

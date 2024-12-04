@@ -1,7 +1,10 @@
 <% content_for :title do %>
   Dotes
 <% end %>
-<div class="window">
+<div class="window d-flex flex-column">
+  <div class="d-flex justify-content-center pt-10 ">
+    <%= image_tag 'dotes.svg', class: 'dotes-logo-home top-header' %>
+  </div>
   <div class="d-flex justify-content-center">
     <div class="photo-pill pill1" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(<%= asset_url("chad2.jpg") %>)">
     </div>
