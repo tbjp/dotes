@@ -6,6 +6,28 @@
 <div class="swiper w-100 flex-grow-1 pb-3" data-controller="swiper" id="podcast">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
+      <div class="window glassmorph my-2 p-4">
+        <p class="overflow-auto fw-light">
+          <% if podcast.transcript %>
+            <%= simple_format(podcast.transcript)  %>
+          <% else %>
+            <%= render "shared/loading_bar" %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+    <div class="swiper-slide">
+      <div class="window glassmorph my-2 p-4">
+        <p class="overflow-auto fw-light">
+          <% if podcast.transcript %>
+            <%= simple_format(podcast.transcript)  %>
+          <% else %>
+            <%= render "shared/loading_bar" %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+    <div class="swiper-slide">
       <div class="window-show d-flex flex-column justify-content-between">
         <div class="podcast-card-but-not-really glassmorph flex-column">
           <div class="podcast-card-left w-100">
@@ -49,17 +71,6 @@
             <%= render "shared/loading_bar" %>
           <% end %>
         </div>
-      </div>
-    </div>
-    <div class="swiper-slide">
-      <div class="window glassmorph my-2 p-4">
-        <p class="overflow-auto fw-light">
-          <% if podcast.transcript %>
-            <%= simple_format(podcast.transcript)  %>
-          <% else %>
-            <%= render "shared/loading_bar" %>
-          <% end %>
-        </p>
       </div>
     </div>
   </div>
