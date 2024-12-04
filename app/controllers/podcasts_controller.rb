@@ -10,6 +10,7 @@ class PodcastsController < ApplicationController
   def show
     @podcast = Podcast.find(params[:id])
     @host = @podcast.host
+    @flashcard = @podcast.incomplete_flashcard
   end
 
   def new

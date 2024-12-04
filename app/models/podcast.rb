@@ -26,6 +26,10 @@ class Podcast < ApplicationRecord
   after_update_commit :broadcast_podcast
   after_update_commit :broadcast_audio
 
+  def incomplete_flashcard
+    self.flashcards.select { |flashcard| !flashcard.correct }.sample
+  end
+
   private
 
   def broadcast_podcast
@@ -41,4 +45,5 @@ class Podcast < ApplicationRecord
                         target: "audio",
                         locals: { podcast: self }
   end
+
 end
