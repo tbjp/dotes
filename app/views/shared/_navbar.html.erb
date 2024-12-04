@@ -1,42 +1,42 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid px-0 mb-3">
-    <%= link_to root_path, class: "btn menu-btn glassmorph py-3", data: {action:"click->fade#fadeIn"} do %>
+    <%= link_to root_path, class: "btn menu-btn glassmorph py-2", data: {action:"click->fade#fadeIn"} do %>
       <i class="fa-solid fa-house"></i>
     <% end %>
     <% if current_page?(controller: "/pages", action: "home") %>
       <div class="flex-grow-1 mx-2">
-        <%= link_to "Begin", podcasts_path, class: "btn nav-btn nav-btn-lg glassmorph py-3", data: {action:"click->fade#fadeIn"} %>
+        <%= link_to "Begin", podcasts_path, class: "btn nav-btn nav-btn-lg glassmorph py-2", data: {action:"click->fade#fadeIn"} %>
       </div>
     <% elsif current_page?(controller: "/podcasts", action: "index") %>
       <div class="flex-grow-1 mx-2">
-        <%= link_to "Create Dote", new_podcast_path, class: "btn nav-btn nav-btn-lg glassmorph py-3", data: {action:"click->fade#fadeIn"} %>
+        <%= link_to "Create Dote", new_podcast_path, class: "btn nav-btn nav-btn-lg glassmorph py-2", data: {action:"click->fade#fadeIn"} %>
       </div>
     <% elsif current_page?(new_user_session_path) %>
       <div class="flex-grow-1 mx-2">
-        <button type="submit" form="new_user" class="btn nav-btn nav-btn-lg glassmorph py-3">Log in</button>
+        <button type="submit" form="new_user" class="btn nav-btn nav-btn-lg glassmorph py-2">Log in</button>
       </div>
     <% elsif current_page?(new_user_registration_path) %>
       <div class="flex-grow-1 mx-2">
-        <button type="submit" form="new_user" class="btn nav-btn nav-btn-lg glassmorph py-3">Sign up</button>
+        <button type="submit" form="new_user" class="btn nav-btn nav-btn-lg glassmorph py-2">Sign up</button>
       </div>
     <% elsif current_page?(new_podcast_path) %>
       <div class="flex-grow-1 mx-2">
-        <button type="submit" form="new_podcast" class="btn nav-btn nav-btn-lg glassmorph py-3">Generate!</button>
+        <button type="submit" form="new_podcast" class="btn nav-btn nav-btn-lg glassmorph py-2">Generate!</button>
       </div>
     <% elsif current_page?(controller: "/podcasts", action: "show") %>
       <div class="flex-grow-1 mx-2">
-        <%= link_to "Back", podcasts_path, class: "btn nav-btn nav-btn-lg glassmorph py-3", data: {action:"click->fade#fadeIn"} %>
+        <%= link_to "Back", podcasts_path, class: "btn nav-btn nav-btn-lg glassmorph py-2", data: {action:"click->fade#fadeIn"} %>
       </div>
     <% else %>
       <div class="flex-grow-1 mx-2">
-        <%= link_to "place", podcasts_path, class: "btn nav-btn glassmorph py-3", data: {action:"click->fade#fadeIn"} %>
+        <%= link_to "place", podcasts_path, class: "btn nav-btn glassmorph py-2", data: {action:"click->fade#fadeIn"} %>
       </div>
       <div class="flex-grow-1 me-2">
-        <%= link_to "holder", podcasts_path, class: "btn nav-btn glassmorph py-3", data: {action:"click->fade#fadeIn"} %>
+        <%= link_to "holder", podcasts_path, class: "btn nav-btn glassmorph py-2", data: {action:"click->fade#fadeIn"} %>
       </div>
     <% end %>
     <div class="dropup-center dropup menu">
-      <button class="btn menu-btn dropdown-toggle glassmorph py-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <button class="btn menu-btn dropdown-toggle glassmorph py-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="fas fa-bars"></i>
       </button>
       <ul class="dropdown-menu glassmorph">
