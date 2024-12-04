@@ -1,14 +1,14 @@
 <% content_for :title do %>
   Dotes
 <% end %>
-<div class="window">
+<div class="window glassmorph">
   <% @podcasts.each do |podcast| %>
-    <div class="podcast-card glassmorph">
+    <div class="podcast-card">
       <div class="podcast-card-left">
         <div class="podcast-title">
           <%= podcast.title %>
         </div>
-        <div class="fw-lighter">
+        <div class="fw-light podcast-card-summary">
           <%= podcast.summary %>
         </div>
         <div class="podcast-card-options">
@@ -16,10 +16,7 @@
             <%= podcast.level %>
           </div>
           <div class="podcast-option fw-light">
-            <%= podcast.learning_style %>
-          </div>
-          <div class="podcast-option fw-light">
-            <%= podcast.created_at.strftime("%e/%m/%Y") %>
+            <%= podcast.created_at.strftime("%b %d, %Y") %>
           </div>
         </div>
       </div>
@@ -33,5 +30,5 @@
       <%= link_to "", podcast_path(podcast), class: 'card-link' %>
     </div>
   <% end %>
-  <div class="blur"></div>
+  <!-- <div class="blur"></div> -->
 </div>

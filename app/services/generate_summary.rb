@@ -10,16 +10,23 @@ class GenerateSummary
       3.  the summary will have puncuation
       4.  the summary will have a max of 80 characters
       5.  Return a raw JSON with this schema but no extra formatting{ title: <title of podcast>, summary: <summary of podcast>}
+      6.  do not include the current language in the title of the podcast
+      7.  include target language phrases in the summary
 
       Here are some examples of what I expect for the title:
       "Past tense stories"
       "Present tense verbs"
       "Past tense adjectives and sports"
+      "particles and house tasks"
+      "counters and animals"
 
 
       Here's an example of what I expect for the summary:
-      "In this episode, [host name] will talk about conjugating verbs for your favorite foods using basic Japanese pronouns これ/それ/あれ"
-      "In this episode, [host name] will talk about adding past tense adjectives while discussing sports using basic Japanese adjectives おおきい/ちいさい/たかい/ひくい"
+      "[host name] talks about conjugating verbs for your favorite foods using basic pronouns"
+      "[host name] talks about past tense adjectives while discussing sports using basic adjectives "
+      "[host name] discusses numbers and counters using animals as examples"
+      "[host name] covers particles while dicussing basic tasks around the house"
+      "[host name] chats about the time during a business trips"
     SUMMARY
 
     user_prompt = "Please make a title and summary for the poscast, please inlcude the host's name: #{podcast.host.first_name}, #{podcast.transcript}"

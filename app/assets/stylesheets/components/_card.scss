@@ -23,8 +23,8 @@
 
 .podcast-card {
   position: relative;
-  padding: 12px;
-  margin: 8px;
+  padding: 16px;
+  margin: 14px;
   background-color: white;
   height: fit-content;
   display: flex;
@@ -53,12 +53,12 @@
 }
 
 .podcast-option {
-  padding: 4px 8px;
+  padding: 4px 4px 0px 0px;
   margin-right: 6px;
   margin-top: 2px;
   border-radius: 25px;
-  background-color: rgba(223, 223, 223, 0.4);
-  color: rgb(30, 30, 30);
+  color: grey;
+  font-size: 0.9em;
 }
 
 .z-index-2 {

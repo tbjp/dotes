@@ -37,6 +37,15 @@ class GeneratePodcastJob < ApplicationJob
     summary_title = JSON.parse(response)
 
     podcast.update(summary: summary_title["summary"], title: summary_title["title"])
+
+    # put flashcard job here
+    response = GenerateSummary.call(podcast)
+    flashcard = JSON.parse(response)
+
+    #change front/back to column names
+    podcast.update(front: flashcard["front"], back: flashcard["back"])
+
+
     podcast.errors.full_messages.each do |message|
       puts message
     end
