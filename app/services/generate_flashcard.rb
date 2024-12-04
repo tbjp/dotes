@@ -38,6 +38,17 @@ class GenerateSummary
     i will study later this week
     see you next time
     I went to the race track last month
+
+    Here are some of the examples of the template the target language and user language will make up
+    - 総理大臣, for Prime Minister.
+    - 内閣, for Cabinet.
+    - 国会, for Parliament.
+    - 国会議事堂, for National Diet Building.
+    - 修理する, meaning "to repair"
+    - 点検する, meaning "to inspect"
+    - 運転する, meaning "to drive"
+
+    # the json will be divided by target language and the back side will be all user language with in the quotes ""
     FLASHCARD
 
     user_prompt = "Please make flashcards based on all the #{podcast.user_language.language} used in the poscast, please inlcude the #{podcast.native_language} translation, #{podcast.transcript}"
