@@ -1,8 +1,8 @@
 <div class="swiper-slide left">
   <div class="d-flex flex-column justify-content-between">
     <div class="podcast-title text-center text-white fw-light fs-3 max-width-450 pt-3">
-      <% if @podcast.title %>
-        <%= @podcast.title %> <br>
+      <% if podcast.title %>
+        <%= podcast.title %> <br>
         Flashcards
       <% else %>
         <%= render "shared/loading_bar" %>
@@ -12,18 +12,25 @@
   <div class="progress-bar">
     bar showing progress smth/smth
   </div>
-  <div class="window-50 glassmorph my-2 p-4">
+  <div class="window-80 glassmorph my-2 p-4 flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="https://avatars.githubusercontent.com/u/179129138?v=4" alt="Avatar" style="width:250px;height:150px;">
+      </div>
+      <div class="flip-card-back">
+        <h1>Bartek</h1>
+        <p>he gave up</p>
+        <p>he doesn't know how to code</p>
+      </div>
+    </div>
     this is a flipping card with a word
     <p class="overflow-auto fw-light">
-      <% if @podcast.transcript %>
+      <% if podcast.transcript %>
         Please kindly kill me
       <% else %>
         <%= render "shared/loading_bar" %>
       <% end %>
     </p>
-  </div>
-  <div class="window-25 glassmorph my-2 p-4">
-    and this is a flipper button
   </div>
   <div class="text-white d-flex window-5 justify-content-end">
     <div class="align-self-center">
