@@ -3,19 +3,31 @@
     <div class="podcast-title text-center text-white fw-light fs-3 max-width-450 pt-3">
       <% if @podcast.title %>
         <%= @podcast.title %> <br>
-         Flashcards
+        Flashcards
       <% else %>
         <%= render "shared/loading_bar" %>
       <% end %>
     </div>
   </div>
-  <div class="window glassmorph my-2 p-4">
+  <div class="progress-bar">
+    bar showing progress smth/smth
+  </div>
+  <div class="window-50 glassmorph my-2 p-4">
+    this is a flipping card with a word
     <p class="overflow-auto fw-light">
       <% if @podcast.transcript %>
-        aaaaaasdfkasdfbnaiusfnadkjfjnasdjkfns
+        Please kindly kill me
       <% else %>
         <%= render "shared/loading_bar" %>
       <% end %>
     </p>
+  </div>
+  <div class="window-25 glassmorph my-2 p-4">
+    and this is a flipper button
+  </div>
+  <div class="text-white d-flex window-5 justify-content-end">
+    <div class="align-self-center">
+      Transcript >>
+    </div>
   </div>
 </div>

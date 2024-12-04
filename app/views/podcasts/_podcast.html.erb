@@ -6,7 +6,7 @@
 <div class="swiper w-100 flex-grow-1 pb-3" data-controller="swiper" id="podcast">
   <div class="swiper-wrapper">
     <div class="swiper-slide left">
-      <%= render "flashcard" %>
+      <%= render "podcasts/flashcard" %>
     </div>
     <div class="swiper-slide middle">
       <div class="d-flex flex-column justify-content-between">
@@ -28,17 +28,18 @@
           <% end %>
         </p>
       </div>
-      <!--div class="text-white d-flex window-5 justify-content-between">
+      <div class="text-white d-flex window-5 justify-content-between">
         <div class="align-self-center">
           << Flashcards
         </div>
-        <div class="align-self-center">
-          Details >>
+            <div class="align-self-center">
+              Details >>
+            </div>
+          </div>
         </div>
-      </div -->
-    </div>
-    <div class="swiper-slide right">
-      <%= render "details" %>
+        <div class="swiper-slide right">
+          <%= render "details" %>
+        </div>
+      </div>
     </div>
   </div>
-</div>

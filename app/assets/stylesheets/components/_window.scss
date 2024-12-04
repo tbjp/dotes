@@ -16,6 +16,24 @@
   width: calc(100% - 24px);
 }
 
+.window-50 {
+  border-radius: 25px;
+  height: 50%;
+  overflow-y: scroll;
+  max-width: 450px;
+  margin: 0 auto;
+  width: calc(100% - 24px);
+}
+
+.window-25 {
+  border-radius: 25px;
+  height: 25%;
+  overflow-y: scroll;
+  max-width: 450px;
+  margin: 0 auto;
+  width: calc(100% - 24px);
+}
+
 .window-5 {
   height: 5%;
   max-width: 450px;
