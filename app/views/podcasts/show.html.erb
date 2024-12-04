@@ -1,4 +1,3 @@
 <%= turbo_stream_from "podcast_#{@podcast.id}" %>
-<%= turbo_stream_from "podcast_#{@podcast.id}_audio" %>
 <%= render "podcast", podcast: @podcast, flashcard: @flashcard %>
 <%= render "audio", podcast: @podcast %>

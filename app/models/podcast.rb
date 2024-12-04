@@ -23,27 +23,25 @@ class Podcast < ApplicationRecord
   }
   STATUS = ["new", "failed", "completed"]
 
-  after_update_commit :broadcast_podcast
-  after_update_commit :broadcast_audio
+  # after_update_commit :broadcast_podcast
+  # after_update_commit :broadcast_audio
 
   def incomplete_flashcard
-    self.flashcards.select { |flashcard| !flashcard.correct }.sample
+    self.flashcards.where.not(correct: true).sample
   end
-
-  private
 
   def broadcast_podcast
     broadcast_replace_to "podcast_#{self.id}",
                         partial: "podcasts/podcast",
-                        target: "podcast",
-                        locals: { podcast: self }
+                        locals: { podcast: self, flashcard: incomplete_flashcard },
+                        target: "podcast"
   end
 
   def broadcast_audio
-    broadcast_replace_to "podcast_#{self.id}_audio",
+    broadcast_replace_to "podcast_#{self.id}",
                         partial: "podcasts/audio",
-                        target: "audio",
-                        locals: { podcast: self }
+                        locals: { podcast: self, flashcard: incomplete_flashcard },
+                        target: "audio"
   end
 
 end
