@@ -5,54 +5,21 @@
 <% end %>
 <div class="swiper w-100 flex-grow-1 pb-3" data-controller="swiper" id="podcast">
   <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <div class="window-show d-flex flex-column justify-content-between">
-        <div class="podcast-card-but-not-really glassmorph flex-column">
-          <div class="podcast-card-left w-100">
-            <div class="podcast-card-options p-2">
-              <div class="podcast-option fw-light">
-                <%= podcast.level %>
-              </div>
-              <div class="podcast-option fw-light">
-                <%= podcast.learning_style %>
-              </div>
-              <div class="podcast-option fw-light">
-                <%= podcast.created_at.strftime("%e/%m/%Y") %>
-              </div>
-            </div>
-            <div class="fw-light p-3 host-sum">
-              <% if podcast.summary %>
-                <%= podcast.summary  %>
-              <% else %>
-                <%= render "shared/loading_bar" %>
-              <% end %>
-            </div>
-          </div>
-          <div class="podcast-card-right d-flex w-100">
-            <div class="mx-1">
-              <%= image_tag "#{podcast.host.first_name.downcase}.png", class: "avatar m-2", alt: podcast.host.first_name %>
-            </div>
-            <div class="fw-light p-2 host-desc">
-              Your host, <%= podcast.host.first_name %>, is a <%= podcast.host.age %> years old <%= podcast.host.nationality %> national. <%= podcast.host.likes %> <%= podcast.host.work %>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="swiper-slide left">
+      <%= render "podcasts/flashcard" %>
+    </div>
+    <div class="swiper-slide middle">
       <div class="d-flex flex-column justify-content-between">
-        <div class="text-white text-center">
-          Swipe to see the transcript >>
-        </div>
-        <div class="podcast-title text-center text-white fw-light fs-3 max-width-450">
+        <div class="podcast-title text-center text-white fw-light fs-3 max-width-450 pt-3">
           <% if podcast.title %>
-            <%= podcast.title  %>
+            <%= podcast.title %> <br>
+            Transcript
           <% else %>
             <%= render "shared/loading_bar" %>
           <% end %>
         </div>
       </div>
-    </div>
-    <div class="swiper-slide">
-      <div class="window glassmorph my-2 p-4">
+      <div class="window-80 glassmorph my-2 p-4">
         <p class="overflow-auto fw-light">
           <% if podcast.transcript %>
             <%= simple_format(podcast.transcript)  %>
@@ -61,6 +28,18 @@
           <% end %>
         </p>
       </div>
+      <div class="text-white d-flex window-5 justify-content-between">
+        <div class="align-self-center">
+          << Flashcards
+        </div>
+            <div class="align-self-center">
+              Details >>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide right">
+          <%= render "details" %>
+        </div>
+      </div>
     </div>
   </div>
-</div>
