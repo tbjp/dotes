@@ -1,6 +1,7 @@
 class Podcast < ApplicationRecord
   has_one_attached :audio
 
+  has_many :flashcards, dependent: :destroy
   belongs_to :user_language
   belongs_to :host
 
@@ -8,7 +9,7 @@ class Podcast < ApplicationRecord
   validates :learning_style, presence: true
   validates :user_prompt, presence: true
 
-  attribute :status, :string, default: "new"
+  # attribute :status, :string, default: "new"
 
   LANGUAGES = ["English", "Polish", "Japanese"]
   LEARNING = ["Serious", "Casual", "Balanced", "Calm", "Funny", "Charming"]
