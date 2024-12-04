@@ -29,9 +29,25 @@ class GeneratePodcastJob < ApplicationJob
 
     podcast.audio.attach(io: audio_io, filename: 'podcast_audio.mp3', content_type: 'audio/mpeg')
 
-    doc = Loofah.html5_document(transcript)
-    scrubbed_doc = doc.text(encode_special_chars: false)
-    podcast.update(transcript: scrubbed_doc)
+
+    doc = Nokogiri::HTML.fragment(transcript)
+
+    doc.css('voice').each do |voice_tag|
+      span_tag = Nokogiri::XML::Node.new('span', doc)
+      span_tag['class'] = 'target_language_text'
+      span_tag.content = voice_tag.content
+      voice_tag.replace(span_tag)
+    end
+
+    doc.traverse do |node|
+      if node.element? && node.name != 'span'
+        node.replace(node.content)
+      end
+    end
+
+    # doc = Loofah.html5_document(transcript)
+    # scrubbed_doc = doc.text(encode_special_chars: false)
+    podcast.update(transcript: doc.to_html)
 
     response = GenerateSummary.call(podcast)
     summary_title = JSON.parse(response)
