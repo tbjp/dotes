@@ -1,0 +1,21 @@
+<div class="swiper-slide left">
+  <div class="d-flex flex-column justify-content-between">
+    <div class="podcast-title text-center text-white fw-light fs-3 max-width-450 pt-3">
+      <% if @podcast.title %>
+        <%= @podcast.title %> <br>
+         Flashcards
+      <% else %>
+        <%= render "shared/loading_bar" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="window glassmorph my-2 p-4">
+    <p class="overflow-auto fw-light">
+      <% if @podcast.transcript %>
+        aaaaaasdfkasdfbnaiusfnadkjfjnasdjkfns
+      <% else %>
+        <%= render "shared/loading_bar" %>
+      <% end %>
+    </p>
+  </div>
+</div>

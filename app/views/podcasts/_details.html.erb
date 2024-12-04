@@ -1,0 +1,42 @@
+<div class="window-show d-flex flex-column justify-content-between">
+  <div class="d-flex flex-column justify-content-between">
+    <div class="podcast-title text-center text-white fw-light fs-3 max-width-450 pt-3">
+      <% if @podcast.title %>
+        <%= @podcast.title %> <br>
+        Details
+      <% else %>
+        <%= render "shared/loading_bar" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="podcast-card-but-not-really glassmorph flex-column">
+    <div class="podcast-card-left w-100">
+      <div class="podcast-card-options p-2">
+        <div class="podcast-option fw-light">
+          <%= @podcast.level %>
+        </div>
+        <div class="podcast-option fw-light">
+          <%= @podcast.learning_style %>
+        </div>
+        <div class="podcast-option fw-light">
+          <%= @podcast.created_at.strftime("%e/%m/%Y") %>
+        </div>
+      </div>
+      <div class="fw-light p-3 host-sum">
+        <% if @podcast.summary %>
+          <%= @podcast.summary  %>
+        <% else %>
+          <%= render "shared/loading_bar" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="podcast-card-right d-flex w-100">
+      <div class="mx-1">
+        <%= image_tag "#{@podcast.host.first_name.downcase}.png", class: "avatar m-2", alt: @podcast.host.first_name %>
+      </div>
+      <div class="fw-light p-2 host-desc">
+        Your host, <%= @podcast.host.first_name %>, is a <%= @podcast.host.age %> years old <%= @podcast.host.nationality %> national. <%= @podcast.host.likes %> <%= @podcast.host.work %>
+      </div>
+    </div>
+  </div>
+</div>

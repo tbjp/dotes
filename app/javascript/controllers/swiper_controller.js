@@ -7,6 +7,7 @@ export default class extends Controller {
     const swiper = new Swiper(this.element, {
       // Optional parameters
       loop: false,
+      initialSlide: 1
     });
   }
 }
