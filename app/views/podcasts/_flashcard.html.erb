@@ -15,37 +15,23 @@
   <div class="flip-card window">
     <div class="flip-card-inner" data-controller="flip-card" data-action="click->flip-card#flip">
       <div class="flip-card-front glassmorph window p-5">
-        WHAT DOES 'CIPOWATA POGODA NA ZEWNATRZ' MEAN IN POLISH??????
+        <%= flashcard.target_vocab if flashcard %>
       </div>
       <div class="flip-card-back glassmorph window p-5">
-        <%#= simple_form_for @flashcard do |f| %>
-          <%#= f.input %>
-          <div>
-            'IT'S PUSSYING OUTSIDE'
-          </div>
-          <div>
-            DID YOU GET IT RIGHT?????
-          </div>
-          <button data-flip-card-target="yes">
-            YES
-          </button>
-          <button data-flip-card-target="no">
-            NAH
-          </button>
-          <%# end %>
-        </div>
+        <%= render 'flashcard_form', flashcard: flashcard %>
       </div>
-      <p class="overflow-auto fw-light">
-        <% if podcast.title %>
-          <%= podcast.title %>
-        <% else %>
-          <%= render "shared/loading_bar" %>
-        <% end %>
-      </p>
     </div>
-    <div class="text-white d-flex window-5 justify-content-end">
-      <div class="align-self-center">
-        Transcript >>
-      </div>
+    <p class="overflow-auto fw-light">
+      <% if podcast.title %>
+        <%= podcast.title %>
+      <% else %>
+        <%= render "shared/loading_bar" %>
+      <% end %>
+    </p>
+  </div>
+  <div class="text-white d-flex window-5 justify-content-end">
+    <div class="align-self-center">
+      Transcript >>
     </div>
   </div>
+</div>
