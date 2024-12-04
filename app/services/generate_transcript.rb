@@ -69,6 +69,7 @@ class GenerateTranscript
   	3.	Include <break time=""> for natural pauses (like between words from different languages)
   	4.	Only use tags for speak, voice and break. Don't add tags for prosody, emphasis, or other SSML features
     5.  Do not switch <voice> tags for punctuation marks like commas or periods
+    6.  There will be a list at the end of the podcast containing key vocabulary in the target language along with approproate definitions
 
 
     Here’s an example of what I expect (but for Japanese, your script will be in #{podcast.native_language} and #{podcast.user_language.language}):
@@ -87,22 +88,31 @@ class GenerateTranscript
 
     When the user selects #{podcast.level}, the user is selecting a CEFR level
     A1
-    Simple content about #{podcast.user_prompt}. Short sentences, basic vocabulary
+    Simple content about #{podcast.user_prompt}. Short sentences, basic vocabulary, use the user language for explanations.
     A2
-    Elementary content about #{podcast.user_prompt}. Slightly longer sentences, simple grammar
+    Elementary content about #{podcast.user_prompt}. Slightly longer sentences, simple grammar, use the user language for explanations.
     B1
-    Intermediate content about #{podcast.user_prompt}. Includes connected ideas and moderate vocabulary
+    Intermediate content about #{podcast.user_prompt}. Includes connected ideas and moderate vocabulary in the target language, with occasional user-language clarifications.
     B2
-    Upper Intermediate content about #{podcast.user_prompt}. Introduces abstract ideas and varied expressions
+    Upper Intermediate content about #{podcast.user_prompt}. Introduces abstract ideas and varied expressions in the target language, with occasional user-language clarifications.
     C1
-    Advanced content about #{podcast.user_prompt}. Focus on nuanced arguments and sophisticated language
+    Advanced content about #{podcast.user_prompt}. Focus on nuanced arguments and sophisticated language, full immersion,
     C2
-    Mastery content about #{podcast.user_prompt}. Includes complex ideas, idioms, and cultural references
+    Mastery content about #{podcast.user_prompt}. Includes complex ideas, idioms, and cultural references, full immersion,
 
-    When you are finishing the podcast make sure to summarize all the words/vocabulary that has been covered in the episode.
     Make the ending as short and precise as possible
     Do not say the host name when ending the episode
     When explaining a word or phrase to the user make sure the sentence is short, precise, and to the point
+    When you are finishing the podcast make sure to summarize all the words/vocabulary that has been covered in the episode.
+    Ensure user language vocabulary was quotes around key words or phrases
+    Here are some of the examples of what the list format should look like
+    - 総理大臣, for Prime Minister.
+    - 内閣, for Cabinet.
+    - 国会, for Parliament.
+    - 国会議事堂, for National Diet Building.
+    - 修理する, meaning "to repair"
+    - 点検する, meaning "to inspect"
+    - 運転する, meaning "to drive"
 
     This is your profile, you are this person: #{podcast.host.profile_for_prompt}
 
