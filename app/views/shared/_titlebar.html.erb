@@ -1,17 +1,17 @@
 <% if user_signed_in? %>
-  <div class='mama-div position-relative'>
-    <div class="dropdown d-inline-flex gap-2 ms-2 mt-2 position-absolute top-0 start-0" style="top: 5px !important;">
+  <div class='mama-div position-relative d-flex justify-content-center'>
+    <div class="dropdown d-inline-flex gap-2 ms-2 mt-1 position-absolute top-0 start-0" style="top: 5px !important;">
       <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
         <% if current_user.selected_user_language %>
           <%= image_tag "#{current_user.selected_user_language.language}.png", alt: "#{current_user.selected_user_language.language} Mountain", class: 'flag-icon rounded-4 box-shadow-sm' %>
         <% end %>
       </div>
-      <ul class="dropdown-menu glassmorph rounded-5 border-0"> <!-- why is this not a comment -->
-        <div class="d-flex">
+      <ul class="dropdown-menu glassmorph rounded-5 border-0">
+        <div class="d-flex justify-content-center">
           <% current_user.user_languages.pluck(:language).each do |language| %>
             <% if current_user.selected_user_language.language != language %>
               <li>
-                <div class='dropdown-item'>
+                <div class='dropdown-item pb-3'>
                   <%= simple_form_for current_user do |f| %>
                     <%= f.input :selected_user_language_id, as: :hidden, input_html: { value: current_user.user_languages.find_by(language: language).id } %>
                     <%= f.submit "", style: "background: url(#{asset_url(language + '.png')}); background-position: center; background-size: 40px 30px; border: none; border-radius: 5px; width: 40px; height: 30px;" %>
@@ -24,9 +24,10 @@
       </ul>
     </div>
     <!-- <h1 class="top-header center"><%= content_for(:title) ? content_for(:title) : "Dotes" %></h1> -->
-    <%= image_tag 'dotes.svg' %>
+    <%= image_tag 'dotes.svg', class: 'dotes-logo top-header' %>
   </div>
 </div>
 <% else %>
-  <h1 class="top-header center"><%= content_for(:title) ? content_for(:title) : "Dotes" %></h1>
+  <!-- <h1 class="top-header center"><%= content_for(:title) ? content_for(:title) : "Dotes" %></h1> -->
+  <%= image_tag 'dotes.svg', class: 'dotes-logo top-header' %>
 <% end %>

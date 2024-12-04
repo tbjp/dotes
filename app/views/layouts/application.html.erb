@@ -19,7 +19,9 @@
       <% else %>
         <div class="d-flex flex-column justify-content-between h-100">
         <% end %>
-        <%= render "shared/titlebar" %>
+        <% unless current_page?(controller: "/pages", action: "home") %>
+          <%= render "shared/titlebar" %>
+        <% end %>
         <div class="flex-grow-1 overflow-auto d-flex flex-column">
           <!-- <div data-fade-target="overlay" id="fader" class="position-absolute"></div> -->
           <%= yield %>
