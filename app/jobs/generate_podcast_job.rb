@@ -28,15 +28,18 @@ class GeneratePodcastJob < ApplicationJob
     end
 
     podcast.audio.attach(io: audio_io, filename: 'podcast_audio.mp3', content_type: 'audio/mpeg')
+    podcast.broadcast_audio
 
     doc = Loofah.html5_document(transcript)
     scrubbed_doc = doc.text(encode_special_chars: false)
     podcast.update(transcript: scrubbed_doc)
+    podcast.broadcast_podcast
 
     response = GenerateSummary.call(podcast)
     summary_title = JSON.parse(response)
 
     podcast.update(summary: summary_title["summary"], title: summary_title["title"])
+    podcast.broadcast_podcast
 
     GenerateFlashcard.call(podcast)
 
