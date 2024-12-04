@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_02_073755) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_04_015920) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_02_073755) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "flashcards", force: :cascade do |t|
+    t.string "target_vocab"
+    t.string "native_definition"
+    t.boolean "correct", default: false
+    t.bigint "podcast_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["podcast_id"], name: "index_flashcards_on_podcast_id"
   end
 
   create_table "hosts", force: :cascade do |t|
@@ -238,6 +248,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_02_073755) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "flashcards", "podcasts"
   add_foreign_key "podcasts", "hosts"
   add_foreign_key "podcasts", "user_languages"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
