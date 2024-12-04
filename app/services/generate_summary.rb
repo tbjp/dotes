@@ -37,6 +37,7 @@ class GenerateSummary
                   {role: "system", content: summary_instructions},
                   {role: "user", content: user_prompt}
                 ]
+                temperature: 1,
     })
     puts chatgpt_response
     return chatgpt_response["choices"][0]["message"]["content"]
