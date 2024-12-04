@@ -1,0 +1,18 @@
+<% if flashcard.nil? %>
+  <h1>dasklfhsdfhjsa</h1>
+<% else %>
+  <%= simple_form_for(flashcard, html: { data: { flip_card_target: 'form'}}) do |f| %>
+    <div>
+      <%= flashcard.native_definition %>
+    </div>
+    <div>
+      DID YOU GET IT RIGHT?????
+    </div>
+    <button data-flip-card-target="yes" data-action="click->flip-card#correct">
+      YES
+    </button>
+    <button data-flip-card-target="no">
+      NAH
+    </button>
+  <% end %>
+<% end %>

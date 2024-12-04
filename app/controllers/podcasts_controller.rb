@@ -10,6 +10,7 @@ class PodcastsController < ApplicationController
   def show
     @podcast = Podcast.find(params[:id])
     @host = @podcast.host
+    @flashcard = @podcast.incomplete_flashcard
   end
 
   def new
@@ -51,12 +52,10 @@ class PodcastsController < ApplicationController
     if @podcast.save
       # transcript = GenerateText.call(current_user, @podcast) instead of calling the generatetext we call the job
       GeneratePodcastJob.perform_later(current_user, @podcast)
-      if @podcast.save
-        redirect_to podcast_path(@podcast)
-      else
-        @user_language = current_user.selected_user_language
-        render :new, status: :unprocessable_entity
-      end
+      redirect_to podcast_path(@podcast)
+    else
+      @user_language = current_user.selected_user_language
+      render :new, status: :unprocessable_entity
     end
   end
 

@@ -49,5 +49,6 @@ class GenerateFlashcard
       flashcard_instance = Flashcard.new(target_vocab: flashcard["word"], native_definition: flashcard["definition"], podcast_id: podcast.id)
       flashcard_instance.save
     end
+    podcast.broadcast_podcast
   end
 end

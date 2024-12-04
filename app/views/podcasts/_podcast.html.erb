@@ -1,12 +1,7 @@
-<% if podcast.status == 'failed'  %>
-  <script type="text/javascript">
-    window.location.href="/podcasts/new"  // put your correct path in a string here
-  </script>
-<% end %>
 <div class="swiper w-100 flex-grow-1 pb-3" data-controller="swiper" id="podcast">
   <div class="swiper-wrapper">
     <div class="swiper-slide left d-flex flex-column">
-      <%= render "podcasts/flashcard", podcast: podcast %>
+      <%= render "podcasts/flashcard", podcast: podcast, flashcard: podcast.incomplete_flashcard %>
     </div>
     <div class="swiper-slide middle d-flex flex-column">
       <div class="d-flex flex-column justify-content-between">
