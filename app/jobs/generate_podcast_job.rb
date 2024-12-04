@@ -39,15 +39,14 @@ class GeneratePodcastJob < ApplicationJob
       voice_tag.replace(span_tag)
     end
 
-    doc.traverse do |node|
-      if node.element? && node.name != 'span'
-        node.replace(node.content)
-      end
-    end
+    puts "--Transcript before scrubbing--"
+    puts doc.to_html
 
-    # doc = Loofah.html5_document(transcript)
-    # scrubbed_doc = doc.text(encode_special_chars: false)
-    podcast.update(transcript: doc.to_html)
+    scrubbed_doc = Loofah.fragment(doc.to_html).scrub!(:strip).scrub!(:prune).to_html
+    puts "--Transcript after scrubbing--"
+    puts scrubbed_doc
+
+    podcast.update(transcript: scrubbed_doc)
 
     response = GenerateSummary.call(podcast)
     summary_title = JSON.parse(response)
