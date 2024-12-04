@@ -58,7 +58,7 @@ class GenerateTranscript
     Level: #{podcast.level}
     Learning Style: #{podcast.learning_style}
 
-    The podcast must be 800 words long, give many examples with the same vocabulary and grammar. It is spoken as if you were actually talking into a microphone to record a podcast.
+    The podcast must be 700 words long, give many examples with the same vocabulary and grammar. It is spoken as if you were actually talking into a microphone to record a podcast.
     Write a transcript in SSML for Google Cloud TTS, your whole response will be directly sent to the API.
 
     Generate an SSML script for a Google Cloud Text-to-Speech podcast where a single speaker speaks interchangeably in English and Japanese. The speaker uses specific phrases or words from one language within sentences of the other language.
