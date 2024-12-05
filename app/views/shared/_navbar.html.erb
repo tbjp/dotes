@@ -21,7 +21,7 @@
       <div class="flex-grow-1 mx-2">
         <button type="submit" form="new_user" class="btn nav-btn nav-btn-lg glassmorph py-2">Sign up</button>
       </div>
-    <% elsif current_page?(new_podcast_path) %>
+    <% elsif current_page?(new_podcast_path) || params[:controller] == "podcasts" && params[:action] == "create" %>
       <div class="flex-grow-1 mx-2">
         <button type="submit" form="new_podcast" class="btn nav-btn nav-btn-lg glassmorph py-2">Generate!</button>
       </div>
@@ -30,6 +30,7 @@
         <%= link_to "Back", podcasts_path, class: "btn nav-btn nav-btn-lg glassmorph py-2", data: {action:"click->fade#fadeIn"} %>
       </div>
     <% else %>
+      <% raise %>
       <div class="flex-grow-1 mx-2">
         <%= link_to "place", podcasts_path, class: "btn nav-btn glassmorph py-2", data: {action:"click->fade#fadeIn"} %>
       </div>
