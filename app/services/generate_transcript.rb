@@ -69,7 +69,7 @@ class GenerateTranscript
   	4.	Only use tags for speak, voice and break. Don't add tags for prosody, emphasis, or other SSML features
     5.  Do not switch <voice> tags for punctuation marks like commas or periods
     6.  There will be a list at the end of the podcast containing key vocabulary in the target language along with approproate definitions
-    7.  Target language will phase out the native language as the level or difficulty increases
+    7.  Target language will increase and the native language decrease as the level or difficulty increases
     8.  Do not end the podcast with the target language
 
 
