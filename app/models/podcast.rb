@@ -41,4 +41,9 @@ class Podcast < ApplicationRecord
                         target: "audio"
   end
 
+  def flashcard_completion_percentage
+    return 0 if flashcards.empty?
+
+    (flashcards.where(correct: true).count.fdiv(flashcards.count) * 100).round
+   end
 end

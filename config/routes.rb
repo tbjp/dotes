@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
-  resources :podcasts, only: %i[index show new create destroy]
+  resources :podcasts, only: %i[index show new create destroy] do
+    member do
+      patch :flashcard_reset
+    end
+  end
   resources :users, only: [:update]
   resources :flashcards, only: [:update]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -65,6 +65,12 @@ class PodcastsController < ApplicationController
     redirect_to podcasts_path
   end
 
+  def flashcard_reset
+    @podcast = Podcast.find(params[:id])
+    @podcast.flashcards.update_all(correct: false)
+    redirect_to podcast_path(@podcast)
+  end
+
   private
 
   def podcast_params
