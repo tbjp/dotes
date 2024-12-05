@@ -5,6 +5,7 @@
       <div class="flashcard-prompt align-content-center flex-grow-1">
         <%= flashcard.target_vocab %>
       </div>
+      <div class="text-secondary">Flip to see the answer</div>
     <% else %>
       <%= simple_form_for(podcast, url: flashcard_reset_podcast_path(podcast)) do |f| %>
         <%= f.submit "RESET", class: "btn btn-success rounded-pill p-4 mx-2 mt-5" %>

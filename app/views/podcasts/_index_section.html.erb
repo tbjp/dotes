@@ -1,0 +1,31 @@
+<% podcasts.each do |podcast| %>
+  <div class="podcast-card">
+    <div class="podcast-card-left">
+      <div class="podcast-title pb-1">
+        <%= podcast.title %>
+      </div>
+      <div class="fw-light podcast-card-summary">
+        <%= podcast.summary %>
+      </div>
+      <div class="podcast-card-options mt-2">
+        <div class="podcast-option fw-light">
+          <%= podcast.level %>
+        </div>
+        <div class="podcast-option fw-light">
+          <%= podcast.created_at.strftime("%b %d, %Y") %>
+        </div>
+        <div class="podcast-option fw-light">
+          <span class="mx-2">⏵</span><%= podcast.duration %>
+        </div>
+      </div>
+    </div>
+    <div class="podcast-card-right d-flex flex-column align-items-center justify-content-between py-1 z-index-2">
+      <%= link_to podcast_path(podcast), data: {
+            turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+        <i class="fas fa-times text-dark-grey hover red-hover fs-5 ps-2" type="button"></i>
+      <% end %>
+      <%= image_tag "#{podcast.host.first_name.downcase}.png", class: "avatar", alt: podcast.host.first_name %>
+    </div>
+    <%= link_to "", podcast_path(podcast), class: 'card-link' %>
+  </div>
+<% end %>

@@ -33,8 +33,8 @@
           <%= render "shared/loading_bar" %>
         <% end %>
       </div>
-      <div class="d-flex justify-content-between pb-3">
-        <div class="podcast-details-chunk">
+      <div class="d-flex pb-3">
+        <div class="podcast-details-chunk pe-5">
           <div class="podcast-details-label fw-light">
             Level
           </div>
@@ -42,7 +42,7 @@
             <%= podcast.level %>
           </div>
         </div>
-        <div class="podcast-details-chunk">
+        <div class="podcast-details-chunk pe-5">
           <div class="podcast-details-label fw-light">
             Learning Style
           </div>
@@ -52,10 +52,20 @@
         </div>
         <div class="podcast-details-chunk">
           <div class="podcast-details-label fw-light">
+            Duration
+          </div>
+          <div class="podcast-details-text">
+            <%= podcast.duration %>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex pb-3">
+        <div class="podcast-details-chunk pe-5">
+          <div class="podcast-details-label fw-light">
             Date
           </div>
           <div class="podcast-details-text">
-            <%= podcast.created_at.strftime("%e/%m/%Y") %>
+            <%= podcast.created_at.strftime("%b %d, %Y") %>
           </div>
         </div>
       </div>
