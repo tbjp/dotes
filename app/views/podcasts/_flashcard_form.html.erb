@@ -1,18 +1,26 @@
-<% if flashcard.nil? %>
-  <h1>dasklfhsdfhjsa</h1>
-<% else %>
-  <%= simple_form_for(flashcard, html: { data: { flip_card_target: 'form'}}) do |f| %>
-    <div>
-      <%= flashcard.native_definition %>
-    </div>
-    <div>
-      DID YOU GET IT RIGHT?????
-    </div>
-    <button data-flip-card-target="yes" data-action="click->flip-card#correct">
-      YES
-    </button>
-    <button data-flip-card-target="no">
-      NAH
-    </button>
-  <% end %>
-<% end %>
+ 
+<div class="flip-card-inner" data-controller="flip-card" data-action="click->flip-card#flip">
+  <div class="flip-card-front glassmorph window p-5">
+    <%= flashcard.target_vocab if flashcard %>
+  </div>
+  <div class="flip-card-back glassmorph window p-5">
+    <% if flashcard.nil? %>
+      <h1>dasklfhsdfhjsa</h1>
+    <% else %>
+      <%= simple_form_for(flashcard, html: { data: { flip_card_target: 'form'}}) do |f| %>
+        <div>
+          <%= flashcard.native_definition %>
+        </div>
+        <div>
+          DID YOU GET IT RIGHT?????
+        </div>
+        <button data-flip-card-target="yes" data-action="click->flip-card#correct">
+          YES
+        </button>
+        <button data-flip-card-target="no">
+          NAH
+        </button>
+      <% end %>
+    <% end %>
+  </div>
+</div>

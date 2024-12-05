@@ -22,7 +22,7 @@ export default class extends Controller {
       body: formData
     }).then(response => response.text())
       .then((data) => {
-        this.formTarget.outerHTML = data
+        this.element.outerHTML = data
         this.element.classList.toggle("flipped")
       })
 
