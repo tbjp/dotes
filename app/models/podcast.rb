@@ -49,7 +49,7 @@ class Podcast < ApplicationRecord
   end
 
   def duration
-    return "0m 00s" if self.audio.nil?
+    return "0m 00s" if self.audio&.metadata.nil?
 
     seconds = self.audio.metadata["duration"]
     minutes = (seconds / 60).round
