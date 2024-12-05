@@ -12,7 +12,11 @@ export default class extends Controller {
   correct(event) {
     event.preventDefault()
     const formData = new FormData()
-    formData.append("flashcard[correct]", true)
+    if (event.currentTarget.innerText == "YES") {
+      formData.append("flashcard[correct]", true)
+    } else {
+      formData.append("flashcard[correct]", false)
+    }
 
     fetch(this.formTarget.action, {
       method: "PATCH", // Could be dynamic with Stimulus values

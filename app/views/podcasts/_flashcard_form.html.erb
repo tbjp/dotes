@@ -1,14 +1,14 @@
 <div class="flip-card-inner" data-controller="flip-card" data-action="click->flip-card#flip">
-  <div class="flip-card-front glassmorph window-80 p-5 fs-1 text-center">
+  <div class="flip-card-front glassmorph window-50 p-5 fs-1 text-center">
     <% if flashcard %>
       <%= flashcard.target_vocab %>
     <% else %>
       <%= simple_form_for(podcast, url: flashcard_reset_podcast_path(podcast)) do |f| %>
-        <%= f.submit "RESET", class: "btn btn-primary" %>
+        <%= f.submit "RESET", class: "btn btn-success rounded-pill p-4 mx-2 mt-5" %>
       <% end %>
     <% end %>
   </div>
-  <div class="flip-card-back glassmorph window-80 p-5">
+  <div class="flip-card-back glassmorph window-50 p-5">
     <% if flashcard.nil? %>
       hello from the other side
     <% else %>
@@ -16,13 +16,13 @@
         <div class="fs-1 p-3 text-center">
           <%= flashcard.native_definition %>
         </div>
-        <div>
-          DID YOU GET IT RIGHT?????
+        <div class="p-3 mt-5">
+          DID YOU GET IT RIGHT? 🐴
         </div>
-        <button data-flip-card-target="yes" data-action="click->flip-card#correct">
+        <button data-flip-card-target="yes" type="button" data-action="click->flip-card#correct" class="btn btn-success rounded-pill p-4 mx-2 mt-5">
           YES
         </button>
-        <button data-flip-card-target="no">
+        <button data-flip-card-target="no" type="button" data-action="click->flip-card#correct" class="btn btn-outline-secondary rounded-pill p-4 mx-2 mt-5">
           NAH
         </button>
       <% end %>
