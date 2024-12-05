@@ -9,11 +9,12 @@
       <% end %>
     </div>
   </div>
-  <div class="progress-bar">
-    bar showing progress smth/smth
+  <div class="max-width-450">
+    <%= turbo_stream_from "podcast_#{podcast.id}_progress" %>
+    <%= render "flashcards/progress", podcast: podcast %>
   </div>
   <div class="flip-card window">
-    <%= render 'podcasts/flashcard_form', flashcard: flashcard %>
+    <%= render 'podcasts/flashcard_form', flashcard: flashcard, podcast: podcast %>
     <p class="overflow-auto fw-light">
       <% if podcast.title %>
         <%= podcast.title %>
