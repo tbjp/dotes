@@ -138,12 +138,13 @@ class GenerateTranscript
     Ensure the #{podcast.native_language} definition always has quotes around the key word(s) or phrases
 
     Here are some of the examples of what the list format should look like
-    総理大臣, meaning "Prime Minister"
-    内閣, meaning "Cabinet"
-    国会, meaning "Parliament"
+    <voice language="ja-JP" gender="#{gender}">総理大臣,</voice><break time="500ms"/> meaning "Prime Minister"
+    <voice language="ja-JP" gender="#{gender}">内閣,</voice><break time="500ms"/> meaning "Cabinet"
+    <voice language="ja-JP" gender="#{gender}">国会,</voice><break time="500ms"/> meaning "Parliament"
     国会議事堂, meaning "National Diet Building"
     修理する, meaning "to repair"
-    点検する, meaning "to inspect"
+    ハーバーフレイト, meaning "Harbor Freight"
+    きれいな, meaning "pretty"
     運転する, meaning "to drive"
     総理大臣, meaning "Prime Minister"
 

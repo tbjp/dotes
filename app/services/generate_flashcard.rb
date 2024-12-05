@@ -12,6 +12,7 @@ class GenerateFlashcard
     5.  When making the flashcards, remove any words that are not the target language or in quotes ""
 
     Here are some of the examples of the template the target language and user language will make up
+    #{podcast.user_language.language}, meaning "#{podcast.native_language}"
     総理大臣, meaning "Prime Minister"
     内閣, meaning "Cabinet"
     国会, meaning "Parliament"
