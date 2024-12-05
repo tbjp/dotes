@@ -25,12 +25,11 @@
       <div class="flex-grow-1 mx-2">
         <button type="submit" form="new_podcast" class="btn nav-btn nav-btn-lg glassmorph py-2">Generate!</button>
       </div>
-    <% elsif current_page?(controller: "/podcasts", action: "show") %>
+    <% elsif params[:controller] == "podcasts" && params[:action] == "show" %>
       <div class="flex-grow-1 mx-2">
         <%= link_to "Back", podcasts_path, class: "btn nav-btn nav-btn-lg glassmorph py-2", data: {action:"click->fade#fadeIn"} %>
       </div>
     <% else %>
-      <% raise %>
       <div class="flex-grow-1 mx-2">
         <%= link_to "place", podcasts_path, class: "btn nav-btn glassmorph py-2", data: {action:"click->fade#fadeIn"} %>
       </div>
