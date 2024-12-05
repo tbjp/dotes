@@ -13,27 +13,28 @@
           <% end %>
         </div>
       </div>
-      <div class="window-80 glassmorph my-2 p-4 flex-grow-1">
+      <div class="window-80 glassmorph my-2 p-4 pt-1 flex-grow-1">
         <p class="overflow-auto fw-light">
           <% if podcast.transcript %>
             <%= simple_format(podcast.transcript)  %>
           <% else %>
-            <%= render "shared/loading_bar" %>
-          <% end %>
-        </p>
-      </div>
-      <div class="text-white d-flex window-5 justify-content-between">
-        <div class="align-self-center">
-          << Flashcards
+            <div class="h-100 d-flex align-content-center align-items-center">
+              <%= render "shared/loading_bar" %>
+            <% end %>
+          </p>
         </div>
-            <div class="align-self-center">
-              Details >>
+        <div class="text-white d-flex window-5 justify-content-between">
+          <div class="align-self-center">
+            << Flashcards
+        </div>
+              <div class="align-self-center">
+                Details >>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="swiper-slide right">
-          <%= render "podcasts/details", podcast: podcast %>
+          <div class="swiper-slide right">
+            <%= render "podcasts/details", podcast: podcast %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
