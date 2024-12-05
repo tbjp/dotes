@@ -1,19 +1,20 @@
-<div class="swiper-slide left">
+<div class="swiper-slide left d-flex flex-column">
   <div class="d-flex flex-column justify-content-between">
     <div class="podcast-title text-center text-white fw-light fs-3 max-width-450 pt-1">
       <% if podcast.title %>
         <%= podcast.title %> <br>
-        Flashcards
       <% else %>
         <%= render "shared/loading_bar" %>
       <% end %>
     </div>
   </div>
-  <div class="max-width-450">
-    <%= turbo_stream_from "podcast_#{podcast.id}_progress" %>
-    <%= render "flashcards/progress", podcast: podcast %>
+  <div class="w-100 px-3">
+    <div>
+      <%= turbo_stream_from "podcast_#{podcast.id}_progress" %>
+      <%= render "flashcards/progress", podcast: podcast %>
+    </div>
   </div>
-  <div class="flip-card window">
+  <div class="flip-card window flex-grow-1">
     <%= render 'podcasts/flashcard_form', flashcard: flashcard, podcast: podcast %>
     <p class="overflow-auto fw-light">
       <% if podcast.title %>
