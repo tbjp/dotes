@@ -55,7 +55,7 @@ class PodcastsController < ApplicationController
       redirect_to podcast_path(@podcast)
     else
       @user_language = current_user.selected_user_language
-      render :new, status: :unprocessable_entity
+      redirect_to new_podcast_path
     end
   end
 

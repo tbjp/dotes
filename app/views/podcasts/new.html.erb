@@ -4,6 +4,7 @@
       label: "Choose one of the crafted topics",
       collection: @user_language.suggested_topics + ["Choose your own topic"],
       as: :radio_buttons,
+      selected: @podcast.user_prompt,
       input_html: { class: "tag-selector rounded-pill", data: { action: 'change->topic-selector#showInput' }},
       item_wrapper_class: 'tag-item' %>
     <input type="text" name="podcast[user_prompt]" data-topic-selector-target="userInput" class="d-none " id="podcast_user_prompt">
