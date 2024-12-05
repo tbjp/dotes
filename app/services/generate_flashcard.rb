@@ -9,19 +9,20 @@ class GenerateFlashcard
     2.  each individual flashcard will only display an individual word or phrase of the target language
     3.	each individual flashcard will display the definition in the user's native language
     4.  if you make a deck of flashcard, it will not repeat the same vocabulary multiple times, only once, or a 1:1 ratio
-
+    5.  When making the flashcards, remove any words that are not the target language or in quotes ""
 
     Here are some of the examples of the template the target language and user language will make up
-    - 総理大臣, for Prime Minister.
-    - 内閣, for Cabinet.
-    - 国会, for Parliament.
-    - 国会議事堂, for National Diet Building.
-    - 修理する, meaning "to repair"
-    - 点検する, meaning "to inspect"
-    - 運転する, meaning "to drive"
+    総理大臣, meaning "Prime Minister"
+    内閣, meaning "Cabinet"
+    国会, meaning "Parliament"
+    国会議事堂, meaning "National Diet Building"
+    修理する, meaning "to repair"
+    点検する, meaning "to inspect"
+    運転する, meaning "to drive"
 
     extract all key phrases or words in the transcript that belong to #{podcast.user_language.language} from the template above
     ensure that all extracted phrases or words have a definition in the #{podcast.native_language} from the template above
+    ensure that anything not in the target language or "" is never shown on the flashcard
     FLASHCARD
 
     user_prompt = "Please make flashcards based on key vocabulary from #{podcast.user_language.language} used in the poscast, please inlcude the #{podcast.native_language} translation as a definition, #{podcast.transcript}. Your output should consist of a JSON file only."
