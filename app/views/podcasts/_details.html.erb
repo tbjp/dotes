@@ -1,47 +1,79 @@
-<div class="window-show d-flex flex-column justify-content-between">
+<div class="window-show d-flex flex-column justify-content-between h-100">
   <div class="d-flex flex-column justify-content-between">
     <div class="podcast-title text-center text-white fw-light fs-3 max-width-450 pt-1">
       <% if podcast.title %>
         <%= podcast.title %> <br>
-        Details
       <% else %>
         <%= render "shared/loading_bar" %>
       <% end %>
     </div>
   </div>
-  <div class="podcast-card-but-not-really glassmorph flex-column">
-    <div class="podcast-card-left w-100">
-      <div class="podcast-card-options p-2">
-        <div class="podcast-option fw-light">
-          <%= podcast.level %>
-        </div>
-        <div class="podcast-option fw-light">
-          <%= podcast.learning_style %>
-        </div>
-        <div class="podcast-option fw-light">
-          <%= podcast.created_at.strftime("%e/%m/%Y") %>
-        </div>
+  <div class="podcast-card-but-not-really glassmorph flex-column p-4 pt-3 flex-grow-1">
+    <div class="w-100">
+      <div class="podcast-subtitle fw-light">
+        Podcast summary
       </div>
-      <div class="fw-light p-3 host-sum">
+      <div class="podcast-details-label fw-light">
+        Summary
+      </div>
+      <div class="pb-3 host-sum">
         <% if podcast.summary %>
           <%= podcast.summary  %>
         <% else %>
           <%= render "shared/loading_bar" %>
         <% end %>
       </div>
-    </div>
-    <div class="podcast-card-right d-flex w-100">
-      <div class="mx-1">
-        <%= image_tag "#{podcast.host.first_name.downcase}.png", class: "avatar m-2", alt: podcast.host.first_name %>
+      <div class="podcast-details-label fw-light">
+        User prompt
       </div>
-      <div class="fw-light p-2 host-desc">
-        Your host, <%= podcast.host.first_name %>, is a <%= podcast.host.age %> years old <%= podcast.host.nationality %> national. <%= podcast.host.likes %> <%= podcast.host.work %>
+      <div class="pb-3 host-sum">
+        <% if podcast.user_prompt %>
+          <%= podcast.user_prompt  %>
+        <% else %>
+          <%= render "shared/loading_bar" %>
+        <% end %>
+      </div>
+      <div class="d-flex justify-content-between pb-3">
+        <div class="podcast-details-chunk">
+          <div class="podcast-details-label fw-light">
+            Level
+          </div>
+          <div class="podcast-details-text">
+            <%= podcast.level %>
+          </div>
+        </div>
+        <div class="podcast-details-chunk">
+          <div class="podcast-details-label fw-light">
+            Learning Style
+          </div>
+          <div class="podcast-details-text">
+            <%= podcast.learning_style %>
+          </div>
+        </div>
+        <div class="podcast-details-chunk">
+          <div class="podcast-details-label fw-light">
+            Date
+          </div>
+          <div class="podcast-details-text">
+            <%= podcast.created_at.strftime("%e/%m/%Y") %>
+          </div>
+        </div>
+      </div>
+      <div class="podcast-details-label fw-light">
+        Host
+      </div>
+      <div class=" d-flex w-100">
+        <div class="py-2 host-desc">
+          Your host, <%= podcast.host.first_name %>, is a <%= podcast.host.age %> years old <%= podcast.host.nationality %> national. <%= podcast.host.likes %> <%= podcast.host.work %>
+        </div>
+        <div class="mx-1">
+          <%= image_tag "#{podcast.host.first_name.downcase}.png", class: "avatar m-2", alt: podcast.host.first_name %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="text-white d-flex window-5 justify-content-start">
-  <div class="align-self-center">
-    << Transcript
+  <div class="text-white d-flex window-5 justify-content-start">
+    <div class="align-self-center">
+      << Transcript
     </div>
-    </div>
+      </div>
