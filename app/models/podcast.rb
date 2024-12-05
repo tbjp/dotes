@@ -47,16 +47,4 @@ class Podcast < ApplicationRecord
     (flashcards.where(correct: true).count.fdiv(flashcards.count) * 100).round
 
   end
-
-  def duration
-    return "0m 00s" if self.audio&.metadata.nil?
-    return "0m 00s" unless self.audio.attached?
-
-    seconds = self.audio.metadata["duration"]
-    return "0m 00s" if seconds == 0 || seconds.nil?
-
-    minutes = (seconds / 60).round
-    remaining_seconds = (seconds % 60).round
-    "#{minutes}m #{remaining_seconds}s"
-  end
 end

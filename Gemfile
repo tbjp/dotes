@@ -57,6 +57,7 @@ gem "google-cloud-text_to_speech"
 gem "solid_queue"
 gem "solid_cable"
 gem "loofah"
+gem 'streamio-ffmpeg'
 
 group :development, :test do
   gem "dotenv-rails"

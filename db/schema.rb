@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_04_015920) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_05_102303) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -83,6 +83,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_04_015920) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
+    t.integer "duration"
     t.index ["host_id"], name: "index_podcasts_on_host_id"
     t.index ["user_language_id"], name: "index_podcasts_on_user_language_id"
   end
