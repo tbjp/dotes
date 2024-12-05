@@ -3,7 +3,13 @@ class PodcastsController < ApplicationController
     if current_user.selected_user_language.podcasts.empty?
       redirect_to new_podcast_path
     else
-      @podcasts = current_user.selected_user_language.podcasts.order(created_at: :desc)
+      podcasts = current_user.selected_user_language.podcasts.order(created_at: :desc)
+      # podcasts that were made today
+      @todays_podcasts = podcasts.select { |podcast| podcast.created_at.to_date == Date.today }
+      # podcast that were made this week but not today
+      @weeks_podcasts = podcasts.select { |podcast| podcast.created_at.to_date > Date.today - 7 && podcast.created_at.to_date != Date.today }
+      # all other podcasts
+      @other_podcasts = podcasts - @todays_podcasts - @weeks_podcasts
     end
   end
 
@@ -61,6 +67,7 @@ class PodcastsController < ApplicationController
 
   def destroy
     @podcast = Podcast.find(params[:id])
+    @podcast.flashcards.destroy_all
     @podcast.delete
     redirect_to podcasts_path
   end

@@ -16,13 +16,6 @@
   </div>
   <div class="flip-card window flex-grow-1">
     <%= render 'podcasts/flashcard_form', flashcard: flashcard, podcast: podcast %>
-    <p class="overflow-auto fw-light">
-      <% if podcast.title %>
-        <%= podcast.title %>
-      <% else %>
-        <%= render "shared/loading_bar" %>
-      <% end %>
-    </p>
   </div>
   <div class="text-white d-flex window-5 justify-content-end">
     <div class="align-self-center">

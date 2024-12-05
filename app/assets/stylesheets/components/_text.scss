@@ -10,6 +10,7 @@
 
 .text-dark-grey {
   color: $dark-gray;
+  opacity: 0.3;
 }
 
 .hover {
@@ -18,6 +19,7 @@
 
 .red-hover:hover {
   color: red;
+  opacity: 1;
 }
 
 .target_language_text {
