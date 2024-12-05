@@ -12,7 +12,7 @@ export default class extends Controller {
   correct(event) {
     event.preventDefault()
     const formData = new FormData()
-    if (event.currentTarget.innerText == "YES") {
+    if (event.currentTarget.innerText == "Yes") {
       formData.append("flashcard[correct]", true)
     } else {
       formData.append("flashcard[correct]", false)
