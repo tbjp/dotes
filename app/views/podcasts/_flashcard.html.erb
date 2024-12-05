@@ -13,14 +13,7 @@
     bar showing progress smth/smth
   </div>
   <div class="flip-card window">
-    <div class="flip-card-inner" data-controller="flip-card" data-action="click->flip-card#flip">
-      <div class="flip-card-front glassmorph window p-5">
-        <%= flashcard.target_vocab if flashcard %>
-      </div>
-      <div class="flip-card-back glassmorph window p-5">
-        <%= render 'podcasts/flashcard_form', flashcard: flashcard %>
-      </div>
-    </div>
+    <%= render 'podcasts/flashcard_form', flashcard: flashcard %>
     <p class="overflow-auto fw-light">
       <% if podcast.title %>
         <%= podcast.title %>
