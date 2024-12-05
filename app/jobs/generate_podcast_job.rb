@@ -53,7 +53,7 @@ class GeneratePodcastJob < ApplicationJob
     response = GenerateSummary.call(podcast)
     summary_title = JSON.parse(response)
 
-    podcast.update(summary: summary_title["summary"], title: summary_title["title"])
+    podcast.update(summary: summary_title["summary"].capitalize, title: summary_title["title"].capitalize)
     podcast.broadcast_podcast
 
     GenerateFlashcard.call(podcast)
