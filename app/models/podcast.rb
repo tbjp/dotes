@@ -55,3 +55,5 @@ class Podcast < ApplicationRecord
     "#{minutes}m #{remaining_seconds}s"
   end
 end
+
+# hi
