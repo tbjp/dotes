@@ -28,22 +28,10 @@ class GeneratePodcastJob < ApplicationJob
       audio_io.rewind
     end
 
-    podcast.audio.attach(io: audio_io, filename: 'podcast_audio.mp3', content_type: 'audio/mpeg', image_metadata: true)
-
-    # if podcast.audio.attached?
-    #   Tempfile.create(['podcast_audio', '.mp3']) do |tempfile|
-    #     tempfile.binmode
-    #     tempfile.write(audio_response)
-    #     tempfile.rewind
-
-    #     ffmpeg = FFMPEG::Movie.new(tempfile.path)
-    #     puts "Duration: #{ffmpeg.duration}"
-    #     podcast.duration = ffmpeg.duration.to_i
-    #     puts "Duration: #{ffmpeg.duration.to_i}"
-    #     podcast.save!
-    #   end
-    # end
-
+    blob = podcast.audio.attach(io: audio_io, filename: 'podcast_audio.mp3', content_type: 'audio/mpeg')
+    blob.analyze
+    podcast.duration = blob.metadata[:duration].to_i
+    podcast.save
     podcast.broadcast_audio
 
 

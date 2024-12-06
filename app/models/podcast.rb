@@ -47,4 +47,11 @@ class Podcast < ApplicationRecord
     (flashcards.where(correct: true).count.fdiv(flashcards.count) * 100).round
 
   end
+
+  def duration_formatted
+    return "0m 00s" if duration.nil?
+    minutes = duration / 60
+    seconds = duration % 60
+    "#{minutes}m #{seconds.to_s.rjust(2, '0')}s"
+  end
 end
