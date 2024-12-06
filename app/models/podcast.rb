@@ -48,12 +48,10 @@ class Podcast < ApplicationRecord
 
   end
 
-  def duration_r
-    seconds = rand(0..59)
-    minutes = rand(2..3)
-    remaining_seconds = (seconds % 60).round
-    "#{minutes}m #{remaining_seconds}s"
+  def duration_formatted
+    return "0m 00s" if duration.nil?
+    minutes = duration / 60
+    seconds = duration % 60
+    "#{minutes}m #{seconds.to_s.rjust(2, '0')}s"
   end
 end
-
-# hi

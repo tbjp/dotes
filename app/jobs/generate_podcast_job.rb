@@ -1,4 +1,5 @@
 require 'stringio'
+# require 'streamio-ffmpeg'
 
 class GeneratePodcastJob < ApplicationJob
   queue_as :default
@@ -27,7 +28,10 @@ class GeneratePodcastJob < ApplicationJob
       audio_io.rewind
     end
 
-    podcast.audio.attach(io: audio_io, filename: 'podcast_audio.mp3', content_type: 'audio/mpeg')
+    blob = podcast.audio.attach(io: audio_io, filename: 'podcast_audio.mp3', content_type: 'audio/mpeg')
+    blob.analyze
+    podcast.duration = blob.metadata[:duration].to_i
+    podcast.save
     podcast.broadcast_audio
 
 
