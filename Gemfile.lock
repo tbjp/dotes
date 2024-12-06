@@ -160,6 +160,8 @@ GEM
     ffi (1.17.0-x86_64-darwin)
     ffi (1.17.0-x86_64-linux-gnu)
     ffi (1.17.0-x86_64-linux-musl)
+    ffprobe (0.1.0)
+      hashie
     font-awesome-sass (6.5.2)
       sassc (~> 2.0)
     fugit (1.11.1)
@@ -240,6 +242,7 @@ GEM
     grpc (1.68.1-x86_64-linux)
       google-protobuf (>= 3.25, < 5.0)
       googleapis-common-protos-types (~> 1.0)
+    hashie (5.0.0)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.0.3)
@@ -451,6 +454,7 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
+  ffprobe
   font-awesome-sass (~> 6.1)
   google-cloud-text_to_speech
   importmap-rails
