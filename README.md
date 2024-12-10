@@ -2,10 +2,10 @@
 
 Dotes is an innovative language learning podcast app that leverages AI to create personalized podcasts for users. By specifying their language level, learning style, and interests, users can choose from premade topics or create their own. The app uses GPT to generate scripts and Google Cloud Text-to-Speech (TTS) to produce audio, featuring an AI host who speaks interchangeably in the user's native and target languages. Each podcast includes a transcript and flashcards to enhance the learning experience, making language acquisition engaging and tailored to individual needs.
 
-![www dotes me_podcasts_215 (2)](https://github.com/user-attachments/assets/42d78ccf-c28f-46ec-a3a8-dab7528167cc)
-![www dotes me_podcasts_215 (2)](https://github.com/user-attachments/assets/0d238658-853d-4ec4-a124-ca6d21359951)
-![www dotes me_podcasts_215 (6)](https://github.com/user-attachments/assets/a16efc45-71e4-4953-81a2-292ffb7df6d2)
-![www dotes me_podcasts_215](https://github.com/user-attachments/assets/fb3117d1-2d6b-41f2-8cfb-1806b3ae398a)
+[www dotes me_podcasts_215 (2)](https://github.com/user-attachments/assets/42d78ccf-c28f-46ec-a3a8-dab7528167cc)
+[www dotes me_podcasts_215 (2)](https://github.com/user-attachments/assets/0d238658-853d-4ec4-a124-ca6d21359951)
+[www dotes me_podcasts_215 (6)](https://github.com/user-attachments/assets/a16efc45-71e4-4953-81a2-292ffb7df6d2)
+[www dotes me_podcasts_215](https://github.com/user-attachments/assets/fb3117d1-2d6b-41f2-8cfb-1806b3ae398a)
 
 <br>
 
