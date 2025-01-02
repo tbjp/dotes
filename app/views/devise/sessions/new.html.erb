@@ -1,4 +1,4 @@
-<div class="glassmorph window p-4 text-center">
+<div class="glassmorph window p-4 text-center d-flex flex-column justify-content-between">
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
       <%= f.input :email,
@@ -11,5 +11,7 @@
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
     </div>
   <% end %>
-  <%= render "devise/shared/links" %>
+  <div class="d-flex flex-row justify-content-center">
+    <%= render "devise/shared/links" %>
+  </div>
 </div>
