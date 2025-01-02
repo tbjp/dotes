@@ -24,10 +24,16 @@
       </ul>
     </div>
     <!-- <h1 class="top-header center"><%= content_for(:title) ? content_for(:title) : "Dotes" %></h1> -->
-    <%= image_tag 'dotes.svg', class: 'dotes-logo top-header' %>
+    <%= link_to root_path do %>
+      <%= image_tag 'dotes.svg', class: 'dotes-logo top-header' %>
+    <% end %>
   </div>
 </div>
 <% else %>
   <!-- <h1 class="top-header center"><%= content_for(:title) ? content_for(:title) : "Dotes" %></h1> -->
-  <%= image_tag 'dotes.svg', class: 'dotes-logo top-header' %>
+  <div class='mama-div position-relative d-flex justify-content-center'>
+    <%= link_to root_path do %>
+      <%= image_tag 'dotes.svg', class: 'dotes-logo top-header' %>
+    <% end %>
+  </div>
 <% end %>
