@@ -15,5 +15,16 @@
     <div class="photo-pill pill4" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(<%= asset_url("waman1.jpg") %>)">
     </div>
   </div>
-  <div class="center text-white giga">Podcasts that evolve with you</div>
-</div>
+  <div class="center text-white giga pb-3">Podcasts that evolve with you</div>
+  <% if user_signed_in? %>
+  <% else %>
+    <%#= form_for @demo_user, url: user_session_path, :method => "post" do |f| %>
+      <div class="flex-grow-1 mx-2">
+        <%= form_with model: @demo_user, url: user_session_path, method: :post do |f| %>
+          <%= f.text_field :email, readonly: "true", hidden: "true" %>
+          <%= f.password_field :password, value: 'demo123', readonly: "true", hidden: "true" %>
+          <%= f.submit "Try a demo", class: "btn nav-btn nav-btn-lg glassmorph py-2" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
