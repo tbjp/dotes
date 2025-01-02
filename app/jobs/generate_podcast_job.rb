@@ -5,18 +5,50 @@ class GeneratePodcastJob < ApplicationJob
   queue_as :default
 
   def perform(current_user, podcast)
-    if current_user.email == 'jarodmiz2018@gmail.com'
-      sleep 5
-      podcast.transcript = Podcast.second_to_last.transcript
-      podcast.summary = Podcast.second_to_last.summary
-      podcast.title = Podcast.second_to_last.title
+    # This section is for testing or demo mode and skips the API calls
+    if current_user.email == 'jarodmiz2018@gmail.com' || current_user.id == 1
+
+      unless User.find_by(email: 'tjp@duck.com')
+        podcast.update(status: 'failed')
+        return
+      end
+
+      # find a random podcast from the user with email
+      sample = User.find_by(email: 'tjp@duck.com').podcasts.sample
+      # sample = Podcast.find(313)
+      podcast.user_language = current_user.selected_user_language
+      podcast.level = sample.level
+      podcast.user_prompt = sample.user_prompt
+      podcast.audio.attach(sample.audio.blob) if sample.audio.attached?
+      sleep 2
+      podcast.transcript = sample.transcript
       podcast.save
-      sleep 3
-      podcast.update(status: 'failed')
+      podcast.broadcast_podcast
+      sleep 1
+      podcast.title = sample.title
+      podcast.summary = sample.summary
+      podcast.ai_summary = sample.ai_summary
+      podcast.save
+      podcast.broadcast_podcast
+      sleep 1
+      podcast.broadcast_audio
+
+      flashcards = sample.flashcards
+      flashcards.each do |flashcard|
+        flashcard_instance = Flashcard.new(target_vocab: flashcard.target_vocab, native_definition: flashcard.native_definition, podcast_id: podcast.id)
+        flashcard_instance.save
+      end
+
+      # podcast.transcript = Podcast.second_to_last.transcript
+      # podcast.summary = Podcast.second_to_last.summary
+      # podcast.title = Podcast.second_to_last.title
+      sleep 5
+      # podcast.update(status: 'failed')
+      podcast.broadcast_podcast
       return
     end
 
-    # begin
+    # Begin real API calls
     p transcript = GenerateTranscript.call(current_user, podcast)
 
     audio_response = GenerateAudio.call(transcript, current_user)

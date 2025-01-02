@@ -14,10 +14,10 @@
     <%= render 'shared/ios_pwa_links' %>
   </head>
   <body data-controller="fade">
-    <% if user_signed_in? %>
-      <div class="d-flex flex-column justify-content-between">
-      <% else %>
-        <div class="d-flex flex-column justify-content-between h-100">
+    <% if current_page?(root_path) || !user_signed_in? %>
+      <div class="d-flex flex-column justify-content-between h-100">
+      <% else  %>
+        <div class="d-flex flex-column justify-content-between">
         <% end %>
         <% unless current_page?(controller: "/pages", action: "home") %>
           <%= render "shared/titlebar" %>
