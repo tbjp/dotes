@@ -48,7 +48,7 @@ class GeneratePodcastJob < ApplicationJob
       return
     end
 
-    # begin
+    # Begin real API calls
     p transcript = GenerateTranscript.call(current_user, podcast)
 
     audio_response = GenerateAudio.call(transcript, current_user)
