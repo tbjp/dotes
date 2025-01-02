@@ -20,6 +20,7 @@ class GeneratePodcastJob < ApplicationJob
       podcast.level = sample.level
       podcast.user_prompt = sample.user_prompt
       podcast.audio.attach(sample.audio.blob) if sample.audio.attached?
+      podcast.duration = sample.duration
       sleep 2
       podcast.transcript = sample.transcript
       podcast.save
