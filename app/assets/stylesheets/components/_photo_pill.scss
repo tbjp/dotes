@@ -1,3 +1,8 @@
+.pill-container {
+  flex: 5 1;
+  max-height: 300px;
+}
+
 .photo-pill {
   background-size: cover;
   background-position: center;
@@ -8,31 +13,41 @@
   border-radius: 50px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   margin-bottom: 10%;
+  flex-shrink: 1;
+  min-height: 0;
 }
 
 .pill1 {
   height: 150px;
+  height: 50%;
   width: 20%;
-  margin-top: 26%;
+  margin-top: 24%;
+  margin-bottom: 26%;
 }
 
 .pill2 {
   height: 300px;
+  height: 94%;
   width: 20%;
   margin-top: 6%;
   margin-left: 3%;
+  margin-bottom: 0%;
 }
 
 .pill3 {
   height: 200px;
+  height: 75%;
   width: 20%;
-  margin-top: 19%;
+  margin-top: 13%;
   margin-left: 3%;
+  margin-bottom: 12%;
 }
 
 .pill4 {
   height: 100px;
+  height: 40%;
   width: 20%;
-  margin-top: 33%;
+  margin-top: 30%;
   margin-left: 3%;
+  margin-bottom: 30%;
 }
