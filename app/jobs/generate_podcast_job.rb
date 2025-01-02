@@ -5,14 +5,31 @@ class GeneratePodcastJob < ApplicationJob
   queue_as :default
 
   def perform(current_user, podcast)
-    if current_user.email == 'jarodmiz2018@gmail.com'
-      sleep 5
-      podcast.transcript = Podcast.second_to_last.transcript
-      podcast.summary = Podcast.second_to_last.summary
-      podcast.title = Podcast.second_to_last.title
+    if current_user.email == 'jarodmiz2018@gmail.com' || current_user.id == 1
+      first_podcast = Podcast.find(313)
+      podcast.user_language = current_user.selected_user_language
+      podcast.transcript = first_podcast.transcript
+      podcast.summary = first_podcast.summary
+      podcast.ai_summary = first_podcast.ai_summary
+      podcast.title = first_podcast.title
+      podcast.level = first_podcast.level
+      podcast.user_prompt = first_podcast.user_prompt
+      podcast.audio.attach(first_podcast.audio.blob) if first_podcast.audio.attached?
       podcast.save
-      sleep 3
-      podcast.update(status: 'failed')
+
+
+      flashcards = first_podcast.flashcards
+      flashcards.each do |flashcard|
+        flashcard_instance = Flashcard.new(target_vocab: flashcard["word"], native_definition: flashcard["definition"], podcast_id: podcast.id)
+        flashcard_instance.save
+      end
+
+      # podcast.transcript = Podcast.second_to_last.transcript
+      # podcast.summary = Podcast.second_to_last.summary
+      # podcast.title = Podcast.second_to_last.title
+      sleep 5
+      # podcast.update(status: 'failed')
+      podcast.broadcast_podcast
       return
     end
 
