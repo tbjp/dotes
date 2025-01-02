@@ -5,22 +5,37 @@ class GeneratePodcastJob < ApplicationJob
   queue_as :default
 
   def perform(current_user, podcast)
+    # This section is for testing or demo mode and skips the API calls
     if current_user.email == 'jarodmiz2018@gmail.com' || current_user.id == 1
-      first_podcast = Podcast.find(313)
+
+      unless User.find_by(email: 'tjp@duck.com')
+        podcast.update(status: 'failed')
+        return
+      end
+
+      # find a random podcast from the user with email
+      sample = User.find_by(email: 'tjp@duck.com').podcasts.sample
+      # sample = Podcast.find(313)
       podcast.user_language = current_user.selected_user_language
-      podcast.transcript = first_podcast.transcript
-      podcast.summary = first_podcast.summary
-      podcast.ai_summary = first_podcast.ai_summary
-      podcast.title = first_podcast.title
-      podcast.level = first_podcast.level
-      podcast.user_prompt = first_podcast.user_prompt
-      podcast.audio.attach(first_podcast.audio.blob) if first_podcast.audio.attached?
+      podcast.level = sample.level
+      podcast.user_prompt = sample.user_prompt
+      podcast.audio.attach(sample.audio.blob) if sample.audio.attached?
+      sleep 2
+      podcast.transcript = sample.transcript
       podcast.save
+      podcast.broadcast_podcast
+      sleep 1
+      podcast.title = sample.title
+      podcast.summary = sample.summary
+      podcast.ai_summary = sample.ai_summary
+      podcast.save
+      podcast.broadcast_podcast
+      sleep 1
+      podcast.broadcast_audio
 
-
-      flashcards = first_podcast.flashcards
+      flashcards = sample.flashcards
       flashcards.each do |flashcard|
-        flashcard_instance = Flashcard.new(target_vocab: flashcard["word"], native_definition: flashcard["definition"], podcast_id: podcast.id)
+        flashcard_instance = Flashcard.new(target_vocab: flashcard.target_vocab, native_definition: flashcard.native_definition, podcast_id: podcast.id)
         flashcard_instance.save
       end
 
