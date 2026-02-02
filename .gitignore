@@ -41,3 +41,6 @@
 .DS_Store
 
 /key-google.json
+
+.agent/*
+.claude/*

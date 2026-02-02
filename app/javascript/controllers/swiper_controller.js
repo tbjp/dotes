@@ -1,13 +1,22 @@
-import { Controller } from "@hotwired/stimulus"
-import Swiper from "swiper"
+import { Controller } from '@hotwired/stimulus';
+import Swiper from 'swiper';
 
 // Connects to data-controller="swiper"
 export default class extends Controller {
+  static targets = ['prevBtn', 'nextBtn'];
+
   connect() {
-    const swiper = new Swiper(this.element, {
-      // Optional parameters
+    this.swiper = new Swiper(this.element, {
       loop: false,
-      initialSlide: 1
+      initialSlide: 1,
     });
+  }
+
+  prev() {
+    this.swiper.slidePrev();
+  }
+
+  next() {
+    this.swiper.slideNext();
   }
 }

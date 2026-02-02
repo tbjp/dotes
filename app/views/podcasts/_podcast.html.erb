@@ -1,4 +1,10 @@
-<div class="swiper w-100  pb-3" data-controller="swiper" id="podcast">
+<div class="swiper w-100 pb-3 position-relative" data-controller="swiper" id="podcast">
+  <button class="btn btn-link text-white position-absolute start-0 top-50 translate-middle-y d-none d-md-block" style="z-index: 10;" data-action="click->swiper#prev">
+    <i class="fas fa-chevron-left fa-2x"></i>
+  </button>
+  <button class="btn btn-link text-white position-absolute end-0 top-50 translate-middle-y d-none d-md-block" style="z-index: 10;" data-action="click->swiper#next">
+    <i class="fas fa-chevron-right fa-2x"></i>
+  </button>
   <div class="swiper-wrapper">
     <div class="swiper-slide left d-flex flex-column">
       <%= render "podcasts/flashcard", podcast: podcast, flashcard: podcast.incomplete_flashcard %>
@@ -16,7 +22,7 @@
       <div class="window-80 glassmorph my-2 p-4 pt-1 flex-grow-1 overflow-auto fw-light">
         <div class="podcast-subtitle fw-light pt-2">Transcript</div>
         <% if podcast.transcript %>
-          <%= simple_format(podcast.transcript)  %>
+          <%= simple_format(podcast.transcript) %>
         <% else %>
           <div class="h-75 d-flex align-content-center align-items-center">
             <%= render "shared/loading_bar" %>
