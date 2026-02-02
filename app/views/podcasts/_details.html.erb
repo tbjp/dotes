@@ -18,7 +18,7 @@
       </div>
       <div class="pb-3 host-sum">
         <% if podcast.summary %>
-          <%= podcast.summary  %>
+          <%= podcast.summary %>
         <% else %>
           <%= render "shared/loading_bar" %>
         <% end %>
@@ -28,7 +28,7 @@
       </div>
       <div class="pb-3 host-sum">
         <% if podcast.user_prompt %>
-          <%= podcast.user_prompt  %>
+          <%= podcast.user_prompt %>
         <% else %>
           <%= render "shared/loading_bar" %>
         <% end %>
@@ -83,8 +83,8 @@
     </div>
   </div>
   <div class="text-white d-flex window-5 justify-content-start">
-    <div class="align-self-center">
+    <button class="btn btn-link text-white text-decoration-none p-0 align-self-center" data-action="click->swiper#prev">
       ← Transcript
-    </div>
+    </button>
   </div>
 </div>

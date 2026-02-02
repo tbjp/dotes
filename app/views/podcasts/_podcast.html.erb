@@ -1,10 +1,4 @@
-<div class="swiper w-100 pb-3 position-relative" data-controller="swiper" id="podcast">
-  <button class="btn btn-link text-white position-absolute start-0 top-50 translate-middle-y d-none d-md-block" style="z-index: 10;" data-action="click->swiper#prev">
-    <i class="fas fa-chevron-left fa-2x"></i>
-  </button>
-  <button class="btn btn-link text-white position-absolute end-0 top-50 translate-middle-y d-none d-md-block" style="z-index: 10;" data-action="click->swiper#next">
-    <i class="fas fa-chevron-right fa-2x"></i>
-  </button>
+<div class="swiper w-100 pb-3" data-controller="swiper" id="podcast">
   <div class="swiper-wrapper">
     <div class="swiper-slide left d-flex flex-column">
       <%= render "podcasts/flashcard", podcast: podcast, flashcard: podcast.incomplete_flashcard %>
@@ -30,12 +24,12 @@
         <% end %>
       </div>
       <div class="text-white d-flex window-5 justify-content-between">
-        <div class="align-self-center">
+        <button class="btn btn-link text-white text-decoration-none p-0 align-self-center" data-action="click->swiper#prev">
           ← Flashcards
-        </div>
-        <div class="align-self-center">
+        </button>
+        <button class="btn btn-link text-white text-decoration-none p-0 align-self-center" data-action="click->swiper#next">
           Details →
-        </div>
+        </button>
       </div>
     </div>
     <div class="swiper-slide right">
