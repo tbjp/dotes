@@ -77,8 +77,13 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+# production:
+#   <<: *default
+#   database: dotes_production
+#   username: dotes
+#   password: <%= ENV["DOTES_DATABASE_PASSWORD"] %>
+#
+# This has been added to work with neon database instead of heroku
 production:
   <<: *default
-  database: dotes_production
-  username: dotes
-  password: <%= ENV["DOTES_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
