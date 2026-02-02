@@ -56,8 +56,10 @@ class PodcastsController < ApplicationController
 
 
     if @podcast.save
-      # transcript = GenerateText.call(current_user, @podcast) instead of calling the generatetext we call the job
-      GeneratePodcastJob.perform_later(current_user, @podcast)
+      # Run job in a thread to allow Turbo Stream broadcasts while request completes
+      user = current_user
+      podcast = @podcast
+      Thread.new { GeneratePodcastJob.perform_now(user, podcast) }
       redirect_to podcast_path(@podcast)
     else
       @user_language = current_user.selected_user_language
