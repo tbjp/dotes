@@ -12,6 +12,14 @@
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Promote front/back to own compositing layers to avoid re-rendering backdrop-filter during flip */
+.flip-card-front,
+.flip-card-back {
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
@@ -20,7 +28,8 @@
 }
 
 /* Position the front and back side */
-.flip-card-front, .flip-card-back {
+.flip-card-front,
+.flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
